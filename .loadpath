@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<loadpath>
+	<pathentry path="" type="src"/>
+	<pathentry path="GEM_LIB/rjb-1.4.9/lib" type="var"/>
+	<pathentry path="GEM_LIB/bind-it-0.2.7/lib" type="var"/>
+	<pathentry path="GEM_LIB/stanford-core-nlp-0.3.0/lib" type="var"/>
+	<pathentry path="GEM_LIB/rjb-1.4.3/lib" type="var"/>
+	<pathentry path="GEM_LIB/bind-it-0.2.0/lib" type="var"/>
+</loadpath>
