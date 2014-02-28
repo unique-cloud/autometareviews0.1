@@ -35,16 +35,19 @@ def get_relevance(reviews, submissions, num_reviews, pos_tagger, core_NLP_tagger
     
     #assigning graph as a review graph to use in content classification
     @review = g.clone
-      
+    
+     puts "@review.num_edges: #{@review.num_edges}"
+    
     #generating the submission's graph
     g.generate_graph(submissions, pos_tagger, core_NLP_tagger, true, false)
     subm_vertices = g.vertices
     subm_edges = g.edges
     num_sub_vert = g.num_vertices
     num_sub_edg = g.num_edges
-      
+     
     vert_match = compare_vertices(pos_tagger, review_vertices, subm_vertices, num_rev_vert, num_sub_vert, speller)
     if(num_rev_edg > 0 and num_sub_edg > 0)
+      puts "subm_vertices HERE"
       edge_without_syn = compare_edges_non_syntax_diff(review_edges, subm_edges, num_rev_edg, num_sub_edg)
       edge_with_syn = compare_edges_syntax_diff(review_edges, subm_edges, num_rev_edg, num_sub_edg)
       edge_diff_type = compare_edges_diff_types(review_edges, subm_edges, num_rev_edg, num_sub_edg)
@@ -66,15 +69,15 @@ def get_relevance(reviews, submissions, num_reviews, pos_tagger, core_NLP_tagger
     scaled_relevance = relevance.to_f/6.to_f #scaled from [0-6] in the range [0-1]
     
     #printing values
-    # puts("vertexMatch is [0-6]:: #{vert_match}")
-    # puts("edgeWithoutSyn Match is [0-6]:: #{edge_without_syn}")
-    # puts("edgeWithSyn Match is [0-6]:: #{edge_with_syn}")
-    # puts("edgeDiffType Match is [0-6]:: #{edge_diff_type}")
-    # puts("doubleEdge Match is [0-6]:: #{double_edge}")
-    # puts("doubleEdge with syntax Match is [0-6]:: #{double_edge_with_syn}")
-    # puts("relevance [0-6]:: #{relevance}")
-    # puts("scaled relevance on [0-1]:: #{scaled_relevance}")
-    # puts("*************************************************")
+    puts("vertexMatch is [0-6]:: #{vert_match}")
+    puts("edgeWithoutSyn Match is [0-6]:: #{edge_without_syn}")
+    puts("edgeWithSyn Match is [0-6]:: #{edge_with_syn}")
+    puts("edgeDiffType Match is [0-6]:: #{edge_diff_type}")
+    puts("doubleEdge Match is [0-6]:: #{double_edge}")
+    puts("doubleEdge with syntax Match is [0-6]:: #{double_edge_with_syn}")
+    puts("relevance [0-6]:: #{relevance}")
+    puts("scaled relevance on [0-1]:: #{scaled_relevance}")
+    puts("*************************************************")
     return scaled_relevance
 end  
 =begin
@@ -83,7 +86,7 @@ end
    * v1- vertices of the submission/past review and v2 - vertices from new review 
 =end
 def compare_vertices(pos_tagger, rev, subm, num_rev_vert, num_sub_vert, speller)
-  # puts("****Inside compare_vertices:: rev.length:: #{num_rev_vert} subm.length:: #{num_sub_vert}")
+  puts("****Inside compare_vertices:: rev.length:: #{num_rev_vert} subm.length:: #{num_sub_vert}")
   #for double dimensional arrays, one of the dimensions should be initialized
   @vertex_match = Array.new(num_rev_vert){Array.new}
   wnet = WordnetBasedSimilarity.new
@@ -95,7 +98,7 @@ def compare_vertices(pos_tagger, rev, subm, num_rev_vert, num_sub_vert, speller)
   for i in (0..num_rev_vert - 1)
     if(!rev.nil? and !rev[i].nil?)
       rev[i].node_id = i
-      # puts("%%%%%%%%%%% Token #{rev[i].name} ::: POS tags:: rev[i].pos_tag:: #{rev[i].pos_tag} :: rev[i].node_id #{rev[i].node_id}")
+      #puts("%%%%%%%%%%% Token #{rev[i].name} ::: POS tags:: rev[i].pos_tag:: #{rev[i].pos_tag} :: rev[i].node_id #{rev[i].node_id}")
       #skipping frequent words from vertex comparison
       if(wnet.is_frequent_word(rev[i].name))
         next #ruby equivalent for continue 
@@ -107,24 +110,25 @@ def compare_vertices(pos_tagger, rev, subm, num_rev_vert, num_sub_vert, speller)
           if(subm[j].node_id == -1)
             subm[j].node_id = j
           end
-          # puts("%%%%%%%%%%% Token #{subm[j].name} ::: POS tags:: subm[j].pos_tag:: #{subm[j].pos_tag} subm[j].node_id #{subm[j].node_id}")
+          #puts("%%%%%%%%%%% Token #{subm[j].name} ::: POS tags:: subm[j].pos_tag:: #{subm[j].pos_tag} subm[j].node_id #{subm[j].node_id}")
           if(wnet.is_frequent_word(subm[j].name))
             next #ruby equivalent for continue 
           end
-          #comparing only if one of the two vertices is a noun
-          if(rev[i].pos_tag.include?("NN") and subm[j].pos_tag.include?("NN"))
-            @vertex_match[i][j] = wnet.compare_strings(rev[i], subm[j], speller)    
+          #comparing only if one of the two vertices are nouns
+          #if(rev[i].pos_tag.include?("NN") and subm[j].pos_tag.include?("NN"))
+            @vertex_match[i][j] = wnet.compare_strings(rev[i], subm[j], speller) 
+#            puts "returned value #{@vertex_match[i][j]}, max #{max}"
             #only if the "if" condition is satisfied, since there could be null objects in between and you dont want unnecess. increments
             flag = 1
             if(@vertex_match[i][j] > max)
               max = @vertex_match[i][j]
             end
-          end
+          #end
         end
       end #end of for loop for the submission vertices
       
       if(flag != 0)#if the review edge had any submission edges with which it was matched, since not all S-V edges might have corresponding V-O edges to match with
-        # puts("**** Best match for:: #{rev[i].name}-- #{max}")
+        puts("**** Best match for:: #{rev[i].name}-- #{max}")
         cum_vertex_match = cum_vertex_match + max
         count+=1
         max = 0.0 #re-initialize
@@ -148,7 +152,7 @@ end #end of compare_vertices
    * where SUBJECT-SUBJECT and VERB-VERB or VERB-VERB and OBJECT-OBJECT comparisons are done
 =end
 def compare_edges_non_syntax_diff(rev, subm, num_rev_edg, num_sub_edg)
-  # puts("*****Inside compareEdgesnNonSyntaxDiff numRevEdg:: #{num_rev_edg} numSubEdg:: #{num_sub_edg}")   
+  puts("*****Inside compareEdgesnNonSyntaxDiff numRevEdg:: #{num_rev_edg} numSubEdg:: #{num_sub_edg}")   
   best_SV_SV_match = Array.new(num_rev_edg){Array.new}
   cum_edge_match = 0.0
   count = 0

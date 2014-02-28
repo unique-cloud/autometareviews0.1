@@ -1,5 +1,6 @@
 require 'vertex'
 require 'constants'
+require 'engtagger'
 
 class WordnetBasedSimilarity
   attr_accessor :match, :count
@@ -13,7 +14,7 @@ class WordnetBasedSimilarity
     reviewState = reviewVertex.state
     submState = submVertex.state
     
-    # puts("@@@@@@@@@ Comparing Vertices:: #{review} and #{submission} :: RevState:: #{reviewState} and SubmState:: #{submState}");
+    #puts("@@@@@@@@@ Comparing Vertices:: #{review} and #{submission} :: RevState:: #{reviewState} and SubmState:: #{submState}");
     @match = 0
     @count = 0
     
@@ -180,12 +181,12 @@ class WordnetBasedSimilarity
     end #end of the for loop for review tokens
     
     if(@count > 0)
-      # puts ("Match: #{@match} Count:: #{@count}")
+#      puts ("Match: #{@match} Count:: #{@count}")
       result = (@match.to_f/@count.to_f).round
-      # puts("@@@@@@@@@ Returning Value: #{result}")
+#      puts("@@@@@@@@@ Returning Value: #{result}")
       return result #an average of the matches found
     end
-    # puts("@@@@@@@@@ Returning NOMATCH")
+#    puts("@@@@@@@@@ Returning NOMATCH")
     return NOMATCH
     
   end #end of compareStrings method

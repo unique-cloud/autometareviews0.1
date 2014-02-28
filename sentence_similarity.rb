@@ -1,7 +1,7 @@
 class SentenceSimilarity
 attr_accessor :sim_list, :sim_threshold 
 def get_sentence_similarity(pos_tagger, subm_sentences, speller)
-  sim_list = Array.new 
+  @sim_list = Array.new 
   
   #calculating similarities between sentences
   sentence_match = Array.new(subm_sentences.length){Array.new}
@@ -14,7 +14,7 @@ def get_sentence_similarity(pos_tagger, subm_sentences, speller)
         puts("edge - subm_sentences[i] = #{subm_sentences[i].nil?} and subm_sentences[j] = #{subm_sentences[j].nil?}")
         edge_match = graph_match.compare_edges_non_syntax_diff(subm_sentences[i].edges, subm_sentences[j].edges, subm_sentences[i].num_edges, subm_sentences[j].num_edges)
         sentence_match[i][j] = (vertex_match + edge_match)/2
-        sim_list << sentence_match[i][j]
+        @sim_list << sentence_match[i][j]
       end
     end
   end
@@ -47,11 +47,15 @@ def get_sentence_similarity(pos_tagger, subm_sentences, speller)
       end
     end
   end
-  sim_threshold = difference/count
+  if(count > 0)
+    sim_threshold = difference/count
+  else
+    sim_threshold = 0.0
+  end
   sim_threshold = (sim_threshold * 10).round/10.0 #rounding to include only 1 digit after the decimal
-  #order simlist
-  sim_list = sim_list.sort
   
+  #order simlist
+  @sim_list = @sim_list.sort
   return sentence_match
 end  
 

@@ -3,17 +3,17 @@ require 'wordnet_based_similarity'
 require 'constants'
 
 class Tone
-  def identify_tone(pos_tagger, core_NLP_tagger, review_text, review_graph)
-    speller = Aspell.new("en_US")
-    speller.suggestion_mode = Aspell::NORMAL
+  def identify_tone(pos_tagger, speller, core_NLP_tagger, review_text, review_graph)
+    #speller = Aspell.new("en_US")
+    #speller.suggestion_mode = Aspell::NORMAL
     
     cumulative_edge_feature = Array.new
     cumulative_review_tone = Array.new 
     cumulative_review_tone = [-1, -1, -1] #sum of all edge tones
     
     #extracting positive and negative words from files into arrays
-    positive_file = "positive-words.csv"
-    negative_file = "negative-words.csv"
+    positive_file = "data/positive-words.csv"
+    negative_file = "data/negative-words.csv"
     positive = Array.new
     negative = Array.new
     FasterCSV.foreach(positive_file) do |text|

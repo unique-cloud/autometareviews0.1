@@ -1,13 +1,29 @@
 require 'constants'
+require 'cluster'
+
 class ClusterGeneration
 =begin
   Forming the clusters in the dataset
    * @param subm_sentences is the set of sentences in the submission
    * @param sentence_similarity is the matrix containing the similarities between every pair of sentences
 =end
-def generate_clusters(subm_sentences, sentence_similarity)   
+def generate_clusters(subm_sentences, sentence_similarity, sim_list)
+  if(subm_sentences.length == 1) #only 1 sentence in the submission
+    cluster_set = Array.new(subm_sentences.length)
+    cluster_set[0] = Cluster.new(0, 1, 0)
+    cluster_set[0].sent_counter = 1 
+    cluster_set[0].sentences = Array.new(subm_sentences.length) #since a single cluster can contain atmost all sentences in the text
+    cluster_set[0].sentences[0] = subm_sentences[0] #setting sentence
+    puts "num_vertixes #{cluster_set[0].sentences[0].num_verts}"
+    #setting cluster ID for sentences - to check if sentences were a part of the same cluster
+    subm_sentences[0].cluster_ID = cluster_set[0].ID
+    puts("Cluster: #{0} SentCount: #{cluster_set[0].sent_counter}")
+    final_clusters = cluster_set
+    return final_clusters
+  end
+#  puts "Length of subm_sentences #{subm_sentences.length}"
   #ranking sentence pairs based on their similarity
-  ranked_array = rank_sentences(sentence_similarity)
+  ranked_array = rank_sentences(sentence_similarity, sim_list)
   #Cluster creation -- looping
   final_clusters = cluster_creation(subm_sentences, ranked_array, sentence_similarity)
     
@@ -16,13 +32,18 @@ def generate_clusters(subm_sentences, sentence_similarity)
   count = 0
   for i in 0..final_clusters.length-1
     #copying only the required number of sentences into the final cluster
-    if(final_clusters[i].sent_counter >= 0)
+    if(final_clusters[i].sent_counter != nil && final_clusters[i].sent_counter >= 0)
       #summing up number of sentences to calculate avg. number of sentences per cluster
       num_sentences += final_clusters[i].sent_counter
       count+=1
     end
   end
-  @@sent_density_thresh = Math.round(numSentences/count);
+  if(count > 0)
+    @@sent_density_thresh = Math.round(numSentences/count)
+  else
+    @@sent_density_thresh = 0.0
+  end  
+  
   puts("Avg. number of sentences per clutser: #{@@sent_density_thresh}")
     
   #selecting the top 'n' clusters that need covering
@@ -34,8 +55,10 @@ end
    * @param
    * @return ids of ranked sentences
 =end
-def rank_sentences(sentence_similarity)
-  order_sim_list = sentence_similarity.sim_list
+def rank_sentences(sentence_similarity, sim_list)
+#  puts "sentence_similarity.class #{sentence_similarity.class}"
+  puts "sim_list #{sim_list.length}"
+  order_sim_list = sim_list
   #ranked_array consists of the sentence IDs
   #number of sentence similarities = n(n-1)/2
   len = (sentence_similarity[0].length * (sentence_similarity[0].length-1))/2 
@@ -246,7 +269,7 @@ end
     count = 0
     #code for selecting the top 'n' dense clusters
     for i in 0..subm_clusters.length-1
-      if(subm_clusters[i].sent_counter >= @@sent_density_thresh)
+      if(subm_clusters[i].sent_counter != nil && subm_clusters[i].sent_counter >= @@sent_density_thresh)
         puts("Top cluster ID: #{subm_clusters[i].ID}")
         top_clusters[count] = subm_clusters[i]
         count+=1

@@ -55,7 +55,6 @@ def check_for_plagiarism(review_text, subm_text)
           result = true
           break
         end
-        #System.out.println("^^^ Plagiarism result:: "+result);
         rev_len+=1
       end #end of the while loop
       if(result == true)
@@ -73,20 +72,20 @@ end
 =begin
  Checking if the response has been copied from the review questions or from other responses submitted. 
 =end  
-  def compare_reviews_with_questions_responses(auto_metareview, map_id)
-    review_text_arr = auto_metareview.review_array
-    response = Response.find(:first, :conditions => ["map_id = ?", map_id])
-    scores = Score.find(:all, :conditions => ["response_id = ?", response.id])
-    questions = Array.new
+  def compare_reviews_with_questions_responses(reviews, questions)
+    review_text_arr = reviews
+    #response = Response.find(:first, :conditions => ["map_id = ?", map_id])
+    #scores = Score.find(:all, :conditions => ["response_id = ?", response.id])
+    #questions = Array.new
     #fetching the questions for the responses
-    for i in 0..scores.length - 1
-      questions << Question.find_by_sql(["Select * from questions where id = ?", scores[i].question_id])[0].txt
-    end
+#    for i in 0..scores.length - 1
+#      questions << Question.find_by_sql(["Select * from questions where id = ?", scores[i].question_id])[0].txt
+#    end
     
     count_copies = 0 #count of the number of responses that are copies either of questions of other responses
     rev_array = Array.new #holds the non-plagiairised responses
     #comparing questions with text
-    for i in 0..scores.length - 1
+    for i in 0..questions.length - 1
       if(!questions[i].nil? and !review_text_arr[i].nil? and questions[i].downcase == review_text_arr[i].downcase)
         count_copies+=1
         next #skip comparing with other responses

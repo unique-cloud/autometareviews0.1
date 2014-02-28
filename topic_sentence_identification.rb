@@ -1,7 +1,14 @@
+require 'merge_sort'
+
 class TopicSentenceIdentification
 
   def find_topic_sentences(clusters, sentence_similarity)
-    msort = MergeSorting.new
+    if(clusters.length == 1 && clusters[0].sent_counter == 1) #only one cluster with one sentence
+      clusters[0].topic_sentences = Array.new(clusters[0].sent_counter)
+      clusters[0].topic_sentences[0] = clusters[0].sentences[0]
+      return
+    end
+    msort = MergeSort.new
 
     #obtaining the average similarities between every pair of sentences, across all clusters
     #this is necessary for sorting sentences in the cluster, after which cluster cover is found in method 'coverage'

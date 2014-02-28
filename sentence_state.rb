@@ -4,7 +4,7 @@ require 'constants'
 class SentenceState
   attr_accessor :broken_sentences
   def identify_sentence_state(str_with_pos_tags)
-    # puts("**** Inside identify_sentence_state #{str_with_pos_tags}")
+#    puts("**** Inside identify_sentence_state #{str_with_pos_tags}")
     #break the sentence at the co-ordinating conjunction
     num_conjunctions = break_at_coordinating_conjunctions(str_with_pos_tags)
     
@@ -291,3 +291,4 @@ def is_suggestive_phrase(phrase)
 end
 
 end #end of the class
+

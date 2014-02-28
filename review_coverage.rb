@@ -7,7 +7,6 @@ require 'degree_of_relevance'
 class ReviewCoverage
 
   def calculate_coverage(submissions, reviews, pos_tagger, core_NLP_tagger, speller)
-    
     #Step 1: Converting submission's text into sentences
     subm_sents = Array.new
     g = GraphGenerator.new
@@ -22,20 +21,21 @@ class ReviewCoverage
     
     #Steps 2 and 3: Grouping sentences into clusters AND Identifying the clusters that need covering
     cg = ClusterGeneration.new
-    clusters = cg.generate_clusters(subm_sents, subm_sentences_similarity)
+    clusters = cg.generate_clusters(subm_sents, subm_sentences_similarity, ssim.sim_list)
     
     #Step 4: Identifying topic representative sentences from each cluster
     topic_sentence = TopicSentenceIdentification.new
     topic_sentence.find_topic_sentences(clusters, subm_sentences_similarity)
     
     #Step 5:  Measuring coverage of topic sentences by the review - review coverage calculation
+    review_sentences = Array.new
     for i in 0..reviews.length-1 #for every class
-      #generating the submission's graph
+      #generating the review's graph
       g.generate_graph(reviews, pos_tagger, core_NLP_tagger, true, false)
       review_sentences << Sentence.new(i, g.vertices, g.edges, g.num_vertices, g.num_edges)
     end
     
-    coverage = review_topic_sentence_overlaps(review_sentences, clusters, pos_tagger)
+    coverage = review_topic_sentence_overlaps(review_sentences, clusters, pos_tagger, speller)
     puts("Coverage: #{coverage}")
     return coverage
   end  
@@ -46,7 +46,7 @@ class ReviewCoverage
    * @param subm_clusters - clusters in the submission
    * @throws ClassNotFoundException 
 =end
-  def review_topic_sentence_overlaps(rev_sentences, subm_clusters, pos_tagger)
+  def review_topic_sentence_overlaps(rev_sentences, subm_clusters, pos_tagger, speller)
     puts("Inside identifyReviewCoverage, # rev. sentences: #{rev_sentences.length}")
     graph_match = DegreeOfRelevance.new
     
@@ -63,8 +63,8 @@ class ReviewCoverage
         #iterating through each of the review sentences
         for k in 0..rev_sentences.length-1
           #calculating sum of all the topicSentence---reviewSentence coverage
-          avg_sim_for_clust += (graph_match.compareVertices(pos_tagger, topic_sent_clust[j].vertices, rev_sentences[k].vertices, topic_sent_clust[j].num_vertices, rev_sentences[k].num_vertices) + 
-              graph_match.compare_edges(pos_tagger, topic_sent_clust[j].edges, rev_sentences[k].edges, topic_sent_clust[j].num_edges, rev_sentences[k].num_edges))/Float(2)
+          avg_sim_for_clust += (graph_match.compare_vertices(pos_tagger, topic_sent_clust[j].vertices, rev_sentences[k].vertices, topic_sent_clust[j].num_verts, rev_sentences[k].num_verts, speller) + 
+              graph_match.compare_edges_non_syntax_diff(topic_sent_clust[j].edges, rev_sentences[k].edges, topic_sent_clust[j].num_edges, rev_sentences[k].num_edges))/Float(2)
         end
       end #end of for loop for cluster's topic sentences
       
