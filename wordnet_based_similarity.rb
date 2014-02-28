@@ -1,5 +1,6 @@
 require 'vertex'
 require 'constants'
+require 'wordnet'
 require 'engtagger'
 
 class WordnetBasedSimilarity

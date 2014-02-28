@@ -1,14 +1,14 @@
-require 'test_helper'
-require 'automated_metareview/text_quantity'
-require 'automated_metareview/text_preprocessing'
+require 'test/unit'
+require 'text_quantity'
+require 'text_preprocessing'
     
-class ToneTest < ActiveSupport::TestCase
+class ToneTest < Test::Unit::TestCase
   attr_accessor :tc
   def setup
     @tc = TextPreprocessing.new
   end
   
-  test "number of unique tokens without duplicate words" do
+  def test_number_of_unique_tokens_without_duplicate_words
     instance = TextQuantity.new
     review_text = ["Parallel lines never meet."]
     review_text = tc.segment_text(0, review_text)
@@ -16,7 +16,7 @@ class ToneTest < ActiveSupport::TestCase
     assert_equal(4, num_tokens)
   end
   
-  test "number of unique tokens with frequent words" do
+  def test_number_of_unique_tokens_with_frequent_words
     instance = TextQuantity.new
     review_text = ["I am surprised to hear the news."]
     review_text = tc.segment_text(0, review_text)
@@ -24,7 +24,7 @@ class ToneTest < ActiveSupport::TestCase
     assert_equal(3, num_tokens)
   end
   
-  test "number of unique tokens with repeated words" do
+  def test_number_of_unique_tokens_with_repeated_words
     instance = TextQuantity.new
     review_text = ["The report is good, but more changes can be made to the report."]
     review_text = tc.segment_text(0, review_text)

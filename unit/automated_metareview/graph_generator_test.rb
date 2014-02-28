@@ -1,17 +1,21 @@
-require 'test_helper'
+require 'test/unit'
+require 'text_preprocessing'
+require 'graph_generator'
+gem 'stanford-core-nlp', '=0.3.0'
+require 'stanford-core-nlp'
+require 'ffi/aspell'
+require 'engtagger'
 
-class GraphgeneratorTest < ActiveSupport::TestCase
+class GraphgeneratorTest < Test::Unit::TestCase
   attr_accessor :pos_tagger, :core_NLP_tagger, :tc, :instance
   def setup  
     @pos_tagger = EngTagger.new
     @core_NLP_tagger =  StanfordCoreNLP.load(:tokenize, :ssplit, :pos, :lemma, :parse, :ner, :dcoref)
-    require 'automated_metareview/text_preprocessing'
     @tc = TextPreprocessing.new
-    require 'automated_metareview/graph_generator'
     @instance = GraphGenerator.new
   end
   
-  test "Number Of Vertices Generated 1" do
+  def test_Number_Of_Vertices_Generated_1
     #creating a test review array
     train_reviews = ["Parallel lines never meet."]
     train_reviews = @tc.segment_text(0, train_reviews)
@@ -19,7 +23,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
     assert_equal(4, @instance.num_vertices)
   end  
   
-  test "Contents Of Vertices Generated 1" do
+  def test_Contents_Of_Vertices_Generated_1
     #creating a test review array
     train_reviews = ["Parallel lines never meet."]
     train_reviews = @tc.segment_text(0, train_reviews)
@@ -32,7 +36,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
   end
   
   #Testing with longer review, with two sentences and duplicate token vertices
-  test "Number Of Vertices Generated 2" do
+  def test_Number_Of_Vertices_Generated_2
     #review array
     train_reviews = ["The sweet potatoes in the vegetable bin are green with mold. These sweet potatoes in the vegetable bin are fresh."]
     train_reviews = @tc.segment_text(0, train_reviews)
@@ -40,7 +44,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
     assert_equal(9, @instance.num_vertices) #since vertices in different sentences are treated different.
   end
   
-  test "Contents Of Vertices Generated 2" do
+  def test_Contents_Of_Vertices_Generated_2
     #review array
     train_reviews = ["The sweet potatoes in the vegetable bin are green with mold. These sweet potatoes in the vegetable bin are fresh."]
     train_reviews = @tc.segment_text(0, train_reviews)
@@ -57,7 +61,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
     assert_equal("fresh", @instance.vertices[8].name.downcase)
   end
   
-  test "Number Of Vertices Generated 3" do
+  def test_Number_Of_Vertices_Generated_3
     #review array
     train_reviews = ["The sweet potatoes in the vegetable bin are green with mold. These sweet potatoes in the vegetable bin are fresh."]
     train_reviews = @tc.segment_text(0, train_reviews)
@@ -66,7 +70,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
     assert_equal(9, @instance.num_vertices)
   end
   
-  test "Number Of Edges Generated 1" do
+  def test_Number_Of_Edges_Generated_1
     #review array      
     train_reviews = ["Parallel lines never meet."]
     train_reviews = @tc.segment_text(0, train_reviews)
@@ -74,7 +78,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
     assert_equal(3, @instance.num_edges)
   end
   
-  test "Contents Of Edges Generated 1" do
+  def test_Contents_Of_Edges_Generated_1
     #review array
     train_reviews = ["Parallel lines never meet."]
     train_reviews = @tc.segment_text(0, train_reviews)
@@ -90,7 +94,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
     assert_equal("meet", @instance.edges[2].out_vertex.name.downcase)
   end
   
-  test "Number Of Edges Generated 2" do
+  def test_Number_Of_Edges_Generated_2
     #review array 
     train_reviews = ["The sweet potatoes in the vegetable bin are green with mold."]
     train_reviews = @tc.segment_text(0, train_reviews)
@@ -98,7 +102,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
     assert_equal(4, @instance.num_edges)
   end
   
-  test "Contents Of Edges Generated 2" do
+  def test_Contents_Of_Edges_Generated_2
     #review array 
     train_reviews = ["The sweet potatoes in the vegetable bin are green with mold."]
     train_reviews = tc.segment_text(0, train_reviews)
@@ -118,7 +122,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
   end
   
   #Testing Number of Edges when they repeat
-  test "Edges Which Repeat" do
+  def test_Edges_Which_Repeat
     #review array   
     train_reviews = ["The sweet potatoes in the vegetable bin are green with mold. These sweet potatoes in the vegetable bin are fresh."]
     train_reviews = tc.segment_text(0, train_reviews)
@@ -127,7 +131,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
     assert_equal(5, instance.num_edges)
   end
   
-  test "Frequency Of Edges 1" do
+  def test_Frequency_Of_Edges_1
     #review array
     train_reviews = ["The sweet potatoes in the vegetable bin are green with mold.", "These sweet potatoes in the vegetable bin are fresh."]
     train_reviews = tc.segment_text(0, train_reviews)
@@ -142,7 +146,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
   end
   
   #with repetition in edges.
-  test "Frequency Of Edges 2" do
+  def test_Frequency_Of_Edges_2
     #review array
     train_reviews = ["The sweet potatoes in the vegetable bin are green with mold.These sweet potatoes in the vegetable bin are fresh. " +
           "These sweet potatoes in the vegetable bin are fresh."]
@@ -159,7 +163,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
     assert_equal(1, instance.edges[4].frequency)
   end
   
-  test "Frequency Of Edges 2 Different Texts" do
+  def test_Frequency_Of_Edges_2_Different_Texts
     #review array
     train_reviews = ["The sweet potatoes in the vegetable bin are green with mold.","These sweet potatoes in the vegetable bin are fresh. ",
         "These sweet potatoes in the vegetable bin are fresh."]
@@ -175,7 +179,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
     assert_equal(1, instance.edges[4].frequency) #potatoes in vegetable bin - fresh
   end
     
-   test "Frequency Of Edges 4" do
+  def test_Frequency_Of_Edges_4
     #review array  
     train_reviews = ["Neither of these cookbooks contains the recipe for Manhattan-style squid eyeball stew."]
     train_reviews = tc.segment_text(0, train_reviews)
@@ -191,7 +195,7 @@ class GraphgeneratorTest < ActiveSupport::TestCase
   end
   
   #May be a failing test case, since the number of edges is affected by the POS tagging (could be 9 or 10)
-  test "Frequency Of Edges 3" do
+  def test_Frequency_Of_Edges_3
     #review array
     train_reviews = ["Tommy, along with the other students, breathed a sigh of relief when " +
           "Mrs Markham announced that she was postponing the due date for the research essay."]

@@ -36,7 +36,8 @@ class ReviewCoverage
     end
     
     coverage = review_topic_sentence_overlaps(review_sentences, clusters, pos_tagger, speller)
-    puts("Coverage: #{coverage}")
+    coverage = coverage.to_f/6.to_f
+#    puts("Coverage: #{coverage}")
     return coverage
   end  
 

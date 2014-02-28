@@ -1,9 +1,12 @@
-require 'test_helper'
-require 'automated_metareview/degree_of_relevance'
-require 'automated_metareview/text_preprocessing'
-require 'automated_metareview/graph_generator'
+require 'test/unit'
+require 'degree_of_relevance'
+require 'text_preprocessing'
+require 'graph_generator'
+gem 'stanford-core-nlp', '=0.3.0'
+require 'stanford-core-nlp'
+require 'ffi/aspell'
 
-class DegreeOfRelevanceTest < ActiveSupport::TestCase
+class DegreeOfRelevanceTest < Test::Unit::TestCase #ActiveSupport::TestCase
   attr_accessor :pos_tagger, :core_NLP_tagger, :review_vertices, :subm_vertices, :num_rev_vert, :num_sub_vert, :review_edges, :subm_edges, :num_rev_edg, :num_sub_edg, :speller
   def setup
     @pos_tagger = EngTagger.new
@@ -32,17 +35,16 @@ class DegreeOfRelevanceTest < ActiveSupport::TestCase
     @num_sub_edg = g.num_edges
     g.print_graph(@subm_edges, @subm_vertices)
     #initializing the speller
-    @speller = Aspell.new("en_US")
-    @speller.suggestion_mode = Aspell::NORMAL
+    @speller = FFI::Aspell::Speller.new('en_US')
   end
   
-  test "compare vertices exact match" do
+  def test_compare_vertices_exact_match
     #creating an instance of the degree of relevance class and calling the 'compare_vertices' method
     instance = DegreeOfRelevance.new
     assert_equal(6, instance.compare_vertices(@pos_tagger, @review_vertices, @subm_vertices, @num_rev_vert, @num_sub_vert, @speller))
   end
   
-  test "compare edges non syntax diff exact match" do
+  def test_compare_edges_non_syntax_diff_exact_match
     #creating an instance of the degree of relevance class and calling the 'compare_vertices' method
     instance = DegreeOfRelevance.new
     #call compare vertices to instantiate the vertex_match array, since this array is used by the compare edges method
@@ -50,7 +52,7 @@ class DegreeOfRelevanceTest < ActiveSupport::TestCase
     assert_equal(6, instance.compare_edges_non_syntax_diff(@review_edges, @subm_edges, @num_rev_edg, @num_sub_edg))
   end
   
-  test "compare edges syntax diff exact match" do
+  def test_compare_edges_syntax_diff_exact_match
     #creating an instance of the degree of relevance class and calling the 'compare_vertices' method
     instance = DegreeOfRelevance.new
     #call compare vertices to instantiate the vertex_match array, since this array is used by the compare edges method
@@ -59,7 +61,7 @@ class DegreeOfRelevanceTest < ActiveSupport::TestCase
     assert(instance.compare_edges_syntax_diff(@review_edges, @subm_edges, @num_rev_edg, @num_sub_edg) <= 3)
   end
   
-  test "compare edges diff types exact match" do
+  def test_compare_edges_diff_types_exact_match
     #creating an instance of the degree of relevance class and calling the 'compare_vertices' method
     instance = DegreeOfRelevance.new
     #call compare vertices to instantiate the vertex_match array, since this array is used by the compare edges method
@@ -68,7 +70,7 @@ class DegreeOfRelevanceTest < ActiveSupport::TestCase
     assert(instance.compare_edges_diff_types(@review_edges, @subm_edges, @num_rev_edg, @num_sub_edg) <= 3)
   end
   
-  test "compare SVO edges without syn exact match" do
+  def test_compare_SVO_edges without_syn_exact_match
     #creating an instance of the degree of relevance class and calling the 'compare_vertices' method
     instance = DegreeOfRelevance.new
     #call compare vertices to instantiate the vertex_match array, since this array is used by the compare edges method
@@ -76,7 +78,7 @@ class DegreeOfRelevanceTest < ActiveSupport::TestCase
     assert_equal(6, instance.compare_SVO_edges(@review_edges, @subm_edges, @num_rev_edg, @num_sub_edg))
   end
   
-  test "compare SVO edges diff syn exact match" do
+  def test_compare_SVO_edges_diff_syn_exact_match
     #creating an instance of the degree of relevance class and calling the 'compare_vertices' method
     instance = DegreeOfRelevance.new
     #call compare vertices to instantiate the vertex_match array, since this array is used by the compare edges method

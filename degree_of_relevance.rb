@@ -128,7 +128,7 @@ def compare_vertices(pos_tagger, rev, subm, num_rev_vert, num_sub_vert, speller)
       end #end of for loop for the submission vertices
       
       if(flag != 0)#if the review edge had any submission edges with which it was matched, since not all S-V edges might have corresponding V-O edges to match with
-        puts("**** Best match for:: #{rev[i].name}-- #{max}")
+        #puts("**** Best match for:: #{rev[i].name}-- #{max}")
         cum_vertex_match = cum_vertex_match + max
         count+=1
         max = 0.0 #re-initialize
