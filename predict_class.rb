@@ -8,7 +8,6 @@ class PredictClass
 =end
 #predicting the review's class
 def predict_classes(pos_tagger, core_NLP_tagger, review_text, review_graph, pattern_files_array, num_classes)
-  puts "Inside predict_classes"
   #reading the patterns from the pattern files
   patterns_files = Array.new
   pattern_files_array.each do |file|
@@ -28,7 +27,7 @@ def predict_classes(pos_tagger, core_NLP_tagger, review_text, review_graph, patt
   max_probability = 0.0
   class_value = 0          
   edges = review_graph.edges
-  puts "review_graph.num_edges #{review_graph.num_edges}"
+#  puts "review_graph.num_edges #{review_graph.num_edges}"
   
   class_prob = Array.new #contains the probabilities for each of the classes - it contains 3 rows for the 3 classes    
   #comparing each test review text with patterns from each of the classes
@@ -39,10 +38,10 @@ def predict_classes(pos_tagger, core_NLP_tagger, review_text, review_graph, patt
   end #end of for loop for the classes          
   
   #printing the probability values
-  puts("########## Probability for test review:: "+review_text[0]+" is::")  
-  for k in (0..num_classes - 1)
-    puts "class_prob[#{k}] .. #{class_prob[k]}"
-  end         
+#  puts("########## Probability for test review:: "+review_text[0]+" is::")  
+#  for k in (0..num_classes - 1)
+#    puts "class_prob[#{k}] .. #{class_prob[k]}"
+#  end         
   return class_prob
 end #end of the prediction method
 #------------------------------------------#------------------------------------------#------------------------------------------

@@ -35,7 +35,7 @@ def generate_graph(text, pos_tagger, coreNLPTagger, forRelevance, forPatternIden
     unTaggedString = text[i].split(" ")
     # puts "UnTagged String:: #{unTaggedString}"
     taggedString = @pos_tagger.get_readable(text[i])
-    puts "taggedString:: #{taggedString}"
+#    puts "taggedString:: #{taggedString}"
     
     #Initializing some arrays
     nouns = Array.new
@@ -352,11 +352,13 @@ def generate_graph(text, pos_tagger, coreNLPTagger, forRelevance, forPatternIden
   end #end of number of sentences in the text
 
   @num_vertices = @num_vertices - 1 #since as a counter it was 1 ahead of the array's contents
-  @num_edges = @num_edges - 1 #same reason as for num_vertices
+  if(@num_edges != 0)
+    @num_edges = @num_edges - 1 #same reason as for num_vertices
+  end
   set_semantic_labels_for_edges
   #print_graph(@edges, @vertices)
-  puts("Number of edges:: #{@num_edges}")
-  puts("Number of vertices:: #{@num_vertices}")
+#  puts("Number of edges:: #{@num_edges}")
+#  puts("Number of vertices:: #{@num_vertices}")
   return @num_edges
 end #end of the graphGenerate method
 

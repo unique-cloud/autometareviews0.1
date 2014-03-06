@@ -1,6 +1,7 @@
 class MergeSort
   
   def sort(list, flag)
+#    puts "list.length #{list.length}"
     if list.length <= 1
       return list
     end
@@ -33,6 +34,8 @@ class MergeSort
           right.delete_at(0)
         end
       else #flag == 1 -- comparing sentence objects
+#        puts "left[0] #{left[0]}"
+#        puts "right[0] #{right[0]}"
         if(left[0].avg_similarity >= right[0].avg_similarity)
           result << left[0]
           left.delete_at(0)

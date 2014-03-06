@@ -14,7 +14,7 @@ class TextPreprocessing
     data_array = Array.new
     FasterCSV.foreach(filename) do |row|
       data_array << row[0]
-      puts row[0]
+#      puts row[0]
     end 
     return data_array
   end

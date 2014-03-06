@@ -36,7 +36,7 @@ def get_relevance(reviews, submissions, num_reviews, pos_tagger, core_NLP_tagger
     #assigning graph as a review graph to use in content classification
     @review = g.clone
     
-     puts "@review.num_edges: #{@review.num_edges}"
+#     puts "@review.num_edges: #{@review.num_edges}"
     
     #generating the submission's graph
     g.generate_graph(submissions, pos_tagger, core_NLP_tagger, true, false)
@@ -47,7 +47,6 @@ def get_relevance(reviews, submissions, num_reviews, pos_tagger, core_NLP_tagger
      
     vert_match = compare_vertices(pos_tagger, review_vertices, subm_vertices, num_rev_vert, num_sub_vert, speller)
     if(num_rev_edg > 0 and num_sub_edg > 0)
-      puts "subm_vertices HERE"
       edge_without_syn = compare_edges_non_syntax_diff(review_edges, subm_edges, num_rev_edg, num_sub_edg)
       edge_with_syn = compare_edges_syntax_diff(review_edges, subm_edges, num_rev_edg, num_sub_edg)
       edge_diff_type = compare_edges_diff_types(review_edges, subm_edges, num_rev_edg, num_sub_edg)
@@ -69,15 +68,15 @@ def get_relevance(reviews, submissions, num_reviews, pos_tagger, core_NLP_tagger
     scaled_relevance = relevance.to_f/6.to_f #scaled from [0-6] in the range [0-1]
     
     #printing values
-    puts("vertexMatch is [0-6]:: #{vert_match}")
-    puts("edgeWithoutSyn Match is [0-6]:: #{edge_without_syn}")
-    puts("edgeWithSyn Match is [0-6]:: #{edge_with_syn}")
-    puts("edgeDiffType Match is [0-6]:: #{edge_diff_type}")
-    puts("doubleEdge Match is [0-6]:: #{double_edge}")
-    puts("doubleEdge with syntax Match is [0-6]:: #{double_edge_with_syn}")
-    puts("relevance [0-6]:: #{relevance}")
-    puts("scaled relevance on [0-1]:: #{scaled_relevance}")
-    puts("*************************************************")
+#    puts("vertexMatch is [0-6]:: #{vert_match}")
+#    puts("edgeWithoutSyn Match is [0-6]:: #{edge_without_syn}")
+#    puts("edgeWithSyn Match is [0-6]:: #{edge_with_syn}")
+#    puts("edgeDiffType Match is [0-6]:: #{edge_diff_type}")
+#    puts("doubleEdge Match is [0-6]:: #{double_edge}")
+#    puts("doubleEdge with syntax Match is [0-6]:: #{double_edge_with_syn}")
+#    puts("relevance [0-6]:: #{relevance}")
+#    puts("scaled relevance on [0-1]:: #{scaled_relevance}")
+#    puts("*************************************************")
     return scaled_relevance
 end  
 =begin
@@ -86,7 +85,7 @@ end
    * v1- vertices of the submission/past review and v2 - vertices from new review 
 =end
 def compare_vertices(pos_tagger, rev, subm, num_rev_vert, num_sub_vert, speller)
-  puts("****Inside compare_vertices:: rev.length:: #{num_rev_vert} subm.length:: #{num_sub_vert}")
+#  puts("****Inside compare_vertices:: rev.length:: #{num_rev_vert} subm.length:: #{num_sub_vert}")
   #for double dimensional arrays, one of the dimensions should be initialized
   @vertex_match = Array.new(num_rev_vert){Array.new}
   wnet = WordnetBasedSimilarity.new
@@ -152,7 +151,7 @@ end #end of compare_vertices
    * where SUBJECT-SUBJECT and VERB-VERB or VERB-VERB and OBJECT-OBJECT comparisons are done
 =end
 def compare_edges_non_syntax_diff(rev, subm, num_rev_edg, num_sub_edg)
-  puts("*****Inside compareEdgesnNonSyntaxDiff numRevEdg:: #{num_rev_edg} numSubEdg:: #{num_sub_edg}")   
+#  puts("*****Inside compareEdgesnNonSyntaxDiff numRevEdg:: #{num_rev_edg} numSubEdg:: #{num_sub_edg}")   
   best_SV_SV_match = Array.new(num_rev_edg){Array.new}
   cum_edge_match = 0.0
   count = 0

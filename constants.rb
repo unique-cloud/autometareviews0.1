@@ -39,7 +39,7 @@ THRESHOLD = 3 #number of level synonyms to check for tone identification
 #------------------------------------------#------------------------------------------
 
 #threshold for sentences that can be added to a cluster
-MIMATCH = 0.5
+MINMATCH = 0.5
 #------------------------------------------#------------------------------------------
 
 #constants used by WordnetBasedSimilarity

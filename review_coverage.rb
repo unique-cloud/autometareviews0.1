@@ -21,7 +21,7 @@ class ReviewCoverage
     
     #Steps 2 and 3: Grouping sentences into clusters AND Identifying the clusters that need covering
     cg = ClusterGeneration.new
-    clusters = cg.generate_clusters(subm_sents, subm_sentences_similarity, ssim.sim_list)
+    clusters = cg.generate_clusters(subm_sents, subm_sentences_similarity, ssim.sim_list, ssim.sim_threshold)
     
     #Step 4: Identifying topic representative sentences from each cluster
     topic_sentence = TopicSentenceIdentification.new
@@ -48,16 +48,16 @@ class ReviewCoverage
    * @throws ClassNotFoundException 
 =end
   def review_topic_sentence_overlaps(rev_sentences, subm_clusters, pos_tagger, speller)
-    puts("Inside identifyReviewCoverage, # rev. sentences: #{rev_sentences.length}")
+#    puts("Inside identifyReviewCoverage, # rev. sentences: #{rev_sentences.length}")
     graph_match = DegreeOfRelevance.new
     
     #iterating though each of the clusters
     for i in 0..subm_clusters.length-1
-      puts("Cluster #{subm_clusters[i].ID}")
+#      puts("Cluster #{subm_clusters[i].ID} count #{subm_clusters[i].sent_counter}")
       #fetching topic sentences
       topic_sent_clust = subm_clusters[i].topic_sentences
       avg_sim_for_clust = 0.0 #captures cluster's average, based on its topic sents' avg. similarity
-      puts("# topic sentences in the cluster: #{topic_sent_clust.length}")
+#      puts("# topic sentences in the cluster: #{topic_sent_clust.length}")
       
       #iterating through all the topic sentences in the cluster
       for j in 0..topic_sent_clust.length-1
@@ -71,7 +71,7 @@ class ReviewCoverage
       
       #getting the average similarity b/w the topic sentences and the review sentences
       subm_clusters[i].degree_covered_by_review = avg_sim_for_clust/Float(topic_sent_clust.length * rev_sentences.length)
-      puts("^^^^ Avg. coverage : #{subm_clusters[i].degree_covered_by_review}")
+#      puts("^^^^ Avg. coverage : #{subm_clusters[i].degree_covered_by_review}")
     end #end of the for loop for the number of clusters
     
     return calculate_cluster_coverage(subm_clusters)
@@ -82,15 +82,15 @@ class ReviewCoverage
    * @param subm_clusters - the set of submission clusters
 =end   
   def calculate_cluster_coverage(subm_clusters)
-    puts("Inside calculateClusterCoverage for #clusters: #{subm_clusters.length}")
+#    puts("Inside calculateClusterCoverage for #clusters: #{subm_clusters.length}")
     coverage = 0.0
     for i in 0..subm_clusters.length-1
-      puts("Cluster: #{subm_clusters[i].ID}'s coverage: #{subm_clusters[i].degree_covered_by_review}")
+#      puts("Cluster: #{subm_clusters[i].ID}'s coverage: #{subm_clusters[i].degree_covered_by_review}")
       coverage += subm_clusters[i].degree_covered_by_review;
     end
-    puts("coverage: #{coverage} length #{subm_clusters.length}")
+#    puts("coverage: #{coverage} length #{subm_clusters.length}")
     coverage = coverage/Float(subm_clusters.length)
-    puts("******* Degree of coverage of the review is: #{coverage}")
+#    puts("******* Degree of coverage of the review is: #{coverage}")
     return coverage
   end
 
