@@ -1,5 +1,3 @@
-autometareviews0.1
-==================
 Automated metareview tool
 =========================
 
