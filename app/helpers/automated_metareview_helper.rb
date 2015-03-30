@@ -1,0 +1,2 @@
+module AutomatedMetareviewHelper
+end
