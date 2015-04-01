@@ -865,3 +865,1727 @@ Mysql2::Error (Can't connect to local MySQL server through socket '/var/lib/mysq
   Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.5ms)
   Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
   Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (111.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-31 21:09:42 -0400
+
+Mysql2::Error (Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)):
+  mysql2 (0.3.18) lib/mysql2/client.rb:70:in `connect'
+  mysql2 (0.3.18) lib/mysql2/client.rb:70:in `initialize'
+  activerecord (4.1.5) lib/active_record/connection_adapters/mysql2_adapter.rb:18:in `new'
+  activerecord (4.1.5) lib/active_record/connection_adapters/mysql2_adapter.rb:18:in `mysql2_connection'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:435:in `new_connection'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:445:in `checkout_new_connection'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:416:in `acquire_connection'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:351:in `block in checkout'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:350:in `checkout'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `block in connection'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:541:in `retrieve_connection'
+  activerecord (4.1.5) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.1.5) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:51:in `restore_query_cache_settings'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:43:in `rescue in call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:32:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (64.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (109.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-31 21:12:33 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/railties-4.1.5/lib/rails/templates/rails/welcome/index.html.erb (1.7ms)
+Completed 200 OK in 55ms (Views: 5.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2015-03-31 21:12:38 -0400
+Processing by Rails::InfoController#properties as HTML
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/railties-4.1.5/lib/rails/templates/rails/info/properties.html.erb (0.9ms)
+Completed 200 OK in 94ms (Views: 16.8ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 21:12:45 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1724ms
+
+RuntimeError (Could not find JAR file (looking in /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/stanford-core-nlp-0.5.1/bin/joda-time.jar).):
+  app/models/automated_metareview.rb:102:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (39.6ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 21:15:44 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1133ms
+
+RuntimeError (Could not find JAR file (looking in /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/stanford-core-nlp-0.5.1/bin/joda-time.jar).):
+  app/models/automated_metareview.rb:102:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (37.8ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 21:33:59 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1582ms
+
+RuntimeError (Could not find JAR file (looking in /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/stanford-core-nlp-0.5.1/bin/stanford-parser.jar).):
+  app/models/automated_metareview.rb:102:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.1ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 21:39:54 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 2172ms
+
+RuntimeError (Could not find JAR file (looking in /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/stanford-core-nlp-0.5.1/bin/stanford-corenlp.jar).):
+  app/models/automated_metareview.rb:102:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.7ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 21:48:50 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1329ms
+
+RuntimeError (Could not find JAR file (looking in /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/stanford-core-nlp-0.5.1/bin/stanford-corenlp.jar).):
+  app/models/automated_metareview.rb:102:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (38.9ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 21:50:19 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 913ms
+
+RuntimeError (Could not find JAR file (looking in /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/stanford-core-nlp-0.5.1/bin/stanford-segmenter.jar).):
+  app/models/automated_metareview.rb:102:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.9ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 21:50:37 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1882ms
+
+RuntimeError (Model file /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/stanford-core-nlp-0.5.1/bin/taggers/english-left3words-distsim.tagger could not be found. You may need to download this file manually and/or set paths properly.):
+  app/models/automated_metareview.rb:102:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (39.3ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 21:55:37 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1384ms
+
+RuntimeError (Model file /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/stanford-core-nlp-0.5.1/bin/grammar/englishPCFG.ser.gz could not be found. You may need to download this file manually and/or set paths properly.):
+  app/models/automated_metareview.rb:102:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (35.4ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 22:01:57 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1413ms
+
+RuntimeError (Model file /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/stanford-core-nlp-0.5.1/bin/classifiers/all.3class.distsim.crf.ser.gz could not be found. You may need to download this file manually and/or set paths properly.):
+  app/models/automated_metareview.rb:102:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (38.6ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 22:07:21 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1242ms
+
+RuntimeError (Model file /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/stanford-core-nlp-0.5.1/bin/classifiers/all.3class.distsim.crf.ser.gz could not be found. You may need to download this file manually and/or set paths properly.):
+  app/models/automated_metareview.rb:102:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (39.0ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 22:08:41 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1094ms
+
+RuntimeError (Model file /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/stanford-core-nlp-0.5.1/bin/dcoref/demonyms.txt could not be found. You may need to download this file manually and/or set paths properly.):
+  app/models/automated_metareview.rb:102:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.7ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 22:25:16 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 11368ms
+
+RuntimeError (edu.stanford.nlp.io.RuntimeIOException: java.io.StreamCorruptedException: invalid stream header: 0A0A0A0A):
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:32:in `rescue in process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (14.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.8ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (138.2ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 22:26:49 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1215ms
+
+RuntimeError (edu.stanford.nlp.io.RuntimeIOException: java.io.StreamCorruptedException: invalid stream header: 0A0A0A0A):
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:32:in `rescue in process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (206.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (240.1ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-03-31 22:29:21 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1007ms
+
+RuntimeError (edu.stanford.nlp.io.RuntimeIOException: java.io.StreamCorruptedException: invalid stream header: 0A0A0A0A):
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:32:in `rescue in process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (44.2ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 03:54:09 -0400
+
+Mysql2::Error (Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)):
+  mysql2 (0.3.18) lib/mysql2/client.rb:70:in `connect'
+  mysql2 (0.3.18) lib/mysql2/client.rb:70:in `initialize'
+  activerecord (4.1.5) lib/active_record/connection_adapters/mysql2_adapter.rb:18:in `new'
+  activerecord (4.1.5) lib/active_record/connection_adapters/mysql2_adapter.rb:18:in `mysql2_connection'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:435:in `new_connection'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:445:in `checkout_new_connection'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:416:in `acquire_connection'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:351:in `block in checkout'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:350:in `checkout'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `block in connection'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:541:in `retrieve_connection'
+  activerecord (4.1.5) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.1.5) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:51:in `restore_query_cache_settings'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:43:in `rescue in call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:32:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (98.2ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 03:55:23 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 8264ms
+
+RuntimeError (edu.stanford.nlp.io.RuntimeIOException: java.io.StreamCorruptedException: invalid stream header: 0A0A0A0A):
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:32:in `rescue in process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (18.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (118.2ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:02:21 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 16590ms
+
+RuntimeError (java.lang.RuntimeException: edu.stanford.nlp.io.RuntimeIOException: java.io.IOException: Unable to resolve "edu/stanford/nlp/models/dcoref/gender.map.ser.gz" as either class path, filename or URL):
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:32:in `rescue in process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (38.8ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:03:52 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1049ms
+
+RuntimeError (java.lang.RuntimeException: edu.stanford.nlp.io.RuntimeIOException: java.io.IOException: Unable to resolve "edu/stanford/nlp/models/dcoref/gender.map.ser.gz" as either class path, filename or URL):
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:32:in `rescue in process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.3ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:05:21 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 2432ms
+
+RuntimeError (java.lang.RuntimeException: edu.stanford.nlp.io.RuntimeIOException: java.io.IOException: Unable to resolve "edu/stanford/nlp/models/dcoref/gender.map.ser.gz" as either class path, filename or URL):
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:32:in `rescue in process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (34.3ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:10:09 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 2101ms
+
+RuntimeError (java.lang.RuntimeException: edu.stanford.nlp.io.RuntimeIOException: java.io.IOException: Unable to resolve "edu/stanford/nlp/models/dcoref/gender.map.ser.gz" as either class path, filename or URL):
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:32:in `rescue in process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (39.0ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:10:15 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 2059ms
+
+RuntimeError (java.lang.RuntimeException: edu.stanford.nlp.io.RuntimeIOException: java.io.IOException: Unable to resolve "edu/stanford/nlp/models/dcoref/gender.map.ser.gz" as either class path, filename or URL):
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:32:in `rescue in process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (42.8ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:10:41 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 9532ms
+
+RuntimeError (java.lang.NullPointerException):
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:32:in `rescue in process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (24.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (7.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (505.6ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:13:26 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 1398ms
+
+RuntimeError (edu.stanford.nlp.io.RuntimeIOException: java.io.StreamCorruptedException: invalid stream header: 0A0A0A3C):
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:32:in `rescue in process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (37.4ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:19:52 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 5053ms
+
+RuntimeError (edu.stanford.nlp.io.RuntimeIOException: java.io.StreamCorruptedException: invalid stream header: 0A0A0A3C):
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:32:in `rescue in process_action'
+  actionpack (4.1.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.5) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.5) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.5) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.5) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.5) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.5) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.5) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.5) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.5) lib/rails/engine.rb:514:in `call'
+  railties (4.1.5) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/AM/.rvm/rubies/ruby-2.0.0-p598/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (36.7ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:24:59 -0400
+
+LoadError (cannot load such file -- stanford-core-nlp):
+  app/controllers/automated_metareview_controller.rb:6:in `<top (required)>'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (19.8ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (55.3ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:26:59 -0400
+
+LoadError (cannot load such file -- stanford-core-nlp):
+  app/controllers/automated_metareview_controller.rb:6:in `<top (required)>'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (19.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (52.1ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:30:20 -0400
+
+LoadError (cannot load such file -- stanford-core-nlp):
+  app/controllers/automated_metareview_controller.rb:6:in `<top (required)>'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (35.5ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:30:23 -0400
+
+LoadError (cannot load such file -- stanford-core-nlp):
+  app/controllers/automated_metareview_controller.rb:6:in `<top (required)>'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.3ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:30:43 -0400
+
+LoadError (cannot load such file -- stanford-core-nlp):
+  app/controllers/automated_metareview_controller.rb:6:in `<top (required)>'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (20.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (55.1ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:37:28 -0400
+
+LoadError (cannot load such file -- stanford-core-nlp):
+  app/controllers/automated_metareview_controller.rb:6:in `<top (required)>'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.4ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:37:33 -0400
+
+LoadError (cannot load such file -- stanford-core-nlp):
+  app/controllers/automated_metareview_controller.rb:6:in `<top (required)>'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.8ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.1ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:37:42 -0400
+
+LoadError (cannot load such file -- stanford-core-nlp):
+  app/controllers/automated_metareview_controller.rb:6:in `<top (required)>'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (34.5ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:38:00 -0400
+
+LoadError (cannot load such file -- stanford-core-nlp):
+  app/controllers/automated_metareview_controller.rb:6:in `<top (required)>'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (22.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (66.4ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:38:49 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 39280ms
+
+NameError (uninitialized constant WordNet::WordNetDB):
+  app/models/wordnet_based_similarity.rb:205:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.8ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (45.2ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:49:59 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 19500ms
+
+NameError (uninitialized constant WordNet::WordNetDB):
+  app/models/wordnet_based_similarity.rb:205:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (25.1ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:52:47 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 2481ms
+
+NameError (uninitialized constant WordNet::WordNetDB):
+  app/models/wordnet_based_similarity.rb:205:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (96.5ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:53:16 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 21374ms
+
+NameError (uninitialized constant WordNet::WordNetDB):
+  app/models/wordnet_based_similarity.rb:205:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (12.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (211.4ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 04:58:34 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 20462ms
+
+NameError (uninitialized constant WordNet::WordNetDB):
+  app/models/wordnet_based_similarity.rb:205:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (92.8ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (108.5ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 05:09:57 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 26982ms
+
+NameError (uninitialized constant WordNet::WordNetDB):
+  app/models/wordnet_based_similarity.rb:205:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (262.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (301.0ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 05:19:10 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 22314ms
+
+NameError (uninitialized constant WordNet::WordNetDB):
+  app/models/wordnet_based_similarity.rb:205:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (179.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (208.4ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 05:29:30 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 22266ms
+
+NoMethodError (undefined method `lookup_synsets' for WordNet::Lexicon:Class):
+  app/models/wordnet_based_similarity.rb:205:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (159.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (192.1ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 05:33:09 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 18701ms
+
+WordNet::LexiconError (No default WordNetSQL database! You can install it via the wordnet-defaultdb gem, or download a version yourself from http://sourceforge.net/projects/wnsql/):
+  app/models/wordnet_based_similarity.rb:205:in `new'
+  app/models/wordnet_based_similarity.rb:205:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (103.0ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 05:37:59 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 18385ms
+
+NoMethodError (undefined method `synsets' for #<WordNet::Synset:0x00000003ebb678>):
+  app/models/wordnet_based_similarity.rb:230:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.7ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 09:41:45 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 23006ms
+
+NameError (uninitialized constant WordNet::Lexicon):
+  app/models/wordnet_based_similarity.rb:205:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (137.3ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 09:42:39 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 2646ms
+
+NameError (uninitialized constant WordNet::Lexicon):
+  app/models/wordnet_based_similarity.rb:205:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (38.9ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 10:13:07 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 15691ms
+
+NameError (uninitialized constant WordNet::WordNetDB):
+  app/models/wordnet_based_similarity.rb:208:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.8ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 10:14:14 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 2332ms
+
+NameError (uninitialized constant WordNet::WordNetDB):
+  app/models/wordnet_based_similarity.rb:208:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (37.6ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 10:21:42 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 23197ms
+
+NameError (undefined local variable or method `lemmas' for #<WordnetBasedSimilarity:0x007fba23d335a8 @match=0, @count=0>):
+  app/models/wordnet_based_similarity.rb:208:in `get_relations_for_review_submission_tokens'
+  app/models/wordnet_based_similarity.rb:65:in `block in compare_strings'
+  app/models/wordnet_based_similarity.rb:40:in `compare_strings'
+  app/models/degree_of_relevance.rb:118:in `block (2 levels) in compare_vertices'
+  app/models/degree_of_relevance.rb:107:in `block in compare_vertices'
+  app/models/degree_of_relevance.rb:97:in `compare_vertices'
+  app/models/degree_of_relevance.rb:48:in `get_relevance'
+  app/models/automated_metareview.rb:108:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.8ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (155.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (189.1ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 10:22:36 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 24629ms
+
+Errno::ENOENT (No such file or directory - data/patterns-assess.csv):
+  app/models/text_preprocessing.rb:126:in `read_patterns'
+  app/models/predict_class.rb:22:in `block in predict_classes'
+  app/models/predict_class.rb:20:in `predict_classes'
+  app/models/automated_metareview.rb:138:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.2ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 10:27:12 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 93223ms
+
+NameError (uninitialized constant Tone::FasterCSV):
+  app/models/tone.rb:19:in `identify_tone'
+  app/models/automated_metareview.rb:158:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.9ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (36.4ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 10:45:21 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+Completed 500 Internal Server Error in 75396ms
+
+NameError (uninitialized constant WordNet::WordNetDB):
+  app/models/tone.rb:169:in `block in get_synonyms'
+  app/models/tone.rb:167:in `each'
+  app/models/tone.rb:167:in `get_synonyms'
+  app/models/tone.rb:102:in `get_feature_vector'
+  app/models/tone.rb:43:in `block in identify_tone'
+  app/models/tone.rb:38:in `each'
+  app/models/tone.rb:38:in `identify_tone'
+  app/models/automated_metareview.rb:158:in `calculate_metareview_metrics'
+  app/controllers/automated_metareview_controller.rb:40:in `block in AutomatedMetareview'
+  app/controllers/automated_metareview_controller.rb:34:in `AutomatedMetareview'
+
+
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /home/AM/.rvm/gems/ruby-2.0.0-p598/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.4ms)
+
+
+Started GET "/automated_metareview/AutomatedMetareview" for 127.0.0.1 at 2015-04-01 10:48:35 -0400
+Processing by AutomatedMetareviewController#AutomatedMetareview as HTML
+  Rendered automated_metareview/AutomatedMetareview.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 76949ms (Views: 497.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/automated_metareview.css?body=1" for 127.0.0.1 at 2015-04-01 10:49:53 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-04-01 10:49:54 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-04-01 10:49:54 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-04-01 10:49:54 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-04-01 10:49:54 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-04-01 10:49:54 -0400
+
+
+Started GET "/assets/automated_metareview.js?body=1" for 127.0.0.1 at 2015-04-01 10:49:54 -0400

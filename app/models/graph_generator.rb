@@ -12,7 +12,7 @@ attr_accessor :vertices, :num_vertices, :edges, :num_edges, :pipeline, :pos_tagg
 # $edges = Array.new
 
 =begin
-   * generates the graph for the given review text and 
+   * generates the graph for the given review t ext and
    * INPUT: an array of sentences for a review or a submission. Every row in 'text' contains one sentence.
    * type - tells you if it was a review or s submission
    * type = 1 - submission/past review

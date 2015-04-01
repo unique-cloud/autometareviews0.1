@@ -202,9 +202,12 @@ class WordnetBasedSimilarity
 def get_relations_for_review_submission_tokens(token, stem, pos)
   # puts "@@@@ Inside get_relations_for_review_submission_tokens"
   relations = Array.new
-  lemmas = WordNet::WordNetDB.find(token)
+  lemmas=WordNet::Lemma.find_all(token)
+
+  #lemmas = WordNet::WordNetDB.find(token)
   if(lemmas.nil?)
-    lemmas = WordNet::WordNetDB.find(stem) 
+    #lemmas=wordNet.lookup_synsets(stem)
+    lemmas = WordNet::Lemma.find_all(stem)
   end
   #select the lemma corresponding to the token's POS
   lemma = ""

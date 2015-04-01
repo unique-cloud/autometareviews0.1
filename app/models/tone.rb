@@ -12,15 +12,15 @@ class Tone
     cumulative_review_tone = [-1, -1, -1] #sum of all edge tones
     
     #extracting positive and negative words from files into arrays
-    positive_file = "data/positive-words.csv"
-    negative_file = "data/negative-words.csv"
+    positive_file = "app/data/positive-words.csv"
+    negative_file = "app/data/negative-words.csv"
     positive = Array.new
     negative = Array.new
-    FasterCSV.foreach(positive_file) do |text|
+    CSV.foreach(positive_file) do |text|
       positive << text[0]
     end
 
-    FasterCSV.foreach(negative_file) do |text|
+    CSV.foreach(negative_file) do |text|
       negative << text[0]
     end
 
@@ -165,10 +165,12 @@ class Tone
     while i < threshold do
       list_new = Array.new 
       revSyn[i].each{
-        |token|        
-        lemmas = WordNet::WordNetDB.find(token) #reviewLemma = revIndex.find(revToken) #
+        |token|
+        lemmas=WordNet::Lemma.find_all(token)
+        #lemmas = WordNet::WordNetDB.find(token) #reviewLemma = revIndex.find(revToken) #
         if(lemmas.nil?)
-          lemmas = WordNet::WordNetDB.find(wbsim.findStemWord(token, speller)) #revIndex.find(revStem[0])
+          lemmas=WordNet::Lemma.find_all(wbsim.find_stem_word(token,speller))
+          #lemmas = WordNet::WordNetDB.find(wbsim.findStemWord(token, speller)) #revIndex.find(revStem[0])
         end
         #select the lemma corresponding to the token's POS
         lemma = lemmas[0] #set the first one as the default lemma, later if one with exact POS is found, set that as the lemma 

@@ -38,6 +38,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'rwordnet'
+#gem 'wordnet-defaultdb'
 gem 'ffi-aspell' , '=1.0.2'
 gem 'engtagger'
 gem 'stanford-core-nlp', '=0.5.1'
