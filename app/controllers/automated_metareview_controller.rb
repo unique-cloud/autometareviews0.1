@@ -18,6 +18,7 @@ require 'text_quantity'
 require 'constants'
 require 'review_coverage'
 class AutomatedMetareviewController < ApplicationController
+  respond_to :json
   def AutomatedMetareview
     #class driver
     #run the code from here
@@ -42,7 +43,7 @@ class AutomatedMetareviewController < ApplicationController
       csvWriter << [review_array[i], submission_array[i], features["plagiarism"], features["relevance"], features["content_summative"],
                     features["content_problem"], features["content_advisory"], features["coverage"], features["tone_positive"],
                     features["tone_negative"], features["tone_neutral"], features["quantity"]]
-      puts "finished"
+      render json: features.to_json
     end
   end
 end

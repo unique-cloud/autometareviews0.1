@@ -16,12 +16,12 @@ class Tone
     negative_file = "app/data/negative-words.csv"
     positive = Array.new
     negative = Array.new
-    CSV.foreach(positive_file) do |text|
-      positive << text[0]
+    PositiveWord.all.each do |text|
+      positive<< text.title
     end
 
-    CSV.foreach(negative_file) do |text|
-      negative << text[0]
+    NegativeWord.all.each do |text|
+      negative << text.title
     end
 
     negative = negative + NEGATIVE_DESCRIPTORS
