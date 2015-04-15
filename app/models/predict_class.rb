@@ -58,6 +58,8 @@ def compare_review_with_patterns(single_edges, single_patterns, wordnet)
   end
   
   #comparing each single edge with all the patterns
+  puts(single_edges.length)
+  puts single_patterns.length
   for i in (0..single_edges.length - 1)  #iterating through the single edges
     max_match = 0
     if(!single_edges[i].nil?)

@@ -12,8 +12,6 @@ class Tone
     cumulative_review_tone = [-1, -1, -1] #sum of all edge tones
     
     #extracting positive and negative words from files into arrays
-    positive_file = "app/data/positive-words.csv"
-    negative_file = "app/data/negative-words.csv"
     positive = Array.new
     negative = Array.new
     PositiveWord.all.each do |text|

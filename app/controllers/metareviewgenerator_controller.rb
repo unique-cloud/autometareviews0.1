@@ -17,9 +17,11 @@ require 'tone'
 require 'text_quantity'
 require 'constants'
 require 'review_coverage'
-class AutomatedMetareviewController < ApplicationController
+class MetareviewgeneratorController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
   respond_to :json
   def AutomatedMetareview
+    #puts param[:qty]
     #class driver
     #run the code from here
     preprocess = TextPreprocessing.new
@@ -43,6 +45,31 @@ class AutomatedMetareviewController < ApplicationController
       csvWriter << [review_array[i], submission_array[i], features["plagiarism"], features["relevance"], features["content_summative"],
                     features["content_problem"], features["content_advisory"], features["coverage"], features["tone_positive"],
                     features["tone_negative"], features["tone_neutral"], features["quantity"]]
+      render json: features.to_json
+    end
+  end
+  respond_to :json
+  def create
+    puts params[:qty]
+
+    review_array=Array.new
+    submission_array=Array.new
+    rubricqns_array=Array.new
+    review_array[0] = params[:reviews]
+    submission_array[0] = params[:submission]
+    rubricqns_array[0] = params[:rubric]
+
+    preprocess = TextPreprocessing.new
+    #setting up the output file
+
+    for i in (0..review_array.length - 1)
+      autometareview = Automated_Metareview.new
+      review = Array.new
+      submission = Array.new
+      review << review_array[i]
+      submission << submission_array[i]
+      features = autometareview.calculate_metareview_metrics(review, submission, rubricqns_array)
+      #write the features out to a file
       render json: features.to_json
     end
   end
