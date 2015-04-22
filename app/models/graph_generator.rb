@@ -95,26 +95,11 @@ class GraphGenerator
           if(prevType == NOUN) #adding to a previous noun vertex
             nCount -= 1 #decrement, since we are accessing a previous noun vertex
             nounVertex = append_to_previous(nCount,nouns,plainToken,i,labels,labelCounter)
-            # prevVertex = search_vertices(@vertices, nouns[nCount], i) #fetching the previous vertex
-            # nouns[nCount] = nouns[nCount].to_s + " " + plainToken #concatenating with contents of the previous noun vertex
-            # #checking if the previous noun concatenated with "s" already exists among the vertices
-            # if((nounVertex = search_vertices(@vertices, nouns[nCount], i)) == nil)
-            #    prevVertex.name = prevVertex.name.to_s + " " + plainToken #concatenating the nouns
-            #    nounVertex = prevVertex #the current concatenated vertex will be considered
-            #    if(labels[labelCounter] != "NMOD" or labels[labelCounter] != "PMOD")#resetting labels for the concatenated vertex
-            #      nounVertex.label = labels[labelCounter]
-            #    end
-            #    #fAppendedVertex = 1
-            # end#if the vertex already exists, just use nounVertex - the returned vertex for ops.
+
           else #if the previous token is not a noun, create a brand new vertex
             nouns[nCount] = plainToken #this is checked for later on
             nounVertex = create_new_branch(plainToken,i,NOUN,state,labels,labelCounter,parents,parentCounter,posTag)
-            # nounVertex = search_vertices(@vertices, plainToken, i)
-            # if(nounVertex == nil) #the string doesn't already exist
-            #    @vertices[@num_vertices] = Vertex.new(nouns[nCount], NOUN, i, state, labels[labelCounter], parents[parentCounter], posTag)
-            #    nounVertex = @vertices[@num_vertices] #the newly formed vertex will be considered
-            #    @num_vertices+=1
-            # end
+
           end #end of if prevType was noun
           remove_redundant_vertices(nouns[nCount], i)
           nCount+=1 #increment nCount for a new noun vertex just created (or existing previous vertex appended with new text)
@@ -128,13 +113,7 @@ class GraphGenerator
               v2 = search_vertices(@vertices, adjectives[adjCount-1], i) #fetching the previous adjective
               #if such an edge exists - DELETE IT -
               delete_edge(v1,v2,i)
-              # if(!v1.nil? and !v2.nil? and (e = search_edges_to_set_null(@edges, v1, v2, i)) != -1) #-1 is when no such edge exists
-              #   @edges[e] = nil #setting the edge to null
-              #   #if @num_edges had been previously incremented, decrement it
-              #   if(@num_edges > 0)
-              #     @num_edges-=1 #deducting an edge count
-              #   end
-              # end
+
             end
             #if this noun vertex was encountered for the first time, nCount < 1,
             #so do adding of edge outside the if condition            
@@ -142,16 +121,7 @@ class GraphGenerator
             v1 = search_vertices(@vertices, adjectives[adjCount-1], i)
             v2 = nounVertex #the noun vertex that was just created
             create_edge(v1,v2,i,"noun-property",VERB)
-            #if such an edge did not already exist
-            # if(!v1.nil? and !v2.nil? and (e = search_edges(@edges, v1, v2, i)) == -1)
-            #   @edges[@num_edges] = Edge.new("noun-property",VERB)
-            #   @edges[@num_edges].in_vertex = v1
-            #   @edges[@num_edges].out_vertex = v2
-            #   @edges[@num_edges].index = i
-            #   @num_edges+=1
-            #   #since an edge was just added we try to check if there exist any redundant edges that can be removed
-            #   remove_redundant_edges(v1, v2, i)
-            # end
+
           end
           #a noun has been found and has established a verb as an in_vertex and such an edge doesnt already previously exist
           if(vCount > 0) #and fAppendedVertex == 0 
@@ -159,16 +129,7 @@ class GraphGenerator
             v1 = search_vertices(@vertices, verbs[vCount-1], i)
             v2 = nounVertex
             create_edge(v1,v2,i,"verb",VERB)
-            # #if such an edge does not already exist add it
-            # if(!v1.nil? and !v2.nil? and (e = search_edges(@edges,v1, v2, i)) == -1)
-            #   @edges[@num_edges] = Edge.new("verb", VERB)
-            #   @edges[@num_edges].in_vertex = v1 #for vCount = 0
-            #   @edges[@num_edges].out_vertex = v2
-            #   @edges[@num_edges].index = i
-            #   @num_edges+=1
-            #   #since an edge was just added we try to check if there exist any redundant edges that can be removed
-            #   remove_redundant_edges(v1, v2, i)
-            # end
+
           end
           prevType = NOUN
           #------------------------------------------
@@ -179,28 +140,14 @@ class GraphGenerator
           adjective = nil
           if(prevType == ADJ) #combine the adjectives
             # puts("PREV ADJ here:: #{plainToken}")
-            # if(adjCount >= 1)                                                 //adjCount is bound to be >=1 when prevType == ADJ
+            # if(adjCount >= 1)                                                 #adjCount is bound to be >=1 when prevType == ADJ
             adjCount = adjCount - 1
             adjective = append_to_previous(adjCount,adjectives,plainToken,i,labels,labelCounter)
-            # prevVertex = search_vertices(@vertices, adjectives[adjCount], i) #fetching the previous vertex
-            # adjectives[adjCount] = adjectives[adjCount] + " " + plainToken
-            # #if the concatenated vertex didn't already exist
-            # if((adjective = search_vertices(@vertices, adjectives[adjCount], i)).nil?)
-            #   prevVertex.name = prevVertex.name+" "+plainToken
-            #   adjective = prevVertex #set it as "adjective" for further execution
-            #   if(labels[labelCounter] != "NMOD" or labels[labelCounter] != "PMOD") #resetting labels for the concatenated vertex
-            #     adjective.label = labels[labelCounter]
-            #   end
-            # end
-            # end
+
           else #new adjective vertex
             adjectives[adjCount] = plainToken
             adjective = create_new_branch(plainToken,i,ADJ,state,labels,labelCounter,parents,parentCounter,posTag)
-            # if((adjective = search_vertices(@vertices, plainToken, i)).nil?) #the string doesn't already exist
-            #   @vertices[@num_vertices] = Vertex.new(adjectives[adjCount], ADJ, i, state, labels[labelCounter], parents[parentCounter], posTag)
-            #   adjective = @vertices[@num_vertices]
-            #   @num_vertices+=1
-            # end
+
           end
           remove_redundant_vertices(adjectives[adjCount], i)
           adjCount+=1 #incrementing, since a new adjective was created or an existing one updated.
@@ -211,16 +158,7 @@ class GraphGenerator
             v2 = adjective #the current adjective vertex
             #if such an edge does not already exist add it
             create_edge(v1,v2,i,"noun-property",VERB)
-            # if(!v1.nil? and !v2.nil? and (e = search_edges(@edges, v1, v2, i)) == -1)
-            #   # puts "** Adding noun-adj edge .. #{v1.name} - #{v2.name}"
-            #   @edges[@num_edges] = Edge.new("noun-property",VERB)
-            #   @edges[@num_edges].in_vertex = v1
-            #   @edges[@num_edges].out_vertex = v2
-            #   @edges[@num_edges].index = i
-            #   @num_edges+=1
-            #   #since an edge was just added we try to check if there exist any redundant edges that can be removed
-            #   remove_redundant_edges(v1, v2, i)
-            # end
+
           end
           prevType = ADJ
           #end of if condition for adjective
@@ -232,24 +170,11 @@ class GraphGenerator
           if(prevType == VERB) #combine the verbs            
             vCount = vCount - 1
             verbVertex = append_to_previous(vCount,verbs,plainToken,i,labels,labelCounter)
-            # prevVertex = search_vertices(@vertices, verbs[vCount], i) #fetching the previous vertex
-            # verbs[vCount] = verbs[vCount] + " " + plainToken
-            # #if the concatenated vertex didn't already exist
-            # if((verbVertex = search_vertices(@vertices, verbs[vCount], i)) == nil)
-            #   prevVertex.name = prevVertex.name + " " + plainToken
-            #   verbVertex = prevVertex #concatenated vertex becomes the new verb vertex
-            #   if(labels[labelCounter] != "NMOD" or labels[labelCounter] != "PMOD")#resetting labels for the concatenated vertex
-            #     verbVertex.label = labels[labelCounter]
-            #   end
-            # end
+
           else
             verbs[vCount] = plainToken
             verbVertex = create_new_branch(plainToken,i,VERB,state,labels,labelCounter,parents,parentCounter,posTag)
-            # if((verbVertex = search_vertices(@vertices, plainToken, i)) == nil)
-            #   @vertices[@num_vertices] = Vertex.new(plainToken, VERB, i, state, labels[labelCounter], parents[parentCounter], posTag)
-            #   verbVertex = @vertices[@num_vertices] #newly created verb vertex will be considered in the future
-            #   @num_vertices+=1
-            # end
+
           end
           remove_redundant_vertices(verbs[vCount], i)
           vCount+=1
@@ -262,12 +187,7 @@ class GraphGenerator
               v2 = search_vertices(@vertices, adverbs[advCount-1], i) #fetching the previous adverb             
               #if such an edge exists - DELETE IT
               delete_edge(v1,v2,i)
-              # if(!v1.nil? and !v2.nil? and (e = search_edges_to_set_null(@edges, v1, v2, i)) != -1)
-              #   @edges[e] = nil #setting the edge to null
-              #   if(@num_edges > 0)
-              #     @num_edges-=1 #deducting an edge count
-              #   end
-              # end
+
             end
             #if this verb vertex was encountered for the first time, vCount < 1,
             #so do adding of edge outside the if condition
@@ -276,15 +196,7 @@ class GraphGenerator
             v2 = verbVertex
             #if such an edge did not already exist
             create_edge(v1,v2,i,"verb-property",VERB)
-            # if(!v1.nil? and !v2.nil? and (e = search_edges(@edges, v1, v2, i)) == -1)
-            #   @edges[@num_edges] = Edge.new("verb-property",VERB)
-            #   @edges[@num_edges].in_vertex = v1
-            #   @edges[@num_edges].out_vertex = v2
-            #   @edges[@num_edges].index = i
-            #   @num_edges+=1
-            #   #since an edge was just added we try to check if there exist any redundant edges that can be removed
-            #   remove_redundant_edges(v1, v2, i)
-            # end
+
           end
 
           #making the previous noun, one of the vertices of the verb edge
@@ -294,15 +206,7 @@ class GraphGenerator
             v2 = verbVertex
             #if such an edge does not already exist add it
             create_edge(v1,v2,i,"verb",VERB)
-            # if(!v1.nil? and !v2.nil? and (e = search_edges(@edges, v1, v2, i)) == -1)
-            #   @edges[@num_edges] = Edge.new("verb",VERB)
-            #   @edges[@num_edges].in_vertex = v1 #for nCount = 0;
-            #   @edges[@num_edges].out_vertex = v2 #the verb
-            #   @edges[@num_edges].index = i
-            #   @num_edges+=1
-            #   #since an edge was just added we try to check if there exist any redundant edges that can be removed
-            #   remove_redundant_edges(v1, v2, i)
-            # end
+
           end
           prevType = VERB
           #------------------------------------------
@@ -310,29 +214,14 @@ class GraphGenerator
         elsif(taggedToken.include?("RB"))
           adverb = nil
           if(prevType == ADV) #appending to existing adverb
-            # if(advCount >= 1)                                                          //advCount is bound to >=1 if prevType == ADV
-            #   advCount = advCount - 1
-            # end
+
             advCount = advCount - 1
             adverb = append_to_previous(advCount,adverbs,plainToken,i,labels,labelCounter)
-            # prevVertex = search_vertices(@vertices, adverbs[advCount], i) #fetching the previous vertex
-            # adverbs[advCount] = adverbs[advCount] + " " + plainToken
-            # #if the concatenated vertex didn't already exist
-            # if((adverb = search_vertices(@vertices, adverbs[advCount], i)) == nil)
-            #   prevVertex.name = prevVertex.name + " " + plainToken
-            #   adverb = prevVertex #setting it as "adverb" for further computation
-            #   if(labels[labelCounter] != "NMOD" or labels[labelCounter] != "PMOD") #resetting labels for the concatenated vertex
-            #     adverb.label = labels[labelCounter]
-            #   end
-            # end
+
           else #else creating a new vertex
             adverbs[advCount] = plainToken
             adverb = create_new_branch(plainToken,i,ADV,state,labels,labelCounter,parents,parentCounter,posTag)
-            # if((adverb = search_vertices(@vertices, plainToken, i)) == nil)
-            #   @vertices[@num_vertices] = Vertex.new(adverbs[advCount], ADV, i, state, labels[labelCounter], parents[parentCounter], posTag);
-            #   adverb = @vertices[@num_vertices]
-            #   @num_vertices+=1
-            # end
+
           end
           remove_redundant_vertices(adverbs[advCount], i)
           advCount+=1
@@ -343,15 +232,7 @@ class GraphGenerator
             v2 = adverb
             #if such an edge does not already exist add it
             create_edge(v1,v2,i,"verb-property",VERB)
-            # if(!v1.nil? and !v2.nil? && (e = search_edges(@edges, v1, v2, i)) == -1)
-            #   @edges[@num_edges] = Edge.new("verb-property",VERB)
-            #   @edges[@num_edges].in_vertex = v1 #for nCount = 0;
-            #   @edges[@num_edges].out_vertex = v2 #the verb
-            #   @edges[@num_edges].index = i
-            #   @num_edges+=1
-            #   #since an edge was just added we try to check if there exist any redundant edges that can be removed
-            #   remove_redundant_edges(v1, v2, i)
-            # end
+
           end
           prevType = ADV
           #end of if condition for adverb
