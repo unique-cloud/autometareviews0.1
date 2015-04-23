@@ -37,7 +37,7 @@ class WordnetBasedSimilarity
     #stok_sub = submission.split(" ") #should've been inside when doing n * n comparison
     
     #iterating through review tokens
-    (0..stok_rev.length-1).times do |i|
+    (0..stok_rev.length-1).each do |i|
       #if either of the tokens is null
       if stok_rev[i].nil?
         next #continue with the next token
@@ -79,7 +79,7 @@ class WordnetBasedSimilarity
         
       stok_sub = submission.split(' ')
       #iterating through submission tokens
-      (0..stok_sub.length-1).times do |j|
+      (0..stok_sub.length-1).each do |j|
       
         if stok_sub[i].nil?
           next
@@ -228,7 +228,7 @@ def get_relations_for_review_submission_tokens(token, stem, pos)
   #if selected reviewLemma is not nil or empty
   if !lemma.nil? and lemma != '' and !lemma.synsets.nil?
     #creating arrays of all the values for synonyms, hyponyms etc. for the review token
-    (0..lemma.synsets.length - 1).times do |g|
+    (0..lemma.synsets.length - 1).each do |g|
       #fetching the first review synset
       lemma_synset = lemma.synsets[g]
       
@@ -251,7 +251,7 @@ def get_relations_for_review_submission_tokens(token, stem, pos)
         if !lemma_syns.nil? and lemma_syns.length != 0
           # puts "lemmaSyns.length #{lemmaSyns.length}"
           #for each synset get the values and add them to the array
-          (0..lemma_syns.length - 1).times do |h|
+          (0..lemma_syns.length - 1).each do |h|
             # puts "lemmaSyns[h].words.class #{lemmaSyns[h].words.class}"
             syn_arr = syn_arr + lemma_syns[h].words
             # puts "**** syn_arr #{syn_arr}"
@@ -268,7 +268,7 @@ def get_relations_for_review_submission_tokens(token, stem, pos)
         lemma_hypers = lemma_synset.get_relation('@')#hypernym.words
         if !lemma_hypers.nil? and lemma_hypers.length != 0
           #for each synset get the values and add them to the array
-          (0..lemma_hypers.length - 1).times do |h|
+          (0..lemma_hypers.length - 1).each do |h|
             #puts "lemmaHypers[h].words.class #{lemmaHypers[h].words.class}"
             hyper_arr = hyper_arr + lemma_hypers[h].words
           end
@@ -284,7 +284,7 @@ def get_relations_for_review_submission_tokens(token, stem, pos)
         lemma_hypos = lemma_synset.get_relation('~')#hyponym
         if !lemma_hypos.nil? and lemma_hypos.length != 0
           #for each synset get the values and add them to the array
-          (0..lemma_hypos.length - 1).times do |h|
+          (0..lemma_hypos.length - 1).each do |h|
             hypo_arr = hypo_arr + lemma_hypos[h].words
           end
         else
@@ -299,7 +299,7 @@ def get_relations_for_review_submission_tokens(token, stem, pos)
         lemma_ants = lemma_synset.get_relation('!')
         if !lemma_ants.nil? and lemma_ants.length != 0
           #for each synset get the values and add them to the array
-          (0..lemma_ants.length - 1).times do |h|
+          (0..lemma_ants.length - 1).each do |h|
             anto_arr = anto_arr + lemma_ants[h].words
           end
         else
@@ -417,7 +417,7 @@ def extract_definition(glosses)
   #extracting examples from definitions
   temp = glosses
   temp_list = temp.split(';')
-  (0..temp_list.length - 1).times do |i|
+  (0..temp_list.length - 1).each do |i|
     if !temp_list[i].include?('"')
       if definitions.empty?
         definitions = temp_list[i]
@@ -439,7 +439,7 @@ def overlap(def1, def2, speller)
   # puts "def2 #{def2}"
   
   #iterating through def1's definitions
-  (0..def1.length-1).times do |i|
+  (0..def1.length-1).each do |i|
     if !def1[i].nil?
       #puts "def1[#{i}] #{def1[i]}"
       if def1[i].include?("\"")
@@ -449,7 +449,7 @@ def overlap(def1, def2, speller)
         def1[i] = def1[i][0..def1[i].index(';')]
       end
       #iterating through def2's definitions
-      (0..def2.length - 1).times do |j|
+      (0..def2.length - 1).each do |j|
         if !def2[j].nil?
           if def2[j].include?(';')
             def2[j] = def2[j][0..def2[j].index(';')]

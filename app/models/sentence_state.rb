@@ -31,7 +31,7 @@ class SentenceState
     if str_with_pos_tags.include?('CC')
       counter = 0
       temp = ''
-      (0..count-1).times do |i| #for loop replaced by times loop
+      (0..count-1).each do |i| #for loop replaced by times loop
         ps = st[i]
         if !ps.nil? and ps.include?('CC')
           @broken_sentences[counter] = temp #for "run/NN on/IN..."
