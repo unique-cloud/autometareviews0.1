@@ -608,7 +608,7 @@ def append_to_previous(count,term,plainToken,iteration,labels,labelCounter)
 end
 #------------------------------------------#------------------------------------------#------------------------------------------
 def create_new_branch(plainToken,iteration,type,state,labels,labelCounter,parents,parentCounter, posTag)
-  if((vertex = search_vertices(@vertices, plainToken, i))==nil)#the vertex doesn't already exist
+  if((vertex = search_vertices(@vertices, plainToken, iteration))==nil)#the vertex doesn't already exist
     @vertices[@num_vertices] = Vertex.new(plainToken, type, iteration, state, labels[labelCounter], parents[parentCounter], posTag)
     vertex = @vertices[@num_vertices]#the newly formed vertex will be considered
     @num_vertices+=1
