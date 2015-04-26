@@ -151,7 +151,7 @@ class Tone
   def get_synonyms(vertex, threshold, speller)
     wbsim = WordnetBasedSimilarity.new
     if(vertex.pos_tag.nil?)
-      pos = wbsim.determine_POS(vertex)
+      pos = wbsim.determine_pos(vertex)
     else
       pos = vertex.pos_tag
     end
