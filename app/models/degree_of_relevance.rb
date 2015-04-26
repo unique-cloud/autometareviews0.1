@@ -149,77 +149,72 @@ end #end of compare_vertices
    * where SUBJECT-SUBJECT and VERB-VERB or VERB-VERB and OBJECT-OBJECT comparisons are done
 =end
 def compare_edges_non_syntax_diff(rev, subm, num_rev_edg, num_sub_edg)
-#  puts("*****Inside compareEdgesnNonSyntaxDiff numRevEdg:: #{num_rev_edg} numSubEdg:: #{num_sub_edg}")   
+# puts("*****Inside compareEdgesnNonSyntaxDiff numRevEdg:: #{num_rev_edg} numSubEdg:: #{num_sub_edg}")
   best_SV_SV_match = Array.new(num_rev_edg){Array.new}
   cum_edge_match = 0.0
   count = 0
   max = 0.0
   flag = 0
-  
   wnet = WordnetBasedSimilarity.new
   (0..num_rev_edg - 1).each do |i|
-    if ( !rev[i].nil? && rev[i].in_vertex.node_id != -1 && rev[i].out_vertex.node_id != -1)
-    #skipping edges with frequent words for vertices
-    if ( wnet.is_frequent_word(rev[i].in_vertex.name) && wnet.is_frequent_word(rev[i].out_vertex.name))
-      next
-    end
-    
-    #looking for best matches
-    (0..num_sub_edg - 1).each do |j|
+    if(!rev[i].nil? && rev[i].in_vertex.node_id != -1 && rev[i].out_vertex.node_id != -1)
+      #skipping edges with frequent words for vertices
+      if(wnet.is_frequent_word(rev[i].in_vertex.name) && wnet.is_frequent_word(rev[i].out_vertex.name))
+        next
+      end
+      #looking for best matches
+      (0..num_sub_edg - 1).each do |j|
       #comparing in-vertex with out-vertex to make sure they are of the same type
-      if ( !subm[j].nil? && subm[j].in_vertex.node_id != -1 && subm[j].out_vertex.node_id != -1)
-        
-        #checking if the subm token is a frequent word
-        if ( wnet.is_frequent_word(subm[j].in_vertex.name) && wnet.is_frequent_word(subm[j].out_vertex.name))
-          next
-        end     
-              
-        #carrying out the normal comparison
-        if ( rev[i].in_vertex.type == subm[j].in_vertex.type && rev[i].out_vertex.type == subm[j].out_vertex.type)
-          if ( !rev[i].label.nil? && !subm[j].label.nil?)
-              #taking each match separately because one or more of the terms may be a frequent word, for which no @vertex_match exists!
-              sum = 0.0
-              cou = 0
-              unless ( @vertex_match[rev[i].in_vertex.node_id][subm[j].in_vertex.node_id].nil?)
-                sum = sum + @vertex_match[rev[i].in_vertex.node_id][subm[j].in_vertex.node_id]
-                cou +=1
-              end
-              unless ( @vertex_match[rev[i].out_vertex.node_id][subm[j].out_vertex.node_id].nil?)
-                sum = sum + @vertex_match[rev[i].out_vertex.node_id][subm[j].out_vertex.node_id]
-                cou +=1
-              end  
-              #--Only vertex matches
-              if ( cou > 0)
-                best_SV_SV_match[i][j] = sum.to_f/cou.to_f
-              else
-                best_SV_SV_match[i][j] = 0.0
-              end
-              #--Vertex and SRL - Dividing it by the label's match value
-              best_SV_SV_match[i][j] = best_SV_SV_match[i][j]/ compare_labels(rev[i], subm[j])
-              flag = 1
-              if ( best_SV_SV_match[i][j] > max)
-                max = best_SV_SV_match[i][j]
+        if(!subm[j].nil? && subm[j].in_vertex.node_id != -1 && subm[j].out_vertex.node_id != -1)
+          #checking if the subm token is a frequent word
+          if(wnet.is_frequent_word(subm[j].in_vertex.name) && wnet.is_frequent_word(subm[j].out_vertex.name))
+            next
+          end
+          #carrying out the normal comparison
+          if(rev[i].in_vertex.type == subm[j].in_vertex.type && rev[i].out_vertex.type == subm[j].out_vertex.type)
+            unless (rev[i].label.nil?)
+              unless (subm[j].label.nil?)
+                #taking each match separately because one or more of the terms may be a frequent word, for which no @vertex_match exists!
+                sum = 0.0
+                cou = 0
+                unless (!@vertex_match[rev[i].in_vertex.node_id][subm[j].in_vertex.node_id].nil?)
+                  sum = sum + @vertex_match[rev[i].in_vertex.node_id][subm[j].in_vertex.node_id]
+                  cou +=1
+                end
+                unless (!@vertex_match[rev[i].out_vertex.node_id][subm[j].out_vertex.node_id].nil?)
+                  sum = sum + @vertex_match[rev[i].out_vertex.node_id][subm[j].out_vertex.node_id]
+                  cou +=1
+                end
+                #--Only vertex matches
+                if(cou > 0)
+                  best_SV_SV_match[i][j] = sum.to_f/cou.to_f
+                else
+                  best_SV_SV_match[i][j] = 0.0
+                end
+                #--Vertex and SRL - Dividing it by the label's match value
+                best_SV_SV_match[i][j] = best_SV_SV_match[i][j]/ compare_labels(rev[i], subm[j])
+                flag = 1
+                if(best_SV_SV_match[i][j] > max)
+                  max = best_SV_SV_match[i][j]
+                end
               end
             end
           end
         end
-      end
-    end #end of for loop for the submission edges
-    
-    #cumulating the review edges' matches in order to get its average value
-    if ( flag != 0) #if the review edge had any submission edges with which it was matched, since not all S-V edges might have corresponding V-O edges to match with
+      end #end of for loop for the submission edges
+      #cumulating the review edges' matches in order to get its average value
+      if(flag != 0) #if the review edge had any submission edges with which it was matched, since not all S-V edges might have corresponding V-O edges to match with
       # puts("**** Best match for:: #{rev[i].in_vertex.name} - #{rev[i].out_vertex.name} -- #{max}")
-      cum_edge_match = cum_edge_match + max
-      count+=1
-      max = 0.0#re-initialize
-      flag = 0
+        cum_edge_match = cum_edge_match + max
+        count+=1
+        max = 0.0#re-initialize
+        flag = 0
       end
     end
   end #end of 'for' loop for the review's edges
-  
-  #getting the average for all the review edges' matches with the submission's edges
+    #getting the average for all the review edges' matches with the submission's edges
   avg_match = 0.0
-  if ( count > 0)
+  if(count > 0)
     avg_match = cum_edge_match/ count
   end
   return avg_match
