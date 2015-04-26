@@ -28,6 +28,9 @@ class MetareviewgeneratorController < ApplicationController
     submission_array[0] = params[:submission]
     rubricqns_array[0] = params[:rubric]
 
+    puts review_array
+    puts submission_array
+    puts rubricqns_array
     preprocess = TextPreprocessing.new
     #setting up the output file
 
@@ -41,5 +44,8 @@ class MetareviewgeneratorController < ApplicationController
       #write the features out to a file
       render json: features.to_json
     end
+  end
+  def index
+
   end
 end

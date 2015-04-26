@@ -172,16 +172,16 @@ def compare_edges_non_syntax_diff(rev, subm, num_rev_edg, num_sub_edg)
           end
           #carrying out the normal comparison
           if(rev[i].in_vertex.type == subm[j].in_vertex.type && rev[i].out_vertex.type == subm[j].out_vertex.type)
-            unless (rev[i].label.nil?)
-              unless (subm[j].label.nil?)
+            if (!rev[i].label.nil?)
+              if (!subm[j].label.nil?)
                 #taking each match separately because one or more of the terms may be a frequent word, for which no @vertex_match exists!
                 sum = 0.0
                 cou = 0
-                unless (!@vertex_match[rev[i].in_vertex.node_id][subm[j].in_vertex.node_id].nil?)
+                if (!@vertex_match[rev[i].in_vertex.node_id][subm[j].in_vertex.node_id].nil?)
                   sum = sum + @vertex_match[rev[i].in_vertex.node_id][subm[j].in_vertex.node_id]
                   cou +=1
                 end
-                unless (!@vertex_match[rev[i].out_vertex.node_id][subm[j].out_vertex.node_id].nil?)
+                if (!@vertex_match[rev[i].out_vertex.node_id][subm[j].out_vertex.node_id].nil?)
                   sum = sum + @vertex_match[rev[i].out_vertex.node_id][subm[j].out_vertex.node_id]
                   cou +=1
                 end
