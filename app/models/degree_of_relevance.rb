@@ -235,19 +235,19 @@ def compare_edges_syntax_diff(rev, subm, num_rev_edg, num_sub_edg)
   max = 0.0
   flag = 0
   wnet = WordnetBasedSimilarity.new  
-  for i in (0..num_rev_edg - 1)
-    if ( !rev[i].nil? and rev[i].in_vertex.node_id != -1 and rev[i].out_vertex.node_id != -1)
+  (0..num_rev_edg - 1).each do |i|
+    if ( !rev[i].nil? && rev[i].in_vertex.node_id != -1 && rev[i].out_vertex.node_id != -1)
       #skipping frequent word
-      if ( wnet.is_frequent_word(rev[i].in_vertex.name) and wnet.is_frequent_word(rev[i].out_vertex.name))
+      if ( wnet.is_frequent_word(rev[i].in_vertex.name) && wnet.is_frequent_word(rev[i].out_vertex.name))
         next
       end
-      for j in (0..num_sub_edg - 1)
-        if ( !subm[j].nil? and subm[j].in_vertex.node_id != -1 and subm[j].out_vertex.node_id != -1)
+      (0..num_sub_edg - 1).each do |j|
+        if ( !subm[j].nil? && subm[j].in_vertex.node_id != -1 && subm[j].out_vertex.node_id != -1)
           #checking if the subm token is a frequent word
-          if ( wnet.is_frequent_word(subm[j].in_vertex.name) and wnet.is_frequent_word(subm[j].out_vertex.name))
+          if ( wnet.is_frequent_word(subm[j].in_vertex.name) && wnet.is_frequent_word(subm[j].out_vertex.name))
             next
           end 
-          if ( rev[i].in_vertex.type == subm[j].out_vertex.type and rev[i].out_vertex.type == subm[j].in_vertex.type)
+          if ( rev[i].in_vertex.type == subm[j].out_vertex.type && rev[i].out_vertex.type == subm[j].in_vertex.type)
             #taking each match separately because one or more of the terms may be a frequent word, for which no @vertex_match exists!
             sum = 0.0
             cou = 0
@@ -306,21 +306,21 @@ def compare_edges_diff_types(rev, subm, num_rev_edg, num_sub_edg)
   max = 0.0
   flag = 0
   wnet = WordnetBasedSimilarity.new  
-  for i in (0..num_rev_edg - 1)
-    if ( !rev[i].nil? and rev[i].in_vertex.node_id != -1 and rev[i].out_vertex.node_id != -1)
+  (0..num_rev_edg - 1).each do |i|
+    if ( !rev[i].nil? && rev[i].in_vertex.node_id != -1 && rev[i].out_vertex.node_id != -1)
       #skipping edges with frequent words for vertices
-      if ( wnet.is_frequent_word(rev[i].in_vertex.name) and wnet.is_frequent_word(rev[i].out_vertex.name))
+      if ( wnet.is_frequent_word(rev[i].in_vertex.name) && wnet.is_frequent_word(rev[i].out_vertex.name))
         next
       end
       #identifying best match for edges
-      for j in (0..num_sub_edg - 1) 
-        if ( !subm[j].nil? and subm[j].in_vertex.node_id != -1 and subm[j].out_vertex.node_id != -1)
+      (0..num_sub_edg - 1).each do |j|
+        if ( !subm[j].nil? && subm[j].in_vertex.node_id != -1 && subm[j].out_vertex.node_id != -1)
           #checking if the subm token is a frequent word
-          if ( wnet.is_frequent_word(subm[j].in_vertex.name) and wnet.is_frequent_word(subm[j].out_vertex.name))
+          if ( wnet.is_frequent_word(subm[j].in_vertex.name) && wnet.is_frequent_word(subm[j].out_vertex.name))
             next
           end 
           #for S-V with S-V or V-O with V-O
-          if ( rev[i].in_vertex.type == subm[j].in_vertex.type and rev[i].out_vertex.type == subm[j].out_vertex.type)
+          if ( rev[i].in_vertex.type == subm[j].in_vertex.type && rev[i].out_vertex.type == subm[j].out_vertex.type)
             #taking each match separately because one or more of the terms may be a frequent word, for which no @vertex_match exists!
             sum = 0.0
             cou = 0
@@ -344,7 +344,7 @@ def compare_edges_diff_types(rev, subm, num_rev_edg, num_sub_edg)
               max = best_SV_VS_match[i][j]
             end
           #for S-V with V-O or V-O with S-V
-          elsif(rev[i].in_vertex.type == subm[j].out_vertex.type and rev[i].out_vertex.type == subm[j].in_vertex.type)
+          elsif(rev[i].in_vertex.type == subm[j].out_vertex.type && rev[i].out_vertex.type == subm[j].in_vertex.type)
             #taking each match separately because one or more of the terms may be a frequent word, for which no @vertex_match exists!
             sum = 0.0
             cou = 0
@@ -395,23 +395,23 @@ def compare_SVO_edges(rev, subm, num_rev_edg, num_sub_edg)
   max = 0.0
   flag = 0
   wnet = WordnetBasedSimilarity.new  
-  for i in (0..num_rev_edg - 1)
-    if ( !rev[i].nil? and !rev[i+1].nil? and rev[i].in_vertex.node_id != -1 and rev[i].out_vertex.node_id != -1 and 
-      rev[i+1].out_vertex.node_id != -1  and rev[i].out_vertex == rev[i+1].in_vertex)
+  (0..num_rev_edg - 1).each do |i|
+    if ( !rev[i].nil? && !rev[i+1].nil? && rev[i].in_vertex.node_id != -1 && rev[i].out_vertex.node_id != -1 &&
+      rev[i+1].out_vertex.node_id != -1  && rev[i].out_vertex == rev[i+1].in_vertex)
       #skipping edges with frequent words for vertices
-      if ( wnet.is_frequent_word(rev[i].in_vertex.name) and wnet.is_frequent_word(rev[i].out_vertex.name) and wnet.is_frequent_word(rev[i+1].out_vertex.name))
+      if ( wnet.is_frequent_word(rev[i].in_vertex.name) && wnet.is_frequent_word(rev[i].out_vertex.name) && wnet.is_frequent_word(rev[i+1].out_vertex.name))
         next
       end
         #best match
-        for j in (0..num_sub_edg - 1)
-          if ( !subm[j].nil? and !subm[j+1].nil? and subm[j].in_vertex.node_id != -1 and subm[j].out_vertex.node_id != -1 and 
-            subm[j+1].out_vertex.node_id != -1 and subm[j].out_vertex == subm[j+1].in_vertex)
+        (0..num_sub_edg - 1).each do |j|
+          if ( !subm[j].nil? && !subm[j+1].nil? && subm[j].in_vertex.node_id != -1 && subm[j].out_vertex.node_id != -1 &&
+            subm[j+1].out_vertex.node_id != -1 && subm[j].out_vertex == subm[j+1].in_vertex)
             #checking if the subm token is a frequent word
-            if ( wnet.is_frequent_word(subm[j].in_vertex.name) and wnet.is_frequent_word(subm[j].out_vertex.name))
+            if ( wnet.is_frequent_word(subm[j].in_vertex.name) && wnet.is_frequent_word(subm[j].out_vertex.name))
               next
             end 
             #making sure the types are the same during comparison
-            if ( rev[i].in_vertex.type == subm[j].in_vertex.type and rev[i].out_vertex.type == subm[j].out_vertex.type and 
+            if ( rev[i].in_vertex.type == subm[j].in_vertex.type && rev[i].out_vertex.type == subm[j].out_vertex.type &&
               rev[i+1].out_vertex.type == subm[j+1].out_vertex.type)
               #taking each match separately because one or more of the terms may be a frequent word, for which no @vertex_match exists!
               sum = 0.0
@@ -472,18 +472,18 @@ def compare_SVO_diff_syntax(rev, subm, num_rev_edg, num_sub_edg)
   max = 0.0
   flag = 0
   wnet = WordnetBasedSimilarity.new  
-  for i in (0..num_rev_edg - 1) 
-    if ( !rev[i].nil? and !rev[i+1].nil? and rev[i].in_vertex.node_id != -1 and rev[i].out_vertex.node_id != -1 and 
-      rev[i+1].out_vertex.node_id != -1 and rev[i].out_vertex == rev[i+1].in_vertex)
+  (0..num_rev_edg - 1).each do |i|
+    if ( !rev[i].nil? && !rev[i+1].nil? && rev[i].in_vertex.node_id != -1 && rev[i].out_vertex.node_id != -1 &&
+      rev[i+1].out_vertex.node_id != -1 && rev[i].out_vertex == rev[i+1].in_vertex)
       #skipping edges with frequent words for vertices
-      if ( wnet.is_frequent_word(rev[i].in_vertex.name) and wnet.is_frequent_word(rev[i].out_vertex.name) and wnet.is_frequent_word(rev[i+1].out_vertex.name))
+      if ( wnet.is_frequent_word(rev[i].in_vertex.name) && wnet.is_frequent_word(rev[i].out_vertex.name) && wnet.is_frequent_word(rev[i+1].out_vertex.name))
         next
       end
         
-      for j in (0..num_sub_edg - 1)
-        if ( !subm[j].nil? and !subm[j+1].nil? and subm[j].in_vertex.node_id != -1 and subm[j].out_vertex.node_id != -1 and subm[j+1].out_vertex.node_id != -1 and subm[j].out_vertex == subm[j+1].in_vertex)
+      (0..num_sub_edg - 1).each do |j|
+        if ( !subm[j].nil? && !subm[j+1].nil? && subm[j].in_vertex.node_id != -1 && subm[j].out_vertex.node_id != -1 && subm[j+1].out_vertex.node_id != -1 && subm[j].out_vertex == subm[j+1].in_vertex)
           #making sure the types are the same during comparison
-          if ( rev[i].in_vertex.type == subm[j+1].out_vertex.type and rev[i].out_vertex.type == subm[j].out_vertex.type and 
+          if ( rev[i].in_vertex.type == subm[j+1].out_vertex.type && rev[i].out_vertex.type == subm[j].out_vertex.type &&
             rev[i+1].out_vertex.type == subm[j].in_vertex.type)
             #taking each match separately because one or more of the terms may be a frequent word, for which no @vertex_match exists!
             sum = 0.0
@@ -541,15 +541,15 @@ end #end of method
 =end
   def compare_labels(edge1, edge2)
     result = EQUAL
-    if ( !edge1.label.nil? and !edge2.label .nil?)
+    if ( !edge1.label.nil? && !edge2.label .nil?)
       if ( edge1.label.downcase == edge2.label.downcase)
         result = EQUAL #divide by 1
       else
         result = DISTINCT #divide by 2
       end
-    elsif((!edge1.label.nil? and !edge2.label.nil?) or (edge1.label.nil? and !edge2.label.nil? )) #if only one of the labels was null
+    elsif((!edge1.label.nil? && !edge2.label.nil?) or (edge1.label.nil? && !edge2.label.nil? )) #if only one of the labels was null
         result = DISTINCT
-    elsif(edge1.label.nil? and edge2.label.nil?) #if both labels were null!
+    elsif(edge1.label.nil? && edge2.label.nil?) #if both labels were null!
         result = EQUAL
     end  
     return result
