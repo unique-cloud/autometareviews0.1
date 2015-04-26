@@ -1,28 +1,15 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+In order to run this application:
+This a ruby on rails project and uses Ruby 2.0.0
 
-Things you may want to cover:
+1) Remove any old stanford.core.nlp library and install 0.5.1. 
+  Make sure all the dependencies are properly installed wiht all the jar files needed for library to function properly.
+  http://nlp.stanford.edu/software/corenlp.shtml#Download
 
-* Ruby version
+2) Update configuration file with local mysql server information. Migrate the database to install all the seed data in local mysql. 
 
-* System dependencies
+3) Update Java to 1.8.0
 
-* Configuration
+4) Run the application as a web application.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
