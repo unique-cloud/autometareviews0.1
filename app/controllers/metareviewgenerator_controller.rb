@@ -21,8 +21,6 @@ class MetareviewgeneratorController < ApplicationController
   skip_before_filter  :verify_authenticity_token
   respond_to :json
   def create
-    puts params[:qty]
-
     review_array=Array.new
     submission_array=Array.new
     rubricqns_array=Array.new

@@ -3,6 +3,7 @@ require 'wordnet_based_similarity'
 require 'constants'
 
 class Tone
+
   def identify_tone(pos_tagger, speller, core_NLP_tagger, review_text, review_graph)
     #speller = Aspell.new("en_US")
     #speller.suggestion_mode = Aspell::NORMAL
@@ -165,10 +166,8 @@ class Tone
       revSyn[i].each{
         |token|
         lemmas=WordNet::Lemma.find_all(token)
-        #lemmas = WordNet::WordNetDB.find(token) #reviewLemma = revIndex.find(revToken) #
         if(lemmas.nil?)
           lemmas=WordNet::Lemma.find_all(wbsim.find_stem_word(token,speller))
-          #lemmas = WordNet::WordNetDB.find(wbsim.findStemWord(token, speller)) #revIndex.find(revStem[0])
         end
         #select the lemma corresponding to the token's POS
         lemma = lemmas[0] #set the first one as the default lemma, later if one with exact POS is found, set that as the lemma 
