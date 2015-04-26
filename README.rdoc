@@ -3,8 +3,7 @@
 In order to run this application:
 This a ruby on rails project and uses Ruby 2.0.0
 
-1) Remove any old stanford.core.nlp library and install 0.5.1. 
-  Make sure all the dependencies are properly installed wiht all the jar files needed for library to function properly.
+1) Remove any old stanford.core.nlp library and install 0.5.1. Make sure all the dependencies are properly installed the  all the jar files needed for library to function properly.
   http://nlp.stanford.edu/software/corenlp.shtml#Download
 
 2) Update configuration file with local mysql server information. Migrate the database to install all the seed data in local mysql. 
