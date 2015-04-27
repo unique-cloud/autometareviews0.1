@@ -12,3 +12,7 @@ This a ruby on rails project and uses Ruby 2.0.0
 
 4) Run the application as a web application.
 
+The web service take 3 parameters: original submission, review done for given submission and rubrics used for the review.
+The outputs are Coverage, Content_Problem, Quantity, Tone_negative, Tone_positive, Tone_neutral, Plagiarism, Content_summative, Content_advisory and Relevance
+
+
