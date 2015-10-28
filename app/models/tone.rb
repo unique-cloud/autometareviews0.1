@@ -4,6 +4,15 @@ require 'constants'
 
 class Tone
 
+  def identify_tone_no_review_graph(pos_tagger,speller,core_NLP_tagger,review_text)
+    #generate the graph and call identify method
+    g = GraphGenerator.new
+    g.generate_graph(review_text, pos_tagger, core_NLP_tagger, true, false)
+    review_graph= g.clone
+
+    return identify_tone(pos_tagger, speller, core_NLP_tagger, review_text, review_graph)
+
+  end
   def identify_tone(pos_tagger, speller, core_NLP_tagger, review_text, review_graph)
     #speller = Aspell.new("en_US")
     #speller.suggestion_mode = Aspell::NORMAL

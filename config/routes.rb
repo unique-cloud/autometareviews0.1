@@ -1,11 +1,22 @@
 Rails.application.routes.draw do
    # get 'metareviewgenerator/AutomatedMetareview'
   #match 'metareviewgenerator', to: 'metareviewgenerator#AutomatedMetareview', via: [:get]
+  resource :metareviewgenerator do
+    post 'create', to:'metareviewgenerator#create'
+    post 'get_tone', to:'metareviewgenerator#get_tone'
+    post 'get_quantity', to:'metareviewgenerator#get_quantity'
+    post 'get_content', to:'metareviewgenerator#get_content'
+    post 'get_plagiarism', to:'metareviewgenerator#get_plagiarism'
+    post 'get_coverage', to:'metareviewgenerator#get_coverage'
+    post 'get_relevance', to:'metareviewgenerator#get_relevance'
+  end
+=begin working sample
   resources :metareviewgenerator do
     collection do
-      post :create_metareview
+      post :'/'
     end
   end
+=end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
