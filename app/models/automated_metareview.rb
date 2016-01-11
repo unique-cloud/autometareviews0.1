@@ -150,13 +150,13 @@ class Automated_Metareview
     preprocess = TextPreprocessing.new
     feature_values=Hash.new
     @review_array = review
+    speller = FFI::Aspell::Speller.new('en_US')
     if(@review_array.length>0)
+      @review_array = preprocess.check_correct_spellings(@review_array, speller)
       #formatting the review responses, segmenting them at punctuations
       review_text = preprocess.segment_text(0, @review_array)
       #removing quoted text from reviews
       review_text = preprocess.remove_text_within_quotes(review_text) #review_text is an array
-
-      speller = FFI::Aspell::Speller.new('en_US')
       submissions = submission
       subm_text = preprocess.check_correct_spellings(submissions, speller)
       subm_text = preprocess.segment_text(0, subm_text)

@@ -45,7 +45,7 @@ class MetareviewgeneratorController < ApplicationController
       render json: features.to_json
     end
   end
-  def get_tone
+  def tone
     puts 'came to tone'
     review_array=Array.new
     review_array[0] = params[:reviews]
@@ -61,7 +61,7 @@ class MetareviewgeneratorController < ApplicationController
       render json: features.to_json
     end
   end
-  def get_content
+  def content
     review_array=Array.new
     submission=Array.new
     review_array[0] = params[:reviews]
@@ -78,7 +78,7 @@ class MetareviewgeneratorController < ApplicationController
       render json: features.to_json
     end
   end
-  def get_plagiarism
+  def plagiarism
     review_array=Array.new
     submission_array=Array.new
     rubricqns_array=Array.new
@@ -96,7 +96,7 @@ class MetareviewgeneratorController < ApplicationController
       render json: features.to_json
     end
   end
-  def get_quantity
+  def quantity
     review_array=Array.new
     review_array[0] = params[:reviews]
     puts review_array[0]
@@ -111,7 +111,7 @@ class MetareviewgeneratorController < ApplicationController
       render json: features.to_json
     end
   end
-  def get_coverage
+  def coverage
     review_array=Array.new
     submission=Array.new
     review_array[0] = params[:reviews]
@@ -128,7 +128,7 @@ class MetareviewgeneratorController < ApplicationController
       render json: features.to_json
     end
   end
-  def get_relevance
+  def relevance
     review_array=Array.new
     submission=Array.new
     review_array[0] = params[:reviews]
