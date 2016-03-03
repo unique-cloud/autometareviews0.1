@@ -20,6 +20,7 @@ require 'review_coverage'
 class MetareviewgeneratorController < ApplicationController
   skip_before_filter  :verify_authenticity_token
   respond_to :json
+
   def create
     review_array=Array.new
     submission_array=Array.new
@@ -83,6 +84,9 @@ class MetareviewgeneratorController < ApplicationController
     submission_array=Array.new
     rubricqns_array=Array.new
     review_array[0]=params[:reviews]
+
+
+
     submission_array[0] = params[:submission]
     rubricqns_array[0] = params[:rubric]
     for i in (0..review_array.length - 1)
@@ -133,7 +137,6 @@ class MetareviewgeneratorController < ApplicationController
     submission=Array.new
     review_array[0] = params[:reviews]
     submission[0]=params[:submission]
-    puts review_array
 
     #iterate over each input and generate output
     for i in (0..review_array.length - 1)
@@ -148,4 +151,5 @@ class MetareviewgeneratorController < ApplicationController
   def index
 
   end
+
 end

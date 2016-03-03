@@ -23,15 +23,15 @@ class Automated_Metareview
   #quantity metric generator
   def calculate_metareview_metric_quantity(review)
     preprocess = TextPreprocessing.new
-    @review_array = review
-    feature_values=Hash.new
+
     #formatting the review responses, segmenting them at punctuations
-    review_text = preprocess.segment_text(0, @review_array)
+    review_text = preprocess.segment_text(0, review)
     #removing quoted text from reviews
     review_text = preprocess.remove_text_within_quotes(review_text) #review_text is an array
-
     quant = TextQuantity.new
     quantity = quant.number_of_unique_tokens(review_text)
+
+    feature_values=Hash.new
     feature_values["quantity"]=quantity
     return feature_values
   end
@@ -51,12 +51,15 @@ class Automated_Metareview
     review = preprocess.segment_text(0, review)
     #removing quoted text from reviews
     review = preprocess.remove_text_within_quotes(review) #review_text is an array
+
+
     degree_relevance = DegreeOfRelevance.new
     tone_array = Array.new
     tone_array = tone.identify_tone_no_review_graph(pos_tagger, speller, core_NLP_tagger, review)
     feature_values["tone_positive"] = tone_array[0]#* 10000).round.to_f/10000
     feature_values["tone_negative"] = tone_array[1]#* 10000).round.to_f/10000
     feature_values["tone_neutral"] = tone_array[2]#* 10000).round.to_f/10000
+    return feature_values
   end
   #content metric generator
   def calculate_metareview_metric_content(review,submission)
@@ -64,10 +67,7 @@ class Automated_Metareview
     pos_tagger = EngTagger.new
     core_NLP_tagger =  StanfordCoreNLP.load(:tokenize, :ssplit, :pos, :lemma, :parse, :ner, :dcoref)
     g = GraphGenerator.new
-    #generating review's graph
-    g.generate_graph(review, pos_tagger, core_NLP_tagger, true, false)
 
-    review_graph = g.clone
     feature_values=Hash.new
     speller = FFI::Aspell::Speller.new('en_US')
     @review_array = review
@@ -76,12 +76,16 @@ class Automated_Metareview
       review_text = preprocess.segment_text(0, @review_array)
       #removing quoted text from reviews
       review_text = preprocess.remove_text_within_quotes(review_text) #review_text is an array
+
+      #generating review's graph
+      g.generate_graph(review_text, pos_tagger, core_NLP_tagger, true, false)
+      review_graph = g.clone
+
       #fetching submission data as an array and segmenting them at punctuations
       submissions = submission
       subm_text = preprocess.check_correct_spellings(submissions, speller)
       subm_text = preprocess.segment_text(0, subm_text)
       subm_text = preprocess.remove_text_within_quotes(subm_text)
-      puts "subm_text #{subm_text}"
       # #initializing the pos tagger and nlp tagger/semantic parser
 
       content_instance = PredictClass.new
@@ -144,6 +148,7 @@ class Automated_Metareview
       coverage = cover.calculate_coverage(subm_text, review_text, pos_tagger, core_NLP_tagger, speller)
       feature_values["coverage"]=coverage
     end
+    return feature_values
   end
   #relevance metric generator
   def calculate_metareview_metric_relevance(review, submission)
@@ -176,9 +181,8 @@ class Automated_Metareview
   def calculate_metareview_metrics(review, submission, rubricqns_array)
     preprocess = TextPreprocessing.new
     feature_values = Hash.new #contains the values for each of the metareview features calculated
-    # puts "inside perform_metareviews!!"    
     preprocess = TextPreprocessing.new
-    # puts "map_id #{map_id}"
+
     #fetch the review data as an array 
     @review_array = review 
     
@@ -186,17 +190,11 @@ class Automated_Metareview
     speller = FFI::Aspell::Speller.new('en_US')
     # speller.suggestion_mode = Aspell::NORMAL
     @review_array = preprocess.check_correct_spellings(@review_array, speller)
-#    puts "printing review_array"
-#    @review_array.each{
-#      |rev|
-#      puts rev
-#    }
-    
+
     #checking for plagiarism by comparing with question and responses
     plag_instance = PlagiarismChecker.new
     result_comparison = plag_instance.compare_reviews_with_questions_responses(@review_array, rubricqns_array)
-    # puts "review_array.length #{@review_array.length}"
-    
+
     if(result_comparison == ALL_RESPONSES_PLAGIARISED)
       content_summative = 0
       content_problem = 0 
@@ -208,34 +206,36 @@ class Automated_Metareview
       tone_neutral =  0
       plagiarism = true
       # puts "All responses are copied!!"
-      feature_valuee["plagiarism"] = plagiarism
-      feature_valuee["relevance"] = relevance
-      feature_valuee["content_summative"] = content_summative
-      feature_valuee["content_problem"] = content_problem
-      feature_valuee["content_advisory"] = content_advisory
-      feature_valuee["coverage"] = coverage
-      feature_valuee["tone_positive"] = tone_positive
-      feature_valuee["tone_negative"] = tone_negative
-      feature_valuee["tone_neutral"] = tone_neutral
-      feature_valuee["quantity"] = quantity
-      return feature_valuee
-      
-      return
+      feature_values["plagiarism"] = plagiarism
+      feature_values["relevance"] = relevance
+      feature_values["content_summative"] = content_summative
+      feature_values["content_problem"] = content_problem
+      feature_values["content_advisory"] = content_advisory
+      feature_values["coverage"] = coverage
+      feature_values["tone_positive"] = tone_positive
+      feature_values["tone_negative"] = tone_negative
+      feature_values["tone_neutral"] = tone_neutral
+      feature_values["quantity"] = quantity
+      #Even if a review is plagiarised, we are still required to find other metrics for experiment.
+      #return feature_values
     elsif(result_comparison == SOME_RESPONSES_PLAGIARISED)
       plagiarism = true
     end
-    
+
     #checking plagiarism (by comparing responses with search results from google), we look for quoted text, exact copies i.e.
-    google_plagiarised = plag_instance.google_search_response(self)
-    if(google_plagiarised == true)
-      plagiarism = true
-    else
-      plagiarism = false
-    end
-  #puts "No plagiarism"
- 
-    # puts "length of review array after google check - #{@review_array.length}"
+
+    #enable this check later-to_do
+    #
+    #google_plagiarised = plag_instance.google_search_response(self)
+
+    #if(google_plagiarised == true)
+    #  plagiarism = true
+    #else
+    #  plagiarism = false
+    #end
+
     if(@review_array.length > 0)
+
       #formatting the review responses, segmenting them at punctuations
       review_text = preprocess.segment_text(0, @review_array)
       #removing quoted text from reviews
@@ -261,8 +261,6 @@ class Automated_Metareview
       #calculating end time
       end_time = Time.now
       relevance_time = end_time - beginning_time
-#      puts "************* relevance - #{relevance}" 
-#      puts "************* relevance_time - #{relevance_time}"      
       #---------    
       # checking for plagiarism
       if(plagiarism != true) #if plagiarism hasn't already been set
