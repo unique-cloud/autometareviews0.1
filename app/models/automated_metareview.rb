@@ -62,7 +62,7 @@ class Automated_Metareview
     return feature_values
   end
   #content metric generator
-  def calculate_metareview_metric_content(review,submission)
+  def calculate_metareview_metric_content(review)
     preprocess = TextPreprocessing.new
     pos_tagger = EngTagger.new
     core_NLP_tagger =  StanfordCoreNLP.load(:tokenize, :ssplit, :pos, :lemma, :parse, :ner, :dcoref)
@@ -80,14 +80,7 @@ class Automated_Metareview
       #generating review's graph
       g.generate_graph(review_text, pos_tagger, core_NLP_tagger, true, false)
       review_graph = g.clone
-
-      #fetching submission data as an array and segmenting them at punctuations
-      submissions = submission
-      subm_text = preprocess.check_correct_spellings(submissions, speller)
-      subm_text = preprocess.segment_text(0, subm_text)
-      subm_text = preprocess.remove_text_within_quotes(subm_text)
-      # #initializing the pos tagger and nlp tagger/semantic parser
-
+      
       content_instance = PredictClass.new
       pattern_files_array = ["app/data/patterns-assess.csv","app/data/patterns-prob-detect.csv","app/data/patterns-suggest.csv"]
       #predcting class - last parameter is the number of classes
