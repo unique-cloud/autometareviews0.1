@@ -32,7 +32,7 @@ class Automated_Metareview
     quantity = quant.number_of_unique_tokens(review_text)
 
     feature_values=Hash.new
-    feature_values["quantity"]=quantity
+    feature_values["volume"]=quantity
     return feature_values
   end
   #tone metric generator
@@ -208,7 +208,7 @@ class Automated_Metareview
       feature_values["tone_positive"] = tone_positive
       feature_values["tone_negative"] = tone_negative
       feature_values["tone_neutral"] = tone_neutral
-      feature_values["quantity"] = quantity
+      feature_values["volume"] = quantity
       #Even if a review is plagiarised, we are still required to find other metrics for experiment.
       #return feature_values
     elsif(result_comparison == SOME_RESPONSES_PLAGIARISED)
@@ -321,7 +321,7 @@ class Automated_Metareview
       feature_values["tone_positive"] = tone_positive
       feature_values["tone_negative"] = tone_negative
       feature_values["tone_neutral"] = tone_neutral
-      feature_values["quantity"] = quantity
+      feature_values["volume"] = quantity
       return feature_values
     end
   end #end of calculate_metareview_metrics method
