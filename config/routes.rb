@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :metareviewgenerator do
     post 'create', to:'metareviewgenerator#create'
     post 'tone', to:'metareviewgenerator#tone'
-    post 'quantity', to:'metareviewgenerator#quantity'
+    post 'volume', to:'metareviewgenerator#volume'
     post 'content', to:'metareviewgenerator#content'
     post 'plagiarism', to:'metareviewgenerator#plagiarism'
     post 'coverage', to:'metareviewgenerator#coverage'
