@@ -99,7 +99,7 @@ class MetareviewgeneratorController < ApplicationController
       render json: features.to_json
     end
   end
-  def quantity
+  def volume
     review_array=Array.new
     review_array[0] = params[:reviews]
     puts review_array[0]
