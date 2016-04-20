@@ -32,7 +32,7 @@ class Automated_Metareview
     quantity = quant.number_of_unique_tokens(review_text)
 
     feature_values=Hash.new
-    feature_values["quantity"]=quantity
+    feature_values["volume"]=quantity
     return feature_values
   end
   #tone metric generator
@@ -62,7 +62,7 @@ class Automated_Metareview
     return feature_values
   end
   #content metric generator
-  def calculate_metareview_metric_content(review,submission)
+  def calculate_metareview_metric_content(review)
     preprocess = TextPreprocessing.new
     pos_tagger = EngTagger.new
     core_NLP_tagger =  StanfordCoreNLP.load(:tokenize, :ssplit, :pos, :lemma, :parse, :ner, :dcoref)
@@ -80,14 +80,7 @@ class Automated_Metareview
       #generating review's graph
       g.generate_graph(review_text, pos_tagger, core_NLP_tagger, true, false)
       review_graph = g.clone
-
-      #fetching submission data as an array and segmenting them at punctuations
-      submissions = submission
-      subm_text = preprocess.check_correct_spellings(submissions, speller)
-      subm_text = preprocess.segment_text(0, subm_text)
-      subm_text = preprocess.remove_text_within_quotes(subm_text)
-      # #initializing the pos tagger and nlp tagger/semantic parser
-
+      
       content_instance = PredictClass.new
       pattern_files_array = ["app/data/patterns-assess.csv","app/data/patterns-prob-detect.csv","app/data/patterns-suggest.csv"]
       #predcting class - last parameter is the number of classes
@@ -215,7 +208,7 @@ class Automated_Metareview
       feature_values["tone_positive"] = tone_positive
       feature_values["tone_negative"] = tone_negative
       feature_values["tone_neutral"] = tone_neutral
-      feature_values["quantity"] = quantity
+      feature_values["volume"] = quantity
       #Even if a review is plagiarised, we are still required to find other metrics for experiment.
       #return feature_values
     elsif(result_comparison == SOME_RESPONSES_PLAGIARISED)
@@ -332,7 +325,7 @@ class Automated_Metareview
       feature_values["tone_positive"] = tone_positive
       feature_values["tone_negative"] = tone_negative
       feature_values["tone_neutral"] = tone_neutral
-      feature_values["quantity"] = quantity
+      feature_values["volume"] = quantity
       return feature_values
     end
   end #end of calculate_metareview_metrics method

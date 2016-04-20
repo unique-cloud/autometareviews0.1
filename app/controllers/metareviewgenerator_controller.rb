@@ -66,7 +66,7 @@ class MetareviewgeneratorController < ApplicationController
       automated_meta_review = Automated_Metareview.new
       review = Array.new
       review << review_array[i]
-      features = automated_meta_review .calculate_metareview_metric_tone(review)
+      features = automated_meta_review.calculate_metareview_metric_tone(review)
       #write the features out to a file
       render json: features.to_json
     end
@@ -75,15 +75,14 @@ class MetareviewgeneratorController < ApplicationController
     review_array=Array.new
     submission=Array.new
     review_array[0] = params[:reviews]
-    submission[0]=params[:submission]
-    puts review_array
+    
 
     #iterate over each input and generate output
     for i in (0..review_array.length - 1)
       automated_meta_review = Automated_Metareview.new
       review = Array.new
       review << review_array[i]
-      features = automated_meta_review .calculate_metareview_metric_content(review,submission)
+      features = automated_meta_review.calculate_metareview_metric_content(review)
       #write the features out to a file
       render json: features.to_json
     end
@@ -104,12 +103,12 @@ class MetareviewgeneratorController < ApplicationController
       review << review_array[i]
       submission = Array.new
       submission << submission_array[i]
-      features = automated_meta_review .calculate_metareview_metric_plagiarism(review,submission, rubricqns_array)
+      features = automated_meta_review.calculate_metareview_metric_plagiarism(review,submission, rubricqns_array)
       #write the features out to a file
       render json: features.to_json
     end
   end
-  def quantity
+  def volume
     review_array=Array.new
     review_array[0] = params[:reviews]
     puts review_array[0]
@@ -119,7 +118,7 @@ class MetareviewgeneratorController < ApplicationController
       automated_meta_review = Automated_Metareview.new
       review = Array.new
       review << review_array[i]
-      features = automated_meta_review .calculate_metareview_metric_quantity(review)
+      features = automated_meta_review.calculate_metareview_metric_quantity(review)
       #write the features out to a file
       render json: features.to_json
     end
@@ -136,7 +135,7 @@ class MetareviewgeneratorController < ApplicationController
       automated_meta_review = Automated_Metareview.new
       review = Array.new
       review << review_array[i]
-      features = automated_meta_review .calculate_metareview_metric_coverage(review,submission)
+      features = automated_meta_review.calculate_metareview_metric_coverage(review,submission)
       #write the features out to a file
       render json: features.to_json
     end
@@ -152,7 +151,7 @@ class MetareviewgeneratorController < ApplicationController
       automated_meta_review = Automated_Metareview.new
       review = Array.new
       review << review_array[i]
-      features = automated_meta_review .calculate_metareview_metric_relevance(review,submission)
+      features = automated_meta_review.calculate_metareview_metric_relevance(review,submission)
       #write the features out to a file
       render json: features.to_json
     end
