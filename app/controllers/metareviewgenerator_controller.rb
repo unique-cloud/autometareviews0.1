@@ -20,7 +20,16 @@ require 'review_coverage'
 class MetareviewgeneratorController < ApplicationController
   skip_before_filter  :verify_authenticity_token
   respond_to :json
+  swagger_controller :Metareviewgenerator, 'Post'
+  swagger_api :create do
+    summary='This method is used to generate all the metareview metrics. The method accepts artifact, review, and rubrics. Returned type is json based metric collection'
+    notes=''
 
+  end
+  swagger_api :tone do
+    summary='This method is used to generator metareview metric tone.'
+
+  end
   def create
     review_array=Array.new
     submission_array=Array.new

@@ -288,6 +288,10 @@ class Automated_Metareview
       content_summative = content_probs[0]# * 10000).round.to_f/10000
       content_problem = content_probs[1] #* 10000).round.to_f/10000
       content_advisory = content_probs[2] #* 10000).round.to_f/10000
+      feature_values["content_summative"] = content_summative
+      feature_values["content_problem"] = content_problem
+      feature_values["content_advisory"] = content_advisory
+      return feature_values
       puts "************* content time taken - #{content_time}"
 #      puts "*************"
       #---------    

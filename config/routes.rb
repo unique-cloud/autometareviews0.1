@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post 'coverage', to:'metareviewgenerator#coverage'
     post 'relevance', to:'metareviewgenerator#relevance'
   end
+  get '/api' => redirect('/swagger/index.html?url=/apidocs/api-docs.json')
 =begin working sample
   resources :metareviewgenerator do
     collection do
