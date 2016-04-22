@@ -2,11 +2,14 @@
 
 In order to run this application:
 This project is not updated to work with ruby 2.3.0.
+
 1) Update Java to 1.8.0. Make sure JAVA_HOME is pointing at correct java sdk folder.
 
 2) Remove any old stanford.core.nlp library and install 0.5.1. 
+
   Check https://github.com/louismullie/stanford-core-nlp/ for setup steps.
-  Move the stanford-core-nlp library from home/gem/ to home/.rvm/gems/rubyXXX/gems/stanford-core-nlp-version.
+  
+  Move the stanford-core-nlp library from home/gem/ to home/.rvm/gems/rubyXXX/gems/stanford-core-nlp-version.   
   If you plan to use Ruby 2.0.0, then make sure to use compatible the gem of rjb compatible with bind-it version used in project.
   
 3) Update configuration file with local mysql server information. Migrate the database to install all the seed data in local mysql.
