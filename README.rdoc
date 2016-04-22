@@ -1,18 +1,22 @@
 == README
 
 In order to run this application:
-This a ruby on rails project and uses Ruby 2.0.0
-
-1) Remove any old stanford.core.nlp library and install 0.5.1. Make sure all the dependencies are properly installed the  all the jar files needed for library to function properly.
-  http://nlp.stanford.edu/software/corenlp.shtml#Download
-
-2) Update configuration file with local mysql server information. Migrate the database to install all the seed data in local mysql. 
-
-3) Update Java to 1.8.0
+This project is not updated to work with ruby 2.3.0.
+1) Update Java to 1.8.0. Make sure JAVA_HOME is pointing at correct java sdk folder.
+2) Remove any old stanford.core.nlp library and install 0.5.1. 
+  Check https://github.com/louismullie/stanford-core-nlp/ for setup steps.
+  Move the stanford-core-nlp library from home/gem/ to home/.rvm/gems/rubyXXX/gems/stanford-core-nlp-version.
+  If you plan to use Ruby 2.0.0, then make sure to use compatible the gem of rjb compatible with bind-it version used in project.
+3) Update configuration file with local mysql server information. Migrate the database to install all the seed data in local mysql.
 
 4) Run the application as a web application.
 
-The web service take 3 parameters: original submission, review done for given submission and rubrics used for the review.
-The outputs are Coverage, Content_Problem, Quantity, Tone_negative, Tone_positive, Tone_neutral, Plagiarism, Content_summative, Content_advisory and Relevance
+The web service take 3 parameters (All test as JSON): original submission [submission], review [reviews] done for given submission and rubrics[rubric] used for the review.
+The outputs are Content (Content_Problem, Content_Summative, Content_Advisory), Volume, Tone(Tone_negative, Tone_positive, Tone_neutral), Coverage, Relevance and Plagiarism.
+Map of parameters expected by each web method.
+1) Tone, Content, Volume : Review.
+2) Coverage, Relevance : Review, Submission.
+3) Plagiarism : Review, Submission and Rubrics.
+
 
 
