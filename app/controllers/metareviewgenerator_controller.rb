@@ -4,7 +4,7 @@ require 'ffi/aspell'
 require 'engtagger'
 gem 'stanford-core-nlp', '=0.5.1'
 require 'stanford-core-nlp'
-gem 'rjb', "=1.4.3"
+gem 'rjb', "=1.4.9"
 require 'rjb'
 gem 'bind-it', "=0.2.7"
 require 'bind-it'
