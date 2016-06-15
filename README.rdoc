@@ -24,4 +24,22 @@ Map of parameters expected by each web method.
 3) Plagiarism : Review, Submission and Rubrics.
 
 
+Volume
+Volume metric gives the count of unique tokens present in a textual input. It ignores the articles and pronouns present in the evaluated text
+
+Sample input Json
+Method name : volume
+Input : {"Reviews":"The  article clearly describes its intentions. I felt that section 3 could have been elaborated a little more"}
+Output: {"volume":"15"}
+
+Tone
+Tone refers to the choice of words used by the reviewer. It is either positive, negative or neutral. We use positive and negative indicators from an opinion lexicon provided by Liu et al. to determine the semantic orientation of a review. 
+	Positive: A review is said to have a positive tone if it predominantly contains positive feedback, i.e., it uses words or phrases that have a positive semantic orientation. Example: “The page is very well-organized and the information under corresponding titles is complete and accurate.” Adjectives such as “well organized”, “complete” and “accurate” are indicators of a positive semantic orientation.
+	Negative: This category contains reviews that predominantly contain words or phrases that have a negative semantic orientation. Reviews that provide negative criticism to the author’s work fall under this category, since while providing negative remarks reviewers tend to use language or words that are likely to offend the authors. Such reviews could be morphed or written in a way that is less offensive to the author of a submission. Example: “The approach is trivial, and the paper has been formatted very poorly.” The given example contains negatively oriented phrases “trivial” and “very poorly”. The author could consider such a review to be rude. One of the ways in which this review could be re-phrased to convey the message politely is—“The approach needs improvement. In its present form it does not appear to be conveying any new information. The paper could have been formatted better.”
+	Neutral: Reviews that do not contain either positively or negatively oriented words or phrases, or contain an equal amount of both are considered to be neutral. Example: “The organization looks good overall. But lots of IDEs are mentioned in the first part and only a few of them are compared with each other. I did not understand the reason for that.” This review contains both positively and negatively oriented segments, i.e., “The organization looks good overall” is positively oriented, while “I did not understand the reason for that.” is negatively oriented. The positive and negatively oriented words when taken together give this review a neutral orientation.
+	
+Sample input Json
+Method name: tone
+Input : {"Reviews":"The  article clearly describes its intentions. I felt that section 3 could have been elaborated a little more"}
+Output: {"positive":"","Negative":"","Neutral":""}
 
