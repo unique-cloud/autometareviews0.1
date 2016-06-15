@@ -24,6 +24,9 @@ Map of parameters expected by each web method.
 3) Plagiarism : Review, Submission and Rubrics.
 
 
+Method Description with samples.
+
+
 1) Volume
 
 Volume metric gives the count of unique tokens present in a textual input. It ignores the articles and pronouns present in the evaluated text
