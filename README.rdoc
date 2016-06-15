@@ -24,7 +24,7 @@ Map of parameters expected by each web method.
 3) Plagiarism : Review, Submission and Rubrics.
 
 
-Method Description with samples.
+Method description with samples.
 
 
 1) Volume
