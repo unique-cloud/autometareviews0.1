@@ -1,7 +1,7 @@
 == README
 
 In order to run this application:
-This project is not updated to work with ruby 2.3.0.
+This project is now updated to work with ruby 2.3.0.
 
 1) Update Java to 1.8.0. Make sure JAVA_HOME is pointing at correct java sdk folder.
 
@@ -15,6 +15,12 @@ This project is not updated to work with ruby 2.3.0.
 3) Update configuration file with local mysql server information. Migrate the database to install all the seed data in local mysql.
 
 4) Run the application as a web application.
+
+<b>Issues</b>
+1) Remember to install node, aspell (ffi-aspell) packages on your machine.
+2) Make sure to install correct version of mysql2 gem mentioned in gemfile.
+
+
 
 The web service take 3 parameters (All test as JSON): original submission [submission], review [reviews] done for given submission and rubrics[rubric] used for the review.
 The outputs are Content (Content_Problem, Content_Summative, Content_Advisory), Volume, Tone(Tone_negative, Tone_positive, Tone_neutral), Coverage, Relevance and Plagiarism.
