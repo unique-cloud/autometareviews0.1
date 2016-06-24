@@ -1,7 +1,7 @@
 == README
 
 In order to run this application:
-This project is now updated to work with ruby 2.3.0. <br />
+This project is now updated to work with ruby 2.3.0. <br>
 1) Update Java to 1.8.0. Make sure JAVA_HOME is pointing at correct java sdk folder.<br />
 2) Remove any old stanford.core.nlp library and install 0.5.1.
 <br />
