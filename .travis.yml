@@ -22,9 +22,7 @@ before_install:
     - rvm rubygems 2.2.6
     - gem update bundler
     - gem install raspell -- --with-ruby-include=$rvm_path/src/ruby-2.2.6-head/
-    - bundle config build.raspell --with-opt-dir=
-    - npm install -g bower
-    - bower install
+    - bundle install
 before_script:
     - mysql -u root -p < vishal1994
     - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
