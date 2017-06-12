@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: Expertiza
+  password: vishal1994
   host: localhost
 
 development:
