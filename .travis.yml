@@ -3,3 +3,34 @@ rvm:
  - 2.2
  - jruby
  - rbx-2
+branches:
+  only:
+    - master
+    - production
+    - rails4
+before_install:
+    - uname -a
+    - lsb_release -a
+    - sudo apt-get update
+    - sudo apt-get install git-core curl
+    - sudo apt-get --no-install-recommends install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev libgdbm-dev ncurses-dev automake libtool bison subversion pkg-config libffi-dev
+    - sudo apt-get install libaspell-dev openjdk-6-jdk gcc libxml2 libxml2-dev libxslt1-dev mysql-server mysql-client
+    - sudo apt-get install libmysqlclient-dev
+    - sudo apt-get install nodejs
+    - sudo apt-get install npm
+    - unset RAILS_ENV
+    - rvm rubygems 2.2.6
+    - gem update bundler
+    - gem install raspell -- --with-ruby-include=$rvm_path/src/ruby-2.2.6-head/
+    - bundle config build.raspell --with-opt-dir=
+    - npm install -g bower
+    - bower install
+before_script:
+    - mysql -u root -p < vishal1994
+    - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    - bundle install
+    - bundle exec rake db:setup
+    - "export DISPLAY=:99.0"
+    - "sh -e /etc/init.d/xvfb start"
+script:
+    - "export DISPLAY=:99.0 && RUBYOPT=W0 bundle exec rake 2> /dev/null"
