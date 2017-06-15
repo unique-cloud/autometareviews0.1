@@ -370,11 +370,11 @@ end
   is_frequent_word - method checks to see if the given word is a frequent word
 =end
 def is_frequent_word(word)
-  word.gsub!('(', '') #gsub replaces all occurrences of "(" and the exclamation point helps to do in-place substitution
-  word.gsub!(')', '') #if the character doesn't exist, the function returns nil, which does not affect the existing variable
-  word.gsub!('[', '')
-  word.gsub!(']', '')
-  word.gsub!('\"', '')
+  word.delete('(') #delete removes all occurrences of "(" 
+  word.delete(')') #if the character doesn't exist, the function returns nil, which does not affect the existing variable
+  word.delete('[')
+  word.delete(']')
+  word.delete('\"')
 
   if FREQUENT_WORDS.include?(word)
     return true
