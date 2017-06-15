@@ -238,6 +238,7 @@ Check for plagiarism after removing text within quotes for reviews
 =end
   public #The method was throwing a "NoMethodError: private method" error when called from a different class. Hence the "public" keyword.
   def contains_punct(str)
+  =begin
     if(str.include?".")
       str.gsub!(".","")
     elsif(str.include?",")
@@ -259,6 +260,8 @@ Check for plagiarism after removing text within quotes for reviews
     elsif(str.include?"]")
       str.gsub!("]","")
     end
+   =end
+    str.delete!(".,?!;:()[]")
     return str
   end
 
