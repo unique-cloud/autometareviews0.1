@@ -41,9 +41,9 @@ class TextPreprocessing
       #replacing commas in large numbers, makes parsing sentences with commas confusing!
       #replacing quotation marks
       #replacing gsub with delete(as stated by RUBOCOP)
-      text.delete("\"")
-      text.delete("(")
-      text.delete(")")
+      text.delete!("\"")
+      text.delete!("(")
+      text.delete!(")")
       if(text.include?("http://"))
         text = remove_urls(text)
       end
