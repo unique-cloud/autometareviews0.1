@@ -40,34 +40,29 @@ class TextPreprocessing
       #******* Pre-processing the review/submission text **********
       #replacing commas in large numbers, makes parsing sentences with commas confusing!
       #replacing quotation marks
-      text.gsub!("\"", "")
-      text.gsub!("(", "")
-      text.gsub!(")", "")
+      #replacing gsub with delete(as stated by RUBOCOP)
+      text.delete("\"")
+      text.delete("(")
+      text.delete(")")
       if(text.include?("http://"))
         text = remove_urls(text)
       end
       #break the text into multiple sentences
       beginn = 0
-      if(text.include?(".") or text.include?("?") or text.include?("!") or text.include?(",") or text.include?(";") ) #new clause or sentence
-        while(text.include?(".") or text.include?("?") or text.include?("!") or text.include?(",") or text.include?(";")) do #the text contains more than 1 sentence
+      # replaced multiple logical ors with any
+      if ([".","?","!",",",";"].any? { |i| (text).include?(i)}) #new clause or sentence
+        while([".","?","!",",",";"].any? { |i| (text).include?(i)}) do #the text contains more than 1 sentence
           endd = 0
           #these 'if' conditions have to be independent, cause the value of 'endd' could change for the different types of punctuations
           if(text.include?("."))
             endd = text.index(".")
           end
-          if((text.include?("?") and endd != 0 and endd > text.index("?")) or (text.include?("?") and endd == 0))#if a ? occurs before a .
-            endd = text.index("?")
-          end
-          if((text.include?("!") and endd!= 0 and endd > text.index("!")) or (text.include?("!") and endd ==0))#if an ! occurs before a . or a ?
-            endd = text.index("!")
-          end
-          if((text.include?(",") and endd != 0 and endd > text.index(",")) or (text.include?(",") and endd == 0)) #if a , occurs before any of . or ? or !
-            endd = text.index(",")
-          end
-          if((text.include?(";") and endd != 0 and endd > text.index(";")) or (text.include?(";") and endd == 0)) #if a ; occurs before any of . or ?, ! or ,
-            endd = text.index(";")
-          end
-
+          #removed duplicate code by exytracting a method find_occurance
+          endd= find_occurance(text,"?") #if a ? occurs before a .
+          endd= find_occurance(text,"!")#if an ! occurs before a . or a ? 
+          endd= find_occurance(text,",")#if an , occurs before a . or a ? or !
+          endd= find_occurance(text,";")#if an , occurs before a . or a ? or ! or ,
+         
           #check if the string between two commas or punctuations is there to buy time e.g. ", say," ",however," ", for instance, "...
           if(flag == 0) #training
             reviews[0][i] = text[beginn..endd].strip
@@ -102,6 +97,13 @@ class TextPreprocessing
       return reviews[0]
     end
   end
+ #Extract method: function to replace multiple ifs. to remove code duplication
+ def find_occurance(text,char)
+  if((text.include?(char) and endd != 0 and endd > text.index(char)) or (text.include?(char) and endd == 0))
+            endd = text.index(char)
+          end
+ return endd
+ end
 #------------------------------------------#------------------------------------------#------------------------------------------
 =begin
    * Reads the patterns from the csv file containing them. 
