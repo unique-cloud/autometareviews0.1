@@ -50,8 +50,8 @@ class TextPreprocessing
       #break the text into multiple sentences
       beginn = 0
       # replaced multiple logical ors with any
-      if ([".","?","!",",",";"].any? { |i| (text).include?(i)}) #new clause or sentence
-        while([".","?","!",",",";"].any? { |i| (text).include?(i)}) do #the text contains more than 1 sentence
+      if ([".","?","!",",",";"].any? { |ch| (text).include?(ch)}) #new clause or sentence
+        while([".","?","!",",",";"].any? { |ch| (text).include?(ch)}) do #the text contains more than 1 sentence
           endd = 0
           #these 'if' conditions have to be independent, cause the value of 'endd' could change for the different types of punctuations
           if(text.include?("."))
@@ -101,7 +101,7 @@ class TextPreprocessing
  def find_occurance(text,char)
   if((text.include?(char) and endd != 0 and endd > text.index(char)) or (text.include?(char) and endd == 0))
             endd = text.index(char)
-          end
+  end
  return endd
  end
 #------------------------------------------#------------------------------------------#------------------------------------------
