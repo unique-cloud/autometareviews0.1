@@ -20,8 +20,8 @@ class TextPreprocessing
 =begin
   pre-processes the review text and sends it in for graph formation and further analysis
 =end
-  def segment_text(flag, text_array)
-    if(flag == 0)
+  def segment_text(train_or_test_reviews, text_array)
+    if(train_or_test_reviews == 0)
       reviews = Array.new(1){Array.new}
     else
       reviews = Array.new(50){Array.new} #50 is the number of different reviews/submissions
@@ -32,7 +32,7 @@ class TextPreprocessing
 
     for k in (0..text_array.length-1)
       text = text_array[k]
-      if(flag == 1) #reset i (the sentence counter) to 0 for test reviews
+      if(train_or_test_reviews == 1) #reset i (the sentence counter) to 0 for test reviews
         reviews[j] = Array.new #initializing the array for sentences in a test review
         i = 0
       end
@@ -64,7 +64,7 @@ class TextPreprocessing
           endd= find_occurance(text,";")#if an , occurs before a . or a ? or ! or ,
          
           #check if the string between two commas or punctuations is there to buy time e.g. ", say," ",however," ", for instance, "...
-          if(flag == 0) #training
+          if(train_or_test_reviews == 0) #training
             reviews[0][i] = text[beginn..endd].strip
           else #testing
             reviews[j][i] = text[beginn..endd].strip
@@ -73,7 +73,7 @@ class TextPreprocessing
           text = text[(endd+1)..text.length] #from end+1 to the end of the string variable
         end
       else
-        if(flag == 0)#training
+        if(train_or_test_reviews == 0)#training
           reviews[0][i] = text.strip
           i+=1
         else
@@ -81,7 +81,7 @@ class TextPreprocessing
         end
       end
 
-      if(flag == 1)#incrementing reviews counter only for test reviews
+      if(train_or_test_reviews == 1)#incrementing reviews counter only for test reviews
         j+=1
       end
     end
