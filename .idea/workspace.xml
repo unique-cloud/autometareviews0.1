@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbf33d01-204a-4986-880a-e97144375e44" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/text_preprocessing.rb" afterPath="$PROJECT_DIR$/app/models/text_preprocessing.rb" />
     </list>
     <ignored path="AutomatedMetareviewWebService.iws" />
@@ -56,8 +55,8 @@
       <file leaf-file-name="text_preprocessing.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/text_preprocessing.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="88" column="7" lean-forward="false" selection-start-line="88" selection-start-column="7" selection-end-line="88" selection-end-column="7" />
+            <state relative-caret-position="1340">
+              <caret line="111" column="7" lean-forward="true" selection-start-line="111" selection-start-column="7" selection-end-line="111" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -912,12 +911,12 @@
       <workItem from="1497880468614" duration="2847000" />
       <workItem from="1497884771193" duration="1564000" />
       <workItem from="1497886788532" duration="109000" />
-      <workItem from="1497887199439" duration="740000" />
+      <workItem from="1497887199439" duration="1936000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5260000" />
+    <option name="totallyTimeSpent" value="6456000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1265,8 +1264,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/text_preprocessing.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="88" column="7" lean-forward="false" selection-start-line="88" selection-start-column="7" selection-end-line="88" selection-end-column="7" />
+        <state relative-caret-position="1340">
+          <caret line="111" column="7" lean-forward="true" selection-start-line="111" selection-start-column="7" selection-end-line="111" selection-end-column="7" />
           <folding />
         </state>
       </provider>

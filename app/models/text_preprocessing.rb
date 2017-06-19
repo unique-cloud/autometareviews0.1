@@ -60,11 +60,23 @@ class TextPreprocessing
             endd = text.index(".")
           end
           # removed duplicate code by exytracting a method find_occurance
-          endd = find_occurance(text,"?") # if a ? occurs before a .
-          endd = find_occurance(text,"!") # if an ! occurs before a . or a ?
-          endd = find_occurance(text,",") # if an , occurs before a . or a ? or !
-          endd = find_occurance(text,";") # if an , occurs before a . or a ? or ! or ,
-         
+          # if a ? occurs before a .
+          if (find_occurance(text,"?"))
+            endd = text.index("?");
+          end
+          # if an ! occurs before a . or a ?
+          if (find_occurance(text,"!"))
+            endd = text.index("!");
+          end
+          # if an , occurs before a . or a ? or !
+          if (find_occurance(text,","))
+            endd = text.index(",")
+          end
+          # if an ; occurs before a . or a ? or ! or ,
+          if (find_occurance(text,";"))
+            endd = text.index(";")
+          end
+
           # check if the string between two commas or punctuations is there to buy time e.g. ", say," ",however," ", for instance, "...
           if (train_or_test_reviews == 0) # training
             reviews[0][i] = text[beginn..endd].strip
@@ -92,13 +104,14 @@ class TextPreprocessing
       return reviews[0]
     end
   end
- # Extract method: function to replace multiple ifs. to remove code duplication
- def find_occurance(text,char)
-  if((text.include?(char) and endd != 0 and endd > text.index(char)) or (text.include?(char) and endd == 0))
-    endd = text.index(char)
+
+  # Extract method: function to replace multiple ifs. to remove code duplication
+  def find_occurance(text, char)
+    if ((text.include?(char) and endd != 0 and endd > text.index(char)) or (text.include?(char) and endd == 0))
+      true
+    end
+    false
   end
-  return endd
- end
 
   # Reads the patterns from the csv file containing them.
   # maxValue is the maximum value of the patterns found
