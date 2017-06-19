@@ -100,7 +100,7 @@ class TextPreprocessing
       end
     end
 
-    if (flag == 0)
+    if (train_or_test_reviews == 0)
       return reviews[0]
     end
   end
