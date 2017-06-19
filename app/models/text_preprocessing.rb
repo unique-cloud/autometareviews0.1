@@ -16,8 +16,8 @@ class TextPreprocessing
 
   # pre-processes the review text and sends it in for graph formation
   # and further analysis
-  def segment_text(train_or_test_reviews, text_array)
-    if (train_or_test_reviews == 0)
+  def segment_text(training_reviews, text_array)
+    if (training_reviews == 0)
       reviews = Array.new(1){Array.new}
     else
       # 50 is the number of different reviews/submissions
@@ -30,7 +30,7 @@ class TextPreprocessing
     for k in (0..text_array.length-1)
       text = text_array[k]
       # reset i (the sentence counter) to 0 for test reviews
-      if (train_or_test_reviews == 1)
+      if (training_reviews == 1)
         # initializing the array for sentences in a test review
         reviews[j] = Array.new
         i = 0
@@ -78,7 +78,7 @@ class TextPreprocessing
           end
 
           # check if the string between two commas or punctuations is there to buy time e.g. ", say," ",however," ", for instance, "...
-          if (train_or_test_reviews == 0) # training
+          if (training_reviews == 0) # training
             reviews[0][i] = text[beginn..endd].strip
           else # testing
             reviews[j][i] = text[beginn..endd].strip
@@ -87,7 +87,7 @@ class TextPreprocessing
           text = text[(endd+1)..text.length] # from end+1 to the end of the string variable
         end
       else
-        if (train_or_test_reviews == 0) # training
+        if (training_reviews == 0) # training
           reviews[0][i] = text.strip
           i += 1
         else
@@ -95,12 +95,12 @@ class TextPreprocessing
         end
       end
 
-      if (train_or_test_reviews == 1) # incrementing reviews counter only for test reviews
+      if (training_reviews == 1) # incrementing reviews counter only for test reviews
         j += 1
       end
     end
 
-    if (train_or_test_reviews == 0)
+    if (training_reviews == 0)
       return reviews[0]
     end
   end
