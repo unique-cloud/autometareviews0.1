@@ -88,13 +88,6 @@ class TextPreprocessing
       end
     end
 
-    # setting the number of reviews before returning
-    if (flag == 0)
-      num_reviews = 1
-    else
-      num_reviews = j
-    end
-
     if (flag == 0)
       return reviews[0]
     end
@@ -102,7 +95,7 @@ class TextPreprocessing
  # Extract method: function to replace multiple ifs. to remove code duplication
  def find_occurance(text,char)
   if((text.include?(char) and endd != 0 and endd > text.index(char)) or (text.include?(char) and endd == 0))
-            endd = text.index(char)
+    endd = text.index(char)
   end
   return endd
  end
@@ -213,8 +206,8 @@ class TextPreprocessing
       review_tokens.each{
           |review_tok|
         # checkiing the stem word's spelling for correctness
-        if(!speller.correct?(review_tok))
-          if(!speller.suggestions(review_tok).first.nil?)
+        if (!speller.correct?(review_tok))
+          if (!speller.suggestions(review_tok).first.nil?)
             review_tok = speller.suggestions(review_tok).first
           end
         end
