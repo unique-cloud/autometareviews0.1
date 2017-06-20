@@ -93,9 +93,9 @@ class Tone
   def include_frequent_token(edge)
     if(!wbsim.is_frequent_word(edge.in_vertex.name) and !wbsim.is_frequent_word(edge.out_vertex.name))
       return 0
-    elseif(wbsim.is_frequent_word(edge.in_vertex.name) and !wbsim.is_frequent_word(edge.out_vertex.name))
+    elsif(wbsim.is_frequent_word(edge.in_vertex.name) and !wbsim.is_frequent_word(edge.out_vertex.name))
       return 1
-    elseif(!wbsim.is_frequent_word(edge.in_vertex.name) and wbsim.is_frequent_word(edge.out_vertex.name))
+    elsif(!wbsim.is_frequent_word(edge.in_vertex.name) and wbsim.is_frequent_word(edge.out_vertex.name))
       return 2
     else
       return -1
