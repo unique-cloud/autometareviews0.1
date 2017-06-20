@@ -59,20 +59,13 @@ class Tone
         # puts "out_feature :: [#{out_feature[0]}, #{out_feature[1]}]"
         
         #making sure that we don't include frequent tokens' tones while calculating cumulative edge tone (both + and -)
-        if(!wbsim.is_frequent_word(edge.in_vertex.name) and !wbsim.is_frequent_word(edge.out_vertex.name))
-          cumulative_edge_feature[0] = (in_feature[0].to_f + out_feature[0].to_f)/2.to_f
-          cumulative_edge_feature[1] = (in_feature[1].to_f + out_feature[1].to_f)/2.to_f
-        elsif(wbsim.is_frequent_word(edge.in_vertex.name) and !wbsim.is_frequent_word(edge.out_vertex.name))
-          cumulative_edge_feature[0] = out_feature[0].to_f
-          cumulative_edge_feature[1] = out_feature[1].to_f
-        elsif(!wbsim.is_frequent_word(edge.in_vertex.name) and wbsim.is_frequent_word(edge.out_vertex.name))
-          cumulative_edge_feature[0] = in_feature[0].to_f
-          cumulative_edge_feature[1] = in_feature[1].to_f
-        else
-          cumulative_edge_feature[0] = 0
-          cumulative_edge_feature[1] = 0
+        #replaced if else if ladder with case. extracted method include_frequent_token for condition check
+        cumulative_edge_feature[0], cumulative_edge_feature[1] = case include_frequent_token(edge)
+          when 0 then [ (in_feature[0].to_f + out_feature[0].to_f)/2.to_f, (in_feature[1].to_f + out_feature[1].to_f)/2.to_f]
+          when 1 then [ out_feature[0].to_f,out_feature[1].to_f]
+          when 2 then [ in_feature[0].to_f,in_feature[1].to_f]
+          else [0,0]
         end
-        
         # puts "cumulative_edge_feature :: [#{cumulative_edge_feature[0]}, #{cumulative_edge_feature[1]}]"
         if((cumulative_review_tone[0] == -1 and cumulative_review_tone[1] == -1) or 
           (cumulative_review_tone[0] == 0 and cumulative_review_tone[1] == 0)) #has not been initialized as yet
@@ -95,7 +88,19 @@ class Tone
     end
     return cumulative_review_tone
   end 
-#--------  
+#-------- 
+        
+  def include_frequent_token(edge)
+    if(!wbsim.is_frequent_word(edge.in_vertex.name) and !wbsim.is_frequent_word(edge.out_vertex.name))
+      return 0
+    elseif(wbsim.is_frequent_word(edge.in_vertex.name) and !wbsim.is_frequent_word(edge.out_vertex.name))
+      return 1
+    elseif(!wbsim.is_frequent_word(edge.in_vertex.name) and wbsim.is_frequent_word(edge.out_vertex.name))
+      return 2
+    else
+      return -1
+    end
+  end
   def get_feature_vector(vertex, positive, negative, speller)    
     threshold = THRESHOLD #max distance at which synonyms can be searched
     feature_vector = Array.new #size of the array depends on th number of tone dimensions e.g.[positive, negative, netural]
