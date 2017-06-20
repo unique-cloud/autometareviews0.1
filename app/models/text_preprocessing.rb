@@ -59,21 +59,21 @@ class TextPreprocessing
           if (text.include?("."))
             endd = text.index(".")
           end
-          # removed duplicate code by exytracting a method find_occurance
+          # removed duplicate code by exytracting a method find_occurrence
           # if a ? occurs before a .
-          if (find_occurance(text,"?"))
+          if (find_occurrence(text,"?"))
             endd = text.index("?");
           end
           # if an ! occurs before a . or a ?
-          if (find_occurance(text,"!"))
+          if (find_occurrence(text,"!"))
             endd = text.index("!");
           end
           # if an , occurs before a . or a ? or !
-          if (find_occurance(text,","))
+          if (find_occurrence(text,","))
             endd = text.index(",")
           end
           # if an ; occurs before a . or a ? or ! or ,
-          if (find_occurance(text,";"))
+          if (find_occurrence(text,";"))
             endd = text.index(";")
           end
 
@@ -106,7 +106,7 @@ class TextPreprocessing
   end
 
   # Extract method: function to replace multiple ifs. to remove code duplication
-  def find_occurance(text, char)
+  def find_occurrence(text, char)
     if ((text.include?(char) and endd != 0 and endd > text.index(char)) or (text.include?(char) and endd == 0))
       true
     end
