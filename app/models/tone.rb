@@ -39,8 +39,6 @@ class Tone
     if(review_edges.nil?)
       return cumulative_review_tone
     end    
-    
-    wbsim = WordnetBasedSimilarity.new
     in_feature = Array.new
     out_feature = Array.new
     review_edges.each{
@@ -65,7 +63,7 @@ class Tone
           when 1 then [ out_feature[0].to_f,out_feature[1].to_f]
           when 2 then [ in_feature[0].to_f,in_feature[1].to_f]
           else [0,0]
-          end
+        end
         # puts "cumulative_edge_feature :: [#{cumulative_edge_feature[0]}, #{cumulative_edge_feature[1]}]"
         if((cumulative_review_tone[0] == -1 and cumulative_review_tone[1] == -1) or 
           (cumulative_review_tone[0] == 0 and cumulative_review_tone[1] == 0)) #has not been initialized as yet
@@ -91,6 +89,7 @@ class Tone
 #-------- 
         
   def include_frequent_token(edge)
+    wbsim = WordnetBasedSimilarity.new
     if(!wbsim.is_frequent_word(edge.in_vertex.name) and !wbsim.is_frequent_word(edge.out_vertex.name))
       return 0
     elsif(wbsim.is_frequent_word(edge.in_vertex.name) and !wbsim.is_frequent_word(edge.out_vertex.name))
