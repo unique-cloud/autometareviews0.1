@@ -336,7 +336,7 @@ And reset the @vertices array with non-null elements.
     end
 
     for i in (0..list.length-1)
-      if(!list[i].nil? && !list[i].in_vertex.nil? && !list[i].out_vertex.nil?)
+      if(check_if_nil(list,i))
         #checking for exact match with an edge
         if(((list[i].in_vertex.name.casecmp(in_vertex.name)==0 || list[i].in_vertex.name.include?(in_vertex.name)) &&
             (list[i].out_vertex.name.casecmp(out.name)==0 || list[i].out_vertex.name.include?(out.name))) ||
@@ -356,11 +356,15 @@ And reset the @vertices array with non-null elements.
   end # end of searchdges
 #------------------------------------------#------------------------------------------#------------------------------------------
 
+  def check_if_nil(arr,index)
+    return !arr[index].nil? && !arr[index].in_vertex.nil? && !arr[index].out_vertex.nil?
+  end
+  
   def search_edges_to_set_null(list, in_vertex, out, index)
     edgePos = -1
     # puts("***** Searching edge to set to null:: #{in_vertex.name} - #{out.name} ... num_edges #{@num_edges}")
     for i in 0..@num_edges - 1
-      if(!list[i].nil? && !list[i].in_vertex.nil? && !list[i].out_vertex.nil?)
+      if(check_if_nil(list,i))
         # puts "comparing with #{list[i].in_vertex.name} - #{list[i].out_vertex.name}"
         #puts "#{list[i].in_vertex.name.downcase == in_vertex.name.downcase} - #{list[i].out_vertex.name.downcase == out.name.downcase}"
         #checking for exact match with an edge
@@ -433,7 +437,7 @@ And reset the @edges array with non-null elements.
     puts("*******")
     puts("*** List of edges::")
     for j in (0..edges.length-1)
-      if(!edges[j].nil? && !edges[j].in_vertex.nil? && !edges[j].out_vertex.nil?)
+      if(check_if_nil(edges,j))
         puts("@@@ Edge:: #{edges[j].in_vertex.name} & #{edges[j].out_vertex.name}")
         puts("*** Frequency:: #{edges[j].frequency} State:: #{edges[j].in_vertex.state} & #{edges[j].out_vertex.state}")
         puts("*** Label:: #{edges[j].label}")
