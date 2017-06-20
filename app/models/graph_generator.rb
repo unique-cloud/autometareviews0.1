@@ -501,8 +501,8 @@ And reset the @edges array with non-null elements.
     govDep = parsed_sentence.typedDependencies.toArray
     #for each untagged token
     for j in (0..unTaggedString.length - 1)
-      unTaggedString[j].gsub!(".", "")
-      unTaggedString[j].gsub!(",", "")
+      unTaggedString[j].delete!(".")
+      unTaggedString[j].delete!(",")
       #puts "Label for #{unTaggedString[j]}"
       #identify its corresponding position in govDep and fetch its label
       for k in (0..govDep.length - 1)
