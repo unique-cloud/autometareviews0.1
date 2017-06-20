@@ -32,7 +32,6 @@ class GraphGenerator
       if(text[i].empty? or text[i] == "" or text[i].split(" ").empty?)
         next
       end
-      unTaggedString = text[i].split(" ")
       # puts "UnTagged String:: #{unTaggedString}"
       taggedString = @pos_tagger.get_readable(text[i])
       #    puts "taggedString:: #{taggedString}"
