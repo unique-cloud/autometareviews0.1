@@ -241,13 +241,9 @@ class TextPreprocessing
   end
 
   def contains_punct_bool(str)
-    if (str.include?("\\n") or str.include?("}") or str.include?("{"))
-      return true
-    else
-      return false
-    end
+    return (str.include?("\\n") or str.include?("}") or str.include?("{"))
   end
-
+  
   # Checking if "str" is a punctuation mark like ".", ",", "?" etc.
   def is_punct(str)
     return (str == "." or str == "," or str == "?" or str == "!" or str == ";" or str == ":")
