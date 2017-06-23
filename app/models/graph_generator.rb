@@ -18,7 +18,7 @@ class GraphGenerator
    * type = 1 - submission/past review
    * type = 2 - new review
 =end
-  def generate_graph(text, pos_tagger, coreNLPTagger, forRelevance, forPatternIdentify)
+  def generate_graph(text, pos_tagger, coreNLPTagger, _forRelevance, _forPatternIdentify)
     #initializing common arrays
     @vertices = Array.new
     @num_vertices = 0
