@@ -13,7 +13,7 @@ class Tone
     return identify_tone(pos_tagger, speller, core_NLP_tagger, review_text, review_graph)
 
   end
-  def identify_tone(pos_tagger, speller, core_NLP_tagger, review_text, review_graph)
+  def identify_tone(_pos_tagger, speller, _core_NLP_tagger, _review_text, review_graph)
     #speller = Aspell.new("en_US")
     #speller.suggestion_mode = Aspell::NORMAL
     
