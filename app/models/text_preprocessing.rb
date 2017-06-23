@@ -250,11 +250,7 @@ class TextPreprocessing
 
   # Checking if "str" is a punctuation mark like ".", ",", "?" etc.
   def is_punct(str)
-    if (str == "." or str == "," or str == "?" or str == "!" or str == ";" or str == ":")
-      return true
-    else
-      return false
-    end
+    return (str == "." or str == "," or str == "?" or str == "!" or str == ";" or str == ":")
   end
 
 end
