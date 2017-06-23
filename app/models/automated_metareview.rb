@@ -53,8 +53,6 @@ class Automated_Metareview
     review = preprocess.remove_text_within_quotes(review) #review_text is an array
 
 
-    degree_relevance = DegreeOfRelevance.new
-    tone_array = Array.new
     tone_array = tone.identify_tone_no_review_graph(pos_tagger, speller, core_NLP_tagger, review)
     feature_values["tone_positive"] = tone_array[0]#* 10000).round.to_f/10000
     feature_values["tone_negative"] = tone_array[1]#* 10000).round.to_f/10000
