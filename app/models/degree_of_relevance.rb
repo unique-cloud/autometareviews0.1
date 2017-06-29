@@ -8,7 +8,7 @@ attr_accessor :review
 =begin
   Identifies relevance between a review and a submission
 =end  
-def get_relevance(reviews, submissions, num_reviews, pos_tagger, core_NLP_tagger, speller) #double dimensional arrays that contain the submissions and the reviews respectively
+def get_relevance(reviews, submissions, _num_reviews, pos_tagger, core_NLP_tagger, speller) #double dimensional arrays that contain the submissions and the reviews respectively
   review_vertices = nil
   review_edges = nil
   subm_vertices = nil
