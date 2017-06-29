@@ -82,7 +82,7 @@ end
    * Compares the vertices from across the two graphs to identify matches and quantify various metrics
    * v1- vertices of the submission/past review and v2 - vertices from new review 
 =end
-def compare_vertices(pos_tagger, rev, subm, num_rev_vert, num_sub_vert, speller)
+def compare_vertices(_pos_tagger, rev, subm, num_rev_vert, num_sub_vert, speller)
 #  puts("****Inside compare_vertices:: rev.length:: #{num_rev_vert} subm.length:: #{num_sub_vert}")
   #for double dimensional arrays, one of the dimensions should be initialized
   @vertex_match = Array.new(num_rev_vert){Array.new}
