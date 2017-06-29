@@ -48,8 +48,7 @@ def get_relevance(reviews, submissions, _num_reviews, pos_tagger, core_NLP_tagge
     if (num_rev_edg > 0 &&  num_sub_edg > 0)
       edge_without_syn = compare_edges_non_syntax_diff(review_edges, subm_edges, num_rev_edg, num_sub_edg)
       edge_with_syn = compare_edges_syntax_diff(review_edges, subm_edges, num_rev_edg, num_sub_edg)
-      edge_diff_type = compare_edges_diff_types(review_edges, subm_edges, num_rev_edg, num_sub_edg)
-      edge_match = (edge_without_syn.to_f + edge_with_syn.to_f )/2.to_f #+ edge_diff_type.to_f
+      edge_match = (edge_without_syn.to_f + edge_with_syn.to_f )/2.to_f 
       double_edge = compare_SVO_edges(review_edges, subm_edges, num_rev_edg, num_sub_edg)
       double_edge_with_syn = compare_SVO_diff_syntax(review_edges, subm_edges, num_rev_edg, num_sub_edg)
       double_edge_match = (double_edge.to_f + double_edge_with_syn.to_f)/2.to_f
