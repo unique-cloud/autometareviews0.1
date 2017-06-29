@@ -147,6 +147,10 @@ end #end of compare_vertices
    * compare SUBJECT-VERB edges with SUBJECT-VERB matches
    * where SUBJECT-SUBJECT and VERB-VERB or VERB-VERB and OBJECT-OBJECT comparisons are done
 =end
+def check_for_nil(arr,index)
+return !arr[index].nil? && arr[index].in_vertex.node_id != -1 && arr[index].out_vertex.node_id != -1
+end
+
 def compare_edges_non_syntax_diff(rev, subm, num_rev_edg, num_sub_edg)
 # puts("*****Inside compareEdgesnNonSyntaxDiff numRevEdg:: #{num_rev_edg} numSubEdg:: #{num_sub_edg}")
   best_SV_SV_match = Array.new(num_rev_edg){Array.new}
@@ -156,7 +160,7 @@ def compare_edges_non_syntax_diff(rev, subm, num_rev_edg, num_sub_edg)
   flag = 0
   wnet = WordnetBasedSimilarity.new
   (0..num_rev_edg - 1).each do |i|
-    if(!rev[i].nil? && rev[i].in_vertex.node_id != -1 && rev[i].out_vertex.node_id != -1)
+    if(check_for_nil(rev,i))
       #skipping edges with frequent words for vertices
       if(wnet.is_frequent_word(rev[i].in_vertex.name) && wnet.is_frequent_word(rev[i].out_vertex.name))
         next
@@ -164,7 +168,7 @@ def compare_edges_non_syntax_diff(rev, subm, num_rev_edg, num_sub_edg)
       #looking for best matches
       (0..num_sub_edg - 1).each do |j|
       #comparing in-vertex with out-vertex to make sure they are of the same type
-        if(!subm[j].nil? && subm[j].in_vertex.node_id != -1 && subm[j].out_vertex.node_id != -1)
+        if(check_for_nil(sub,j))
           #checking if the subm token is a frequent word
           if(wnet.is_frequent_word(subm[j].in_vertex.name) && wnet.is_frequent_word(subm[j].out_vertex.name))
             next
@@ -235,13 +239,13 @@ def compare_edges_syntax_diff(rev, subm, num_rev_edg, num_sub_edg)
   flag = 0
   wnet = WordnetBasedSimilarity.new  
   (0..num_rev_edg - 1).each do |i|
-    if ( !rev[i].nil? && rev[i].in_vertex.node_id != -1 && rev[i].out_vertex.node_id != -1)
+    if (check_for_nil(rev,i))
       #skipping frequent word
       if ( wnet.is_frequent_word(rev[i].in_vertex.name) && wnet.is_frequent_word(rev[i].out_vertex.name))
         next
       end
       (0..num_sub_edg - 1).each do |j|
-        if ( !subm[j].nil? && subm[j].in_vertex.node_id != -1 && subm[j].out_vertex.node_id != -1)
+        if (check_for_nil(sub,j))
           #checking if the subm token is a frequent word
           if ( wnet.is_frequent_word(subm[j].in_vertex.name) && wnet.is_frequent_word(subm[j].out_vertex.name))
             next
@@ -306,14 +310,14 @@ def compare_edges_diff_types(rev, subm, num_rev_edg, num_sub_edg)
   flag = 0
   wnet = WordnetBasedSimilarity.new  
   (0..num_rev_edg - 1).each do |i|
-    if ( !rev[i].nil? && rev[i].in_vertex.node_id != -1 && rev[i].out_vertex.node_id != -1)
+    if (check_for_nil(rev,i))
       #skipping edges with frequent words for vertices
       if ( wnet.is_frequent_word(rev[i].in_vertex.name) && wnet.is_frequent_word(rev[i].out_vertex.name))
         next
       end
       #identifying best match for edges
       (0..num_sub_edg - 1).each do |j|
-        if ( !subm[j].nil? && subm[j].in_vertex.node_id != -1 && subm[j].out_vertex.node_id != -1)
+        if ( check_for_nil(sub,j))
           #checking if the subm token is a frequent word
           if ( wnet.is_frequent_word(subm[j].in_vertex.name) && wnet.is_frequent_word(subm[j].out_vertex.name))
             next
