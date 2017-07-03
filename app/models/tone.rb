@@ -60,7 +60,6 @@ class Tone
           when 2 then [ in_feature[0].to_f,in_feature[1].to_f]
           else [0,0]
         end
-        # puts "cumulative_edge_feature :: [#{cumulative_edge_feature[0]}, #{cumulative_edge_feature[1]}]"
         if ((cumulative_review_tone[0] == -1 and cumulative_review_tone[1] == -1) or
           (cumulative_review_tone[0] == 0 and cumulative_review_tone[1] == 0)) # has not been initialized as yet
           cumulative_review_tone[0] = cumulative_edge_feature[0].to_f
@@ -99,21 +98,21 @@ class Tone
     feature_vector = [0, 0] # initializing
     # look for the presence of token in positive set
     if (positive.include?(vertex.name.downcase))
-      feature_vector[0] = 1 #
+      feature_vector[0] = 1
     else
       # recursively check for synonyms of token in the positive set
       distance = 1
-      flag = 0
+      synonym_checked = 0
       # gets upto 'threshold' levels of synonms in a double dimensional array
       synonym_sets = get_synonyms(vertex, threshold, speller)
       synonym_sets.each{
         |set|  
         if (positive.length - (positive - set).length > 0)
-          feature_vector[0] = 1/distance
-          flag = 1
+          feature_vector[0] = 1 / distance
+          synonym_checked = 1
         end
           
-        if (flag == 1)
+        if (synonym_checked == 1)
           break # break out of the loop
         end
         distance += 1 # incrementing to check synonyms in the next level
@@ -126,7 +125,7 @@ class Tone
     else
       # recursively check for synonyms of token in the positive set
       distance = 1
-      flag = 0
+      synonym_checked = 0
       # gets upto 'threshold' levels of synonms in a double dimensional array
       synonym_sets = get_synonyms(vertex, threshold, speller)
       # i.e. if there were no synonyms identified for the token avoid rechecking for [0] - since that contains the original token
@@ -134,11 +133,11 @@ class Tone
         synonym_sets.each{
           |set|  
           if (negative.length - (negative - set).length > 0)
-            feature_vector[1] = 1/distance
-            flag = 1
+            feature_vector[1] = 1 / distance
+            synonym_checked = 1
           end
           
-          if (flag == 1)
+          if (synonym_checked == 1)
             break # break out of the loop
           end
           distance += 1 # incrementing to check synonyms in the next level
