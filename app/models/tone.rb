@@ -4,7 +4,7 @@ require 'constants'
 
 
 class Tone
-
+  
   def identify_tone_no_review_graph(pos_tagger, speller, core_NLP_tagger, review_text)
     # generate the graph and call identify method
     g = GraphGenerator.new
@@ -12,14 +12,13 @@ class Tone
     review_graph = g.clone
 
     return identify_tone(pos_tagger, speller, core_NLP_tagger, review_text, review_graph)
-
   end
+
   def identify_tone(_pos_tagger, speller, _core_NLP_tagger, _review_text, review_graph)
     # speller = Aspell.new("en_US")
     # speller.suggestion_mode = Aspell::NORMAL
     
     cumulative_edge_feature = Array.new
-    cumulative_review_tone = Array.new 
     cumulative_review_tone = [-1, -1, -1] # sum of all edge tones
     
     # extracting positive and negative words from files into arrays
@@ -94,7 +93,7 @@ class Tone
   end
   def get_feature_vector(vertex, positive, negative, speller)
     threshold = THRESHOLD # max distance at which synonyms can be searched
-    feature_vector = Array.new # size of the array depends on th number of tone dimensions e.g.[positive, negative, netural]
+    # size of the array depends on th number of tone dimensions e.g.[positive, negative, netural]
     feature_vector = [0, 0] # initializing
     # look for the presence of token in positive set
     if (positive.include?(vertex.name.downcase))

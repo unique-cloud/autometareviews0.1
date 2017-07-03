@@ -282,7 +282,7 @@ class GraphGenerator
       vertex = verts[i]
       if (!vertex.nil?)
         vertices_array << vertex
-        counter+=1
+        counter += 1
       end
     end
     @vertices = vertices_array
@@ -332,7 +332,8 @@ class GraphGenerator
             (list[i].in_vertex.name.downcase == out.name.downcase && list[i].out_vertex.name.downcase == in_vertex.name.downcase))
           # if an edge was found
           edgePos = i # returning its position in the array
-          # increment frequency if the edge was found in a different sent. (check by maintaining a text number and checking if the new # is diff from prev #)
+          # increment frequency if the edge was found in a different sent.
+          # (check by maintaining a text number and checking if the new # is diff from prev #)
           if (index != list[i].index)
             list[i].frequency += 1
           end
@@ -527,7 +528,7 @@ def identify_frequency_and_prune_edges(edges, num)
   selectedEdges
 end
 
-def append_to_previous(count,term,plainToken,iteration,labels,labelCounter)
+def append_to_previous(count, term, plainToken, iteration, labels, labelCounter)
   # fetching the previous vertex
   prevVertex = search_vertices(@vertices, term[count], iteration)
   # concatenating with contents of the previous vertex
@@ -543,9 +544,9 @@ def append_to_previous(count,term,plainToken,iteration,labels,labelCounter)
   vertex
 end
 
-def create_new_branch(plainToken,iteration,type,state,labels,labelCounter,parents,parentCounter, posTag)
+def create_new_branch(plainToken, iteration, type, state, labels, labelCounter, parents, parentCounter, posTag)
   # the vertex doesn't already exist
-  if((vertex = search_vertices(@vertices, plainToken, iteration))==nil)
+  if((vertex = search_vertices(@vertices, plainToken, iteration)) == nil)
     @vertices[@num_vertices] = Vertex.new(plainToken, type, iteration, state, labels[labelCounter], parents[parentCounter], posTag)
     vertex = @vertices[@num_vertices] # the newly formed vertex will be considered
     @num_vertices += 1
@@ -553,7 +554,7 @@ def create_new_branch(plainToken,iteration,type,state,labels,labelCounter,parent
   vertex
 end
 
-def delete_edge(v1,v2,i)
+def delete_edge(v1, v2, i)
   # search_edges_to_set_null() returns the position in the array at which such an edge exists
   if (!v1.nil? && !v2.nil? && (e = search_edges_to_set_null(@edges, v1, v2, i)) != -1)
     @edges[e] = nil
@@ -564,7 +565,7 @@ def delete_edge(v1,v2,i)
   end
 end
 
-def create_edge(v1,v2,i,desc,type)
+def create_edge(v1, v2, i, desc, type)
   # if such an edge did not already exist
   if (!v1.nil? && !v2.nil? && (e = search_edges(@edges, v1, v2, i)) == -1)
     @edges[@num_edges] = Edge.new(desc,type)
