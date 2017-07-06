@@ -37,11 +37,6 @@ def predict_classes(pos_tagger, _core_NLP_tagger, _review_text, review_graph, pa
     #we divide the match by 6 to ensure the value is in the range of [0-1]     
   end #end of for loop for the classes          
   
-  #printing the probability values
-#  puts("########## Probability for test review:: "+review_text[0]+" is::")  
-#  for k in (0..num_classes - 1)
-#    puts "class_prob[#{k}] .. #{class_prob[k]}"
-#  end         
   return class_prob
 end #end of the prediction method
 #------------------------------------------#------------------------------------------#------------------------------------------
@@ -85,7 +80,7 @@ def compare_review_with_patterns(single_edges, single_patterns, wordnet)
     final_edge_num = 1  
   end
   
-  # puts("final_class_sum:: #{final_class_sum} final_edge_num:: #{final_edge_num} Class average #{final_class_sum/final_edge_num}")
+  
   return final_class_sum/final_edge_num #maxMatch
 end #end of determineClass method
 #------------------------------------------#------------------------------------------#------------------------------------------
