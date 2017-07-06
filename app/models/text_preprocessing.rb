@@ -116,7 +116,6 @@ class TextPreprocessing
   # Reads the patterns from the csv file containing them.
   # maxValue is the maximum value of the patterns found
   def read_patterns(filename, pos)
-    num = 1000 # some large number
     patterns = Array.new
     state = POSITIVE
     i = 0 # keeps track of the number of edges
@@ -165,7 +164,6 @@ class TextPreprocessing
       end
       i += 1
     end
-    num_patterns = i
     return patterns
   end
 
