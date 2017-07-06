@@ -65,8 +65,7 @@ def compare_review_with_patterns(single_edges, single_patterns, wordnet)
       for j in (0..single_patterns.length - 1) 
         if(!single_patterns[j].nil?)
           single_edge_matches[i][j] = compare_edges(single_edges[i], single_patterns[j], wordnet)
-          max_match = get_max(single_edge_matches[i][j],max_match)
-          end 
+          max_match = get_max(single_edge_matches[i][j],max_match) 
         end 
       end #end of for loop for the patterns
       single_edges[i].average_match = max_match  
