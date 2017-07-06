@@ -67,7 +67,6 @@ class Automated_Metareview
     g = GraphGenerator.new
 
     feature_values=Hash.new
-    speller = FFI::Aspell::Speller.new('en_US')
     @review_array = review
     if(@review_array.length > 0)
       #formatting the review responses, segmenting them at punctuations
