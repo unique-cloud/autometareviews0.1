@@ -92,25 +92,11 @@ def compare_edges(e1, e2, wordnet)
   
   avg_match_without_syntax = 0
   #compare edges so that only non-nouns or non-subjects are compared
-  # if(!e1.in_vertex.pos_tag.include?("NN") and !e1.out_vertex.pos_tag.include?("NN"))
-    avg_match_without_syntax = (wordnet.compare_strings(e1.in_vertex, e2.in_vertex, speller) + 
-                              wordnet.compare_strings(e1.out_vertex, e2.out_vertex, speller))/2.to_f
-  # elsif(!e1.in_vertex.pos_tag.include?("NN"))
-    # avg_match_without_syntax = wordnet.compare_strings(e1.in_vertex, e2.in_vertex, speller)
-  # elsif(!e1.out_vertex.pos_tag.include?("NN"))
-    # avg_match_without_syntax = wordnet.compare_strings(e1.out_vertex, e2.out_vertex, speller)
-  # end
+  avg_match_without_syntax = (wordnet.compare_strings(e1.in_vertex, e2.in_vertex, speller) + wordnet.compare_strings(e1.out_vertex, e2.out_vertex, speller))/2.to_f
   
   avg_match_with_syntax = 0
   #matching in-out and out-in vertices
-  # if(!e1.in_vertex.pos_tag.include?("NN") and !e1.out_vertex.pos_tag.include?("NN"))
-  avg_match_with_syntax = (wordnet.compare_strings(e1.in_vertex, e2.out_vertex, speller) + 
-                              wordnet.compare_strings(e1.out_vertex, e2.in_vertex, speller))/2.to_f
-  # elsif(!e1.in_vertex.pos_tag.include?("NN"))
-    # avg_match_with_syntax = wordnet.compare_strings(e1.in_vertex, e2.out_vertex, speller)
-  # elsif(!e1.out_vertex.pos_tag.include?("NN"))
-    # avg_match_with_syntax = wordnet.compare_strings(e1.out_vertex, e2.in_vertex, speller)
-  # end
+  avg_match_with_syntax = (wordnet.compare_strings(e1.in_vertex, e2.out_vertex, speller) + wordnet.compare_strings(e1.out_vertex, e2.in_vertex, speller))/2.to_f
   
   if(avg_match_without_syntax > avg_match_with_syntax)
     return avg_match_without_syntax
