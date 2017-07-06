@@ -38,7 +38,13 @@ def predict_classes(pos_tagger, _core_NLP_tagger, _review_text, review_graph, pa
   return class_prob
 end #end of the prediction method
 #------------------------------------------#------------------------------------------#------------------------------------------
-
+def get_max(a,b)
+ if(a>b)
+  return a
+ end
+ return b
+end
+ 
 def compare_review_with_patterns(single_edges, single_patterns, wordnet)
   final_class_sum = 0.0
   final_edge_num = 0
@@ -59,8 +65,7 @@ def compare_review_with_patterns(single_edges, single_patterns, wordnet)
       for j in (0..single_patterns.length - 1) 
         if(!single_patterns[j].nil?)
           single_edge_matches[i][j] = compare_edges(single_edges[i], single_patterns[j], wordnet)
-          if(single_edge_matches[i][j] > max_match)
-            max_match = single_edge_matches[i][j]
+          max_match = get_max(single_edge_matches[i][j],max_match)
           end 
         end 
       end #end of for loop for the patterns
