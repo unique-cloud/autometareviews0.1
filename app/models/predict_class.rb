@@ -7,7 +7,7 @@ class PredictClass
  Returns an array of probablities (length = numClasses) 
 =end
 #predicting the review's class
-def predict_classes(pos_tagger, core_NLP_tagger, review_text, review_graph, pattern_files_array, num_classes)
+def predict_classes(pos_tagger, _core_NLP_tagger, _review_text, review_graph, pattern_files_array, num_classes)
   #reading the patterns from the pattern files
   patterns_files = Array.new
   pattern_files_array.each do |file|
