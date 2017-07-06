@@ -86,17 +86,20 @@ def compare_review_with_patterns(single_edges, single_patterns, wordnet)
   return final_class_sum/final_edge_num #maxMatch
 end #end of determineClass method
 #------------------------------------------#------------------------------------------#------------------------------------------
-
 def compare_edges(e1, e2, wordnet)
   speller = FFI::Aspell::Speller.new('en_US')
   
   avg_match_without_syntax = 0
   #compare edges so that only non-nouns or non-subjects are compared
-  avg_match_without_syntax = (wordnet.compare_strings(e1.in_vertex, e2.in_vertex, speller) + wordnet.compare_strings(e1.out_vertex, e2.out_vertex, speller))/2.to_f
+  in_in_vertex_compare = wordnet.compare_strings(e1.in_vertex, e2.in_vertex, speller)
+  in_out_vertex_compare = wordnet.compare_strings(e1.in_vertex, e2.out_vertex, speller)
+  out_out_vertex_compare = wordnet.compare_strings(e1.out_vertex, e2.out_vertex, speller)
+  out_in_vertex_compare = wordnet.compare_strings(e1.out_vertex, e2.in_vertex, speller)
+  avg_match_without_syntax = (in_in_vertex_compare + out_out_vertex_compare)/2.to_f
   
   avg_match_with_syntax = 0
   #matching in-out and out-in vertices
-  avg_match_with_syntax = (wordnet.compare_strings(e1.in_vertex, e2.out_vertex, speller) + wordnet.compare_strings(e1.out_vertex, e2.in_vertex, speller))/2.to_f
+  avg_match_with_syntax = (in_out_vertex_compare + out_in_vertex_compare)/2.to_f
   
   if(avg_match_without_syntax > avg_match_with_syntax)
     return avg_match_without_syntax
