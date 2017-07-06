@@ -24,7 +24,6 @@ def predict_classes(pos_tagger, _core_NLP_tagger, _review_text, review_graph, pa
   
   #Predicting the probability of the review belonging to each of the content classes
   wordnet = WordnetBasedSimilarity.new
-  max_probability = 0.0
   class_value = 0          
   edges = review_graph.edges
 #  puts "review_graph.num_edges #{review_graph.num_edges}"
