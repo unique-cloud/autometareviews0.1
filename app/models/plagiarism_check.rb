@@ -68,7 +68,9 @@ class PlagiarismChecker
     result
   end
 #-------------------------
-
+def check_if_nil(arr1,arr2,index1,index2)
+ return !arr1[index1].nil? && !arr2[index2].nil? && arr1[index1].downcase == arr2[index2].downcase
+end
 =begin
  Checking if the response has been copied from the review questions or from other responses submitted. 
 =end
@@ -86,7 +88,7 @@ class PlagiarismChecker
     rev_array = Array.new #holds the non-plagiairised responses
     #comparing questions with text
     for i in 0..questions.length - 1
-      if(!questions[i].nil? && !review_text_arr[i].nil? && questions[i].downcase == review_text_arr[i].downcase)
+      if(check_if_nil(questions,review_text_arr,i,i))
         count_copies+=1
         next #skip comparing with other responses
       end
@@ -94,7 +96,7 @@ class PlagiarismChecker
       #comparing response with other responses
       flag = 0
       for j in 0..review_text_arr.length - 1
-        if(i != j && !review_text_arr[i].nil? && !review_text_arr[j].nil? && review_text_arr[i].downcase == review_text_arr[j].downcase)
+        if(i != j && check_if_nil(review_text_arr,review_text_arr,i,j))
           count_copies+=1
           flag = 1
           break
