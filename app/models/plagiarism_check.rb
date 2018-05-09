@@ -1,12 +1,10 @@
 require 'text_preprocessing'
 require 'constants'
-require 'graph_generator'
+require 'word_order_graph'
 require 'ruby-web-search'
 
 class PlagiarismChecker
-=begin
- reviewText and submText are array containing review and submission texts 
-=end
+  # reviewText and submText are array containing review and submission texts
   def check_for_plagiarism(review_text, subm_text)
     result = false
     for l in 0..review_text.length - 1 #iterating through the review's sentences
@@ -67,62 +65,59 @@ class PlagiarismChecker
     end #end of for loop for reviews
     result
   end
-#-------------------------
-def check_if_nil(arr1,arr2,index1,index2)
- return !arr1[index1].nil? && !arr2[index2].nil? && arr1[index1].downcase == arr2[index2].downcase
-end
-=begin
- Checking if the response has been copied from the review questions or from other responses submitted. 
-=end
+
+  #-------------------------
+  def check_if_nil(arr1,arr2,index1,index2)
+   return arr1[index1] && arr2[index2] && arr1[index1].downcase == arr2[index2].downcase
+  end
+
+  # Checking if the response has been copied from the review questions or from other responses submitted.
   def compare_reviews_with_questions_responses(reviews, questions)
-    review_text_arr = reviews
-    #response = Response.find(:first, :conditions => ["map_id = ?", map_id])
-    #scores = Score.find(:all, :conditions => ["response_id = ?", response.id])
-    #questions = Array.new
-    #fetching the questions for the responses
-    #    for i in 0..scores.length - 1
-    #      questions << Question.find_by_sql(["Select * from questions where id = ?", scores[i].question_id])[0].txt
-    #    end
+    # response = Response.find(:first, :conditions => ["map_id = ?", map_id])
+    # scores = Score.find(:all, :conditions => ["response_id = ?", response.id])
+    # questions = Array.new
+    # fetching the questions for the responses
+    #     for i in 0..scores.length - 1
+    #       questions << Question.find_by_sql(["Select * from questions where id = ?", scores[i].question_id])[0].txt
+    #     end
 
-    count_copies = 0 #count of the number of responses that are copies either of questions of other responses
-    rev_array = Array.new #holds the non-plagiairised responses
-    #comparing questions with text
-    for i in 0..questions.length - 1
-      if(check_if_nil(questions,review_text_arr,i,i))
-        count_copies+=1
-        next #skip comparing with other responses
+    count_copies = 0  # count of the number of responses that are copies either of questions of other responses
+    rev_array = []  # holds the non-plagiarised responses
+
+    # count occurrence times of each review in the array
+    counts = reviews.each_with_object(Hash.new(0)) { |review, h| h[review] += 1 }
+
+    # compare questions with text
+    reviews.each_with_index do |review, i|
+      # compare review with question
+      if questions[i] && review.downcase == questions[i].downcase
+        count_copies += 1
+        next
       end
 
-      #comparing response with other responses
-      flag = 0
-      for j in 0..review_text_arr.length - 1
-        if(i != j && check_if_nil(review_text_arr,review_text_arr,i,j))
-          count_copies+=1
-          flag = 1
-          break
-        end
+      # compare review with others
+      if counts[review] > 1
+        count_copies += 1
+        next
       end
 
-      if(flag == 0) #ensuring no match with any of the review array's responses
-        rev_array << review_text_arr[i]
-      end
+      # collect the non-plagiarised reviews
+      rev_array << review
     end
+    
+    # if count_copies > 0
+    #   # reset review_array only when plagiarism was found           # where is the definition of auto_metareview
+    #   auto_metareview.review_array = rev_array
+    # end
 
-    #setting @review_array as rev_array
-    if(count_copies > 0) #resetting review_array only when plagiarism was found                      #where is the definition of auto_metareview
-      auto_metareview.review_array = rev_array
-    end
-
-    if(count_copies > 0 && count_copies == scores.length)                                            #scores is not defined
-      return ALL_RESPONSES_PLAGIARISED #plagiarism, with all other metrics 0
-    elsif(count_copies > 0)
-      return SOME_RESPONSES_PLAGIARISED #plagiarism, while evaluating other metrics
+    if rev_array.empty?                                            # scores is not defined
+      return ALL_RESPONSES_PLAGIARISED # plagiarism, with all other metrics 0
+    elsif count_copies > 0
+      return SOME_RESPONSES_PLAGIARISED # plagiarism, while evaluating other metrics
     end
   end
 
-=begin
- Checking if the response was copied from google 
-=end
+  # Checking if the response was copied from google
   def google_search_response(auto_metareview)
     review_text_arr = auto_metareview.review_array
     # require 'ruby-web-search'
@@ -141,7 +136,7 @@ end
         end
       end
     }
-    #setting temp_array as the @review_array
+    # setting temp_array as the @review_array
     auto_metareview.review_array = temp_array
 
     if(count > 0)

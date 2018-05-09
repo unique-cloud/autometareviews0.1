@@ -9,7 +9,7 @@ class ReviewCoverage
   def calculate_coverage(submissions, reviews, pos_tagger, core_NLP_tagger, speller)
     #Step 1: Converting submission's text into sentences
     subm_sents = Array.new
-    g = GraphGenerator.new
+    g = WordOrderGraph.new
     for i in (0..submissions.length - 1)
       g.generate_graph(submissions, pos_tagger, core_NLP_tagger, true, false)
       subm_sents << Sentence.new(i, g.vertices, g.edges, g.num_vertices, g.num_edges)
