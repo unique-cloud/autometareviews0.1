@@ -197,16 +197,16 @@ end
     end
 #    puts("Average similairty for sentence: #{s.ID} for cluster #{targetClust.ID} SIM: #{avgSim}")
     
-    #checking cluster condition
+#    checking cluster condition
 #    puts("Target cluster #{targetClust.ID}'s similarity: #{targetClust.avg_similarity}")
 #    puts("Original cluster #{origClust.ID}'s similarity: #{origClust.avg_similarity}")
 #    puts "sim_threshold #{sim_threshold}"
-    #then s1 can be added to the cluster, if it is within Y of the cluster's similarity as well as 
-    #if the cluster it is being added to has a higher avg. sim. than the current cluster
+#    then s1 can be added to the cluster, if it is within Y of the cluster's similarity as well as
+#    if the cluster it is being added to has a higher avg. sim. than the current cluster
     if ((targetClust.avg_similarity - avgSim) <= sim_threshold and 
         ((targetClust.avg_similarity == 6 && origClust.avg_similarity == 6) || 
             (targetClust.avg_similarity >= origClust.avg_similarity)))
-      #avgSim >= targetClust.avg - Similarity since the avgSim is not likely to exceed the cluster's similairty! 
+#      avgSim >= targetClust.avg - Similarity since the avgSim is not likely to exceed the cluster's similairty!
 #      puts("Condition satisfied by the sentence for the targetcluster")
       s.cluster_ID = targetClust.ID
       

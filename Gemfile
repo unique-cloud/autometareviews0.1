@@ -41,7 +41,7 @@ gem 'rwordnet'
 #gem 'wordnet-defaultdb'
 gem 'ffi-aspell' , '=1.0.2'
 gem 'engtagger'
-gem 'stanford-core-nlp', '=0.5.1'
-gem 'rjb', "=1.4.3"
+gem 'stanford-core-nlp', '=0.5.3'
+gem 'rjb', "=1.4.9"
 gem 'bind-it', "=0.2.7"
 gem 'edavis10-ruby-web-search'

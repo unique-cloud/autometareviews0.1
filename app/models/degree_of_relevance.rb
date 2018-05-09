@@ -1,32 +1,18 @@
 require 'wordnet_based_similarity'
-require 'graph_generator'
+require 'word_order_graph'
 
 class DegreeOfRelevance
-#creating accessors for the instance variables
-attr_accessor :vertex_match
-attr_accessor :review
-=begin
-  Identifies relevance between a review and a submission
-=end  
-def get_relevance(reviews, submissions, _num_reviews, pos_tagger, core_NLP_tagger, speller) #double dimensional arrays that contain the submissions and the reviews respectively
-  review_vertices = nil
-  review_edges = nil
-  subm_vertices = nil
-  subm_edges = nil
-  num_rev_vert = 0
-  num_rev_edg = 0 
-  num_sub_vert = 0 
-  numSubEdg = 0
-  vert_match = 0.0
-  edge_without_syn = 0.0
-  edge_with_syn = 0.0
-  edge_diff_type = 0.0
-  double_edge = 0.0
-  double_edge_with_syn = 0.0
-  
-    #since Reviews and Submissions "should" contain the same number of records review - submission pairs
-    g = GraphGenerator.new
-    #generating review's graph
+  # creating accessors for the instance variables
+  attr_accessor :vertex_match
+  attr_accessor :review
+
+  # Identifies relevance between a review and a submission
+
+  def get_relevance(reviews, submissions, _num_reviews, pos_tagger, core_NLP_tagger, speller)
+
+    # since Reviews and Submissions "should" contain the same number of records review - submission pairs
+    g = WordOrderGraph.new
+    # generating review's graph
     g.generate_graph(reviews, pos_tagger, core_NLP_tagger, true, false)
     review_vertices = g.vertices
     review_edges = g.edges
@@ -168,7 +154,7 @@ def compare_edges_non_syntax_diff(rev, subm, num_rev_edg, num_sub_edg)
       #looking for best matches
       (0..num_sub_edg - 1).each do |j|
       #comparing in-vertex with out-vertex to make sure they are of the same type
-        if(check_for_nil(sub,j))
+        if check_for_nil(subm, j)
           #checking if the subm token is a frequent word
           if(wnet.is_frequent_word(subm[j].in_vertex.name) && wnet.is_frequent_word(subm[j].out_vertex.name))
             next

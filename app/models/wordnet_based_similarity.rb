@@ -1,28 +1,27 @@
 require 'vertex'
 require 'constants'
-require 'wordnet'
+require 'rwordnet'
 require 'engtagger'
 
 class WordnetBasedSimilarity
   attr_accessor :match, :count
   @@posTagger = EngTagger.new  
   def compare_strings(review_vertex, subm_vertex, speller)
-    #must fix this to something that is local to the app
+    # must fix this to something that is local to the app
     # WordNet::WordNetDB.path = "/usr/local/WordNet-3.0"
     # WordNet::WordNetDB.path = "/usr/local/Cellar/wordNet/3.0"
     review = review_vertex.name
     submission = subm_vertex.name
     review_state = review_vertex.state
     subm_state = subm_vertex.state
-    
-    #puts("@@@@@@@@@ Comparing Vertices:: #{review} and #{submission} :: RevState:: #{review_state} and SubmState:: #{subm_state}");
+
     @match = 0
     @count = 0
     
     review_pos = ''
     subm_pos = ''
      
-    #checking for exact matches between the tokens
+    # check for exact matches between the tokens
     if review.casecmp(submission) == 0 # and !is_frequent_word(review_vertex.name) - removing this condition else, it returns a NOMATCH although the frequent words are equal and this negatively impacts the total match value
       # puts("Review vertex types #{review_vertex.type} && #{subm_vertex.type}")
       if review_state.equal?(subm_state)
@@ -37,13 +36,13 @@ class WordnetBasedSimilarity
     #stok_sub = submission.split(" ") #should've been inside when doing n * n comparison
     
     #iterating through review tokens
-    (0..stok_rev.length-1).each do |i|
+    stok_rev.each do |rev_token|
       #if either of the tokens is null
-      if stok_rev[i].nil?
+      if rev_token.nil?
         next #continue with the next token
       end
-      rev_token = stok_rev[i].downcase
-      if review_pos.empty? #do not reset POS for every new token, it changes the POS of the vertex e.g. like has diff POS for vertices "like"(n) and "would like"(v)
+      rev_token = rev_token.downcase
+      if review_pos.empty? # do not reset POS for every new token, it changes the POS of the vertex e.g. like has diff POS for vertices "like"(n) and "would like"(v)
         review_pos = determine_pos(review_vertex).strip
       end
       
@@ -59,13 +58,13 @@ class WordnetBasedSimilarity
         next #equivalent of the "continue"
       end
       
-      #fetching synonyms, hypernyms, hyponyms etc. for the review token       
+      # fetching synonyms, hypernyms, hyponyms etc. for the review token
       rev_stem = find_stem_word(rev_token, speller)
-      #fetching all the relations
+      # fetching all the relations
       review_relations = get_relations_for_review_submission_tokens(rev_token, rev_stem, review_pos)
-      #setting the values in specific array variables
+      # setting the values in specific array variables
       rev_gloss = review_relations[0]
-      rev_syn =review_relations[1]
+      rev_syn = review_relations[1]
       rev_hyper = review_relations[2]
       rev_hypo = review_relations[3]
       rev_ant = review_relations[4]
@@ -78,14 +77,14 @@ class WordnetBasedSimilarity
       # puts "reviewAntonyms:: #{rev_ant} .. #{rev_ant.class}"
         
       stok_sub = submission.split(' ')
-      #iterating through submission tokens
-      (0..stok_sub.length-1).each do |j|
+      # iterate through submission tokens
+      stok_sub.each do |sub_token|
       
-        if stok_sub[i].nil?
+        if sub_token.nil?
           next
         end
         
-        sub_token = stok_sub[j].downcase
+        sub_token = sub_token.downcase
         if subm_pos.empty? #do not reset POS for every new token, it changes the POS of the vertex e.g. like has diff POS for vertices "like"(n) and "would like"(v)
           subm_pos = determine_pos(subm_vertex).strip
         end
@@ -102,7 +101,7 @@ class WordnetBasedSimilarity
           next #equivalent of the "continue"
         end
                     
-        #fetching synonyms, hypernyms, hyponyms etc. for the submission token
+        # fetching synonyms, hypernyms, hyponyms etc. for the submission token
         subm_stem = find_stem_word(sub_token, speller)
         subm_relations = get_relations_for_review_submission_tokens(sub_token, subm_stem, subm_pos)
         subm_gloss = subm_relations[0]
@@ -202,14 +201,15 @@ class WordnetBasedSimilarity
 def get_relations_for_review_submission_tokens(token, stem, pos)
   # puts "@@@@ Inside get_relations_for_review_submission_tokens"
   relations = Array.new
-  lemmas=WordNet::Lemma.find_all(token)
+  lemmas = WordNet::Lemma.find_all(token)
 
   #lemmas = WordNet::WordNetDB.find(token)
   if lemmas.nil?
-    #lemmas=wordNet.lookup_synsets(stem)
+    # lemmas=wordNet.lookup_synsets(stem)
     lemmas = WordNet::Lemma.find_all(stem)
   end
-  #select the lemma corresponding to the token's POS
+
+  # select the lemma corresponding to the token's POS
   lemma = ''
   lemmas.each do |l|
     # puts "lemma's POS :: #{l.pos} and POS :: #{pos}"
@@ -351,16 +351,16 @@ end
 def determine_pos(vert)
   str_pos = vert.pos_tag
   # puts("Inside determine_pos POS Tag:: #{str_pos}")
-  if str_pos.include?('CD') or str_pos.include?('NN') or str_pos.include?('PR') or str_pos.include?('IN') or str_pos.include?('EX') or str_pos.include?('WP')
-    pos = 'n'#WordNet::Noun
+  if %w(CD NN PR IN EX WP).any? { |str| str_pos.include?(str) }
+    pos = 'n' # WordNet::Noun
   elsif str_pos.include?('JJ')
-    pos = 'a' #WordNet::Adjective
-  elsif str_pos.include?('TO') or str_pos.include?('VB') or str_pos.include?('MD')
-    pos = 'v' #WordNet::Verb
+    pos = 'a' # WordNet::Adjective
+  elsif %w(TO VB MD).any? { |str| str_pos.include?(str) }
+    pos = 'v' # WordNet::Verb
   elsif str_pos.include?('RB')
-    pos = 'r' #WordNet::Adverb
+    pos = 'r' # WordNet::Adverb
   else
-    pos = 'n' #WordNet::Noun
+    pos = 'n' # WordNet::Noun
   end
   pos
 end
@@ -385,7 +385,7 @@ def is_frequent_word(word)
   end  
   
   false
-end #end of is_frequent_word method
+end
 #------------------------------------------------------------------------------
 =begin
   find_stem_word - stems the word and checks if the word is correctly spelt, else it will return a correctly spelled word as suggested by spellcheck
@@ -393,10 +393,10 @@ end #end of is_frequent_word method
 =end
 def find_stem_word(word, speller)
   stem = word.stem
-  correct = stem #initializing correct to the stem word
-  #checking the stem word's spelling for correctness
-  while !speller.correct?(correct) do
-    if !speller.suggestions(correct).first.nil?
+  correct = stem # initializing correct to the stem word
+  # checking the stem word's spelling for correctness
+  until speller.correct?(correct) do
+    if speller.suggestions(correct).first
       correct = speller.suggestions(correct).first
     else
       #break out of the loop, else it will continue infinitely
@@ -440,7 +440,7 @@ def overlap(def1, def2, speller)
   
   #iterating through def1's definitions
   (0..def1.length-1).each do |i|
-    if !def1[i].nil?
+    if def1[i]
       #puts "def1[#{i}] #{def1[i]}"
       if def1[i].include?("\"")
         def1[i].gsub!("\"", ' ')
@@ -465,7 +465,7 @@ def overlap(def1, def2, speller)
               # puts "tok1stem #{tok1stem} and tok2stem #{tok2stem}"
               if (tok1.downcase == tok2.downcase or tok1stem.downcase == tok2stem.downcase) and !instance.is_frequent_word(tok1) and !instance.is_frequent_word(tok1stem)
                 # puts("**Overlap def/ex:: #{tok1} or #{tok1stem}")
-                num_overlap+=1
+                num_overlap += 1
               end
             end #end of s2 loop
           end #end of s1 loop
